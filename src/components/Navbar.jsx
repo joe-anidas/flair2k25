@@ -10,9 +10,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
@@ -28,34 +28,38 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-8">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-blue-300 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium relative group"
               >
                 Home
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('events')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-blue-300 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium relative group"
               >
                 Events
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-blue-300 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium relative group"
               >
                 About
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-blue-300 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium relative group"
               >
                 Contact
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
             </div>
           </div>
           
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="text-white hover:text-blue-300 transition-colors duration-200">
+            <button className="text-white hover:text-red-400 transition-colors duration-200 p-2 rounded-md hover:bg-white/10">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>

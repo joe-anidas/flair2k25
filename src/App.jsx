@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Snow from "./components/Snow";
+// import Snow from "./components/Snow";
 
 const App = () => {
   return (
     <BrowserRouter>
-        <Snow />
+        {/* <Snow /> */}
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
