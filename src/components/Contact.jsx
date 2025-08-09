@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../assets/logo.webp';
-import graitLogo from '../assets/grait-logo.webp';
+import logo from '/assets/flair.webp';
+import graitLogo from '/assets/grait-logo.webp';
 import Snow from './Snow';
 
 const Contact = () => {
@@ -70,33 +70,6 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Center Section - Quick Links */}
-            <div className="lg:col-span-1">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-red-500/20 hover:border-red-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/20 h-full">
-                <h3 className="font-bold text-lg mb-4 text-red-400">
-                  Quick Links
-                </h3>
-                <nav className="flex flex-col gap-3">
-                  <a href="#home" className="text-sm font-normal hover:text-red-300 transition-all duration-300 hover:translate-x-2 flex items-center gap-2 group">
-                    <i className="fas fa-home text-red-400 group-hover:text-red-300 transition-colors duration-300"></i>
-                    <span className='text-white'>Home</span>
-                  </a>
-                  <a href="#events" className="text-sm font-normal hover:text-red-300 transition-all duration-300 hover:translate-x-2 flex items-center gap-2 group">
-                    <i className="fas fa-calendar-alt text-red-400 group-hover:text-red-300 transition-colors duration-300"></i>
-                    <span className='text-white'>Events</span>
-                  </a>
-                  <a href="#about" className="text-sm font-normal hover:text-red-300 transition-all duration-300 hover:translate-x-2 flex items-center gap-2 group">
-                    <i className="fas fa-info-circle text-red-400 group-hover:text-red-300 transition-colors duration-300"></i>
-                    <span className='text-white'>About</span>
-                  </a>
-                  <a href="#contact" className="text-sm font-normal hover:text-red-300 transition-all duration-300 hover:translate-x-2 flex items-center gap-2 group">
-                    <i className="fas fa-envelope text-red-400 group-hover:text-red-300 transition-colors duration-300"></i>
-                    <span className='text-white'>Contact</span>
-                  </a>
-                </nav>
               </div>
             </div>
 

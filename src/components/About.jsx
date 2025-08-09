@@ -9,7 +9,7 @@ const About = () => {
   ];
 
   return (
-    <div id="about" className="min-h-screen bg-gradient-to-tr from-black via-red-950 to-black relative overflow-hidden">
+    <div id="about" className="min-h-[80vh] bg-gradient-to-tr from-black via-red-950 to-black relative overflow-hidden">
       {/* Snow Background */}
       <div className="absolute inset-0 z-0">
         <Snow />
@@ -23,13 +23,13 @@ const About = () => {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen pt-20 pb-50 px-4">
+      <div className="relative z-10 pt-16 pb-8 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-300 to-red-200">
-                SPONSORS
+                OUR SPONSORS
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">

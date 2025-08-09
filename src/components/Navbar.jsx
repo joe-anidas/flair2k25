@@ -1,5 +1,5 @@
 import React from 'react';
-import licetLogo from '../assets/licet.png';
+import licetLogo from '/assets/licet.png';
 
 export default function Navbar() {
   const scrollToSection = (sectionId) => {

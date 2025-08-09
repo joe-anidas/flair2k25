@@ -1,5 +1,5 @@
 import React from 'react';
-import hero from '../assets/hero.mov';
+import hero from '/videos/hero.mp4';
 
 const Hero = () => {
   const scrollToEvents = () => {

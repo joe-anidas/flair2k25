@@ -1,12 +1,41 @@
-# React + Vite
+# FLAIR-IT 2K25
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for the FLAIR-IT 2025 event with an immersive intro sequence.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Intro Sequence**: 
+  - Countdown animation (0-100%)
+  - Netflix-style intro video
+  - Smooth transition to main content
+- **Background Music**: Ambient audio that plays during the main experience
+- **Responsive Design**: Optimized for all device sizes
+- **Modern UI**: Built with React, Tailwind CSS, and Framer Motion
 
-## Expanding the ESLint configuration
+## Intro Sequence Flow
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Countdown Stage**: Shows a percentage counter from 0% to 100%
+2. **Video Stage**: Plays the Netflix-style intro video in fullscreen
+3. **Home Stage**: Transitions to the main website content
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## Dependencies
+
+- React 19
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Router DOM
+
+## File Structure
+
+- `src/components/IntroSequence.jsx` - Main intro sequence component
+- `src/pages/Home.jsx` - Main home page content
+- `public/videos/netflix.webm` - Intro video
+- `public/audios/bg.mp3` - Background music
