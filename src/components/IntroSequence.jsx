@@ -40,6 +40,15 @@ const IntroSequence = () => {
           // Set audio volume
           netflixAudioRef.current.volume = 0.5;
           
+          // For mobile, ensure video is properly configured
+          if (videoRef.current) {
+            videoRef.current.muted = true; // Must be muted for autoplay on mobile
+            videoRef.current.playsInline = true;
+            videoRef.current.webkitPlaysinline = true; // iOS Safari support
+            videoRef.current.setAttribute('playsinline', 'true');
+            videoRef.current.setAttribute('webkit-playsinline', 'true');
+          }
+          
           // Play both video and Netflix audio simultaneously
           await Promise.all([
             videoRef.current.play(),
@@ -56,6 +65,14 @@ const IntroSequence = () => {
               if (!userInteracted) {
                 setUserInteracted(true);
                 netflixAudioRef.current.volume = 0.5;
+                
+                // Ensure video is properly configured for mobile
+                if (videoRef.current) {
+                  videoRef.current.muted = true;
+                  videoRef.current.playsInline = true;
+                  videoRef.current.webkitPlaysinline = true;
+                }
+                
                 await Promise.all([
                   videoRef.current.play(),
                   netflixAudioRef.current.play()
@@ -77,7 +94,7 @@ const IntroSequence = () => {
           document.addEventListener('click', handleUserInteraction);
           document.addEventListener('keydown', handleUserInteraction);
           document.addEventListener('touchstart', handleUserInteraction);
-          document.addEventListener('mouseenter', handleUserInteraction);
+          document.removeEventListener('mouseenter', handleUserInteraction); // Remove mouseenter for mobile
         }
       };
       
@@ -179,9 +196,17 @@ const IntroSequence = () => {
           autoPlay
           playsInline
           muted={true} // Keep video muted - audio handled separately
+          webkit-playsinline="true"
+          x-webkit-airplay="allow"
+          preload="auto"
           className="w-full h-full object-cover"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center'
+          }}
         >
           <source src="/videos/netflix.mp4" type="video/mp4" />
+          <source src="/videos/netflix.webm" type="video/webm" />
           <source src="/videos/hero.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
