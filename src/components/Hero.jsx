@@ -34,10 +34,8 @@ const Hero = () => {
   {/* Top Left - FLAIR-IT */}
   <div className="px-4 sm:px-6 md:px-8 lg:px-33 pt-8 sm:pt-12 md:pt-16">
     <div className="z-20">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-wider">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
-          FLAIR-IT
-        </span>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-wider stranger-things-glow">
+        FLAIR-IT
       </h1>
     </div>
 
@@ -46,7 +44,7 @@ const Hero = () => {
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
         Join us on
         <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
+        <span className="stranger-things-glow">
           23th August
         </span>
       </h2>

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Stranger Things Font */
+@font-face {
+    font-family: 'Benguiat';
+    src: url('/src/stranger-things/stranger things/Benguiat Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-display: swap;
+}
+
 body {
     --color-main: #121212; /* dark color stored in a CSS variable */
     background-color: var(--color-main);
@@ -38,4 +46,10 @@ html, body {
 .events-card {
   opacity: 1 !important;
   transform: translateX(0) !important;
+}
+
+/* Stranger Things Glowing Red Text */
+.stranger-things-glow {
+  font-family: 'Benguiat', serif;
+  color: #ff0000;
 }
