@@ -8,9 +8,26 @@ const IntroSequence = () => {
   const [videoPlayFailed, setVideoPlayFailed] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false);
   const [netflixAudioPlaying, setNetflixAudioPlaying] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef(null);
   const netflixAudioRef = useRef(null);
   const bgAudioRef = useRef(null);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+      const isMobileDevice = mobileRegex.test(userAgent) || window.innerWidth <= 768;
+      setIsMobile(isMobileDevice);
+      console.log("Mobile device detected:", isMobileDevice);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Countdown effect
   useEffect(() => {
@@ -19,20 +36,25 @@ const IntroSequence = () => {
         setCount((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
-            setCurrentStage("video");
+            // Skip video stage on mobile, go directly to home
+            if (isMobile) {
+              setCurrentStage("home");
+            } else {
+              setCurrentStage("video");
+            }
             return 100;
           }
           return prev + 1;
         });
-      }, 30); // 20ms for smooth animation
+      }, 30); // 30ms for smooth animation
 
       return () => clearInterval(interval);
     }
-  }, [currentStage]);
+  }, [currentStage, isMobile]);
 
-  // Video and Netflix audio autoplay effect (both simultaneously)
+  // Video and Netflix audio autoplay effect (both simultaneously) - Desktop only
   useEffect(() => {
-    if (currentStage === "video" && videoRef.current && netflixAudioRef.current) {
+    if (currentStage === "video" && !isMobile && videoRef.current && netflixAudioRef.current) {
       const playVideoAndAudio = async () => {
         try {
           console.log("Attempting to play video and Netflix audio simultaneously...");
@@ -88,7 +110,7 @@ const IntroSequence = () => {
             document.removeEventListener('click', handleUserInteraction);
             document.removeEventListener('keydown', handleUserInteraction);
             document.removeEventListener('touchstart', handleUserInteraction);
-            document.removeEventListener('mouseenter', handleUserInteraction);
+            document.removeEventListener('mouseenter', handleUserInteraction); // Remove mouseenter for mobile
           };
           
           document.addEventListener('click', handleUserInteraction);
@@ -100,7 +122,7 @@ const IntroSequence = () => {
       
       playVideoAndAudio();
     }
-  }, [currentStage, userInteracted]);
+  }, [currentStage, userInteracted, isMobile]);
 
   // Video ended handler
   const handleVideoEnd = () => {
@@ -184,8 +206,8 @@ const IntroSequence = () => {
     );
   }
 
-  // Video stage - Video + Netflix audio automatically
-  if (currentStage === "video") {
+  // Video stage - Video + Netflix audio automatically (Desktop only)
+  if (currentStage === "video" && !isMobile) {
     return (
       <div className="fixed inset-0 z-50 bg-black">
         <video
