@@ -18,7 +18,7 @@ export default function Navbar() {
             <img 
               src={licetLogo} 
               alt="LICET Logo" 
-              className="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity duration-200"
+              className="h-10 w-auto hover:opacity-80 transition-opacity duration-200"
               onClick={() => scrollToSection('home')}
             />
           </div>

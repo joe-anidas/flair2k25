@@ -85,11 +85,11 @@ const Contact = () => {
                   <div className="space-y-2">
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>XXXX: +91 99999 99999</span>
+                      <span className='text-white'>GINOSINGH G S: +91 99999 99999</span>
                     </p>
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>XXXX: +91 99999 99999</span>
+                      <span className='text-white'>ARUL D'SOUZA: +91 99999 99999</span>
                     </p>
                   </div>
                 </div>
