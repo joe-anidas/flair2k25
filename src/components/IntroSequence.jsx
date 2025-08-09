@@ -227,9 +227,9 @@ const IntroSequence = () => {
             objectPosition: 'center'
           }}
         >
-          <source src="/videos/netflix.mp4" type="video/mp4" />
+
           <source src="/videos/netflix.webm" type="video/webm" />
-          <source src="/videos/hero.mp4" type="video/mp4" />
+       
           Your browser does not support the video tag.
         </video>
         
