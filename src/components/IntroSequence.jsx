@@ -24,7 +24,7 @@ const IntroSequence = () => {
           }
           return prev + 1;
         });
-      }, 20); // 20ms for smooth animation
+      }, 30); // 20ms for smooth animation
 
       return () => clearInterval(interval);
     }
@@ -181,7 +181,7 @@ const IntroSequence = () => {
           muted={true} // Keep video muted - audio handled separately
           className="w-full h-full object-cover"
         >
-          <source src="/videos/netflix.webm" type="video/webm" />
+          <source src="/videos/netflix.mp4" type="video/mp4" />
           <source src="/videos/hero.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -197,13 +197,6 @@ const IntroSequence = () => {
         {videoPlayFailed && (
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="text-center">
-              <div className="text-2xl mb-4">Video failed to load</div>
-              <button
-                onClick={() => setCurrentStage("home")}
-                className="bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                Continue to Site
-              </button>
             </div>
           </div>
         )}
