@@ -7,67 +7,67 @@ const Snow = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
+    if (!canvas || !container) return;
+
     const ctx = canvas.getContext('2d');
-    
+    if (!ctx) return;
+
     let width = container.clientWidth;
     let height = container.clientHeight;
-    let active = false;
     let snowflakes = [];
     let animationId;
 
-    // Set canvas size
-    canvas.width = width;
-    canvas.height = height;
-    ctx.fillStyle = '#FFF';
+    const setupCanvas = () => {
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      width = container.clientWidth;
+      height = container.clientHeight;
+      canvas.width = Math.max(1, Math.floor(width * dpr));
+      canvas.height = Math.max(1, Math.floor(height * dpr));
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+      ctx.fillStyle = '#FFF';
+    };
 
-    // Snowflake class
     class Snowflake {
       constructor() {
-        this.x = 0;
-        this.y = 0;
-        this.vy = 0;
-        this.vx = 0;
-        this.r = 0;
-        this.o = 0;
-        this.reset();
+        this.reset(true);
       }
 
-      reset() {
+      reset(isInitial = false) {
         this.x = Math.random() * width;
-        this.y = Math.random() * -height;
-        this.vy = 1 + Math.random() * 3;
-        this.vx = 0.5 - Math.random();
-        this.r = 1 + Math.random() * 2;
-        this.o = 0.5 + Math.random() * 0.5;
+        // If initial, spread vertically; otherwise respawn above the view
+        this.y = isInitial ? Math.random() * height : Math.random() * -height * 0.2;
+        this.vy = 0.6 + Math.random() * 1.6; // slightly slower for perf
+        this.vx = (Math.random() - 0.5) * 0.8; // gentle horizontal drift
+        this.r = 0.8 + Math.random() * 1.8;
+        this.o = 0.35 + Math.random() * 0.45;
       }
     }
 
-    // Generate snowflakes
     const generateSnowFlakes = () => {
       snowflakes = [];
-      const particleMax = 1000;
+      // Density-based particle count; cap for performance
+      const area = Math.max(1, width * height);
+      const density = 0.00025; // tweakable
+      const particleMax = Math.min(400, Math.max(80, Math.floor(area * density)));
       for (let i = 0; i < particleMax; i++) {
-        const snowflake = new Snowflake();
-        snowflake.reset();
-        snowflakes.push(snowflake);
+        snowflakes.push(new Snowflake());
       }
     };
 
-    generateSnowFlakes();
-
-    // Animation function
     const update = () => {
       ctx.clearRect(0, 0, width, height);
 
-      if (!active) {
-        return;
-      }
-
-      const particleCount = 300;
-      for (let i = 0; i < particleCount; i++) {
+      for (let i = 0; i < snowflakes.length; i++) {
         const snowflake = snowflakes[i];
         snowflake.y += snowflake.vy;
         snowflake.x += snowflake.vx;
+
+        // wrap around horizontally a bit for continuity
+        if (snowflake.x < -10) snowflake.x = width + 10;
+        if (snowflake.x > width + 10) snowflake.x = -10;
 
         ctx.globalAlpha = snowflake.o;
         ctx.beginPath();
@@ -75,60 +75,42 @@ const Snow = () => {
         ctx.closePath();
         ctx.fill();
 
-        if (snowflake.y > height) {
-          snowflake.reset();
+        if (snowflake.y > height + 10) {
+          snowflake.reset(false);
         }
       }
 
       animationId = requestAnimationFrame(update);
     };
 
-    // Handle resize
     const onResize = () => {
-      width = container.clientWidth;
-      height = container.clientHeight;
-      canvas.width = width;
-      canvas.height = height;
-      ctx.fillStyle = '#FFF';
-
-      const wasActive = active;
-      active = width > 600;
-
-      if (!wasActive && active) {
-        animationId = requestAnimationFrame(update);
-      }
+      setupCanvas();
+      generateSnowFlakes();
     };
 
     // Initialize
-    onResize();
+    setupCanvas();
+    generateSnowFlakes();
+    animationId = requestAnimationFrame(update);
 
-    // Add resize listener
+    // Listen to resize
     window.addEventListener('resize', onResize);
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', onResize);
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
+      if (animationId) cancelAnimationFrame(animationId);
     };
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className="absolute inset-0 pointer-events-none"
       style={{ zIndex: 1 }}
     >
       <canvas
         ref={canvasRef}
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100%',
-          height: '100%'
-        }}
+        style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }}
       />
     </div>
   );

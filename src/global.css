@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+body {
+    --color-main: #121212; /* dark color stored in a CSS variable */
+    background-color: var(--color-main);
+    color: #ffffff; /* optional: makes text visible on dark background */
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    overscroll-behavior: none;
+}
+
+/* Mobile optimizations for better performance */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Ensure smooth transitions on mobile */
+  .transform {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Optimize backdrop-blur for mobile */
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Ensure cards are visible even if transitions fail */
+.events-card {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
