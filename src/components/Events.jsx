@@ -1,10 +1,92 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Snow from '../ui/Snow';
 
+// Event data with all necessary details
+const eventsData = [
+  {
+    id: 1,
+    title: "Hawkin's High Papers",
+    slug: "hawkins-high-papers",
+    description: "Paper Presentation event focusing on academic writing and research works.",
+    image: "/events/hole.png",
+    rules: `
+Rules:
+  1. Maximum number of participants in a team is 3.
+  2. Only Engineering students are allowed.
+  3. Bring your College ID and Bonafide Certificate.
+  4. Submitted papers must be in IEEE format.
+  5. Papers must not be published before anywhere or be under consideration for publication in any journal or conference.
+  6. Each team presents their paper for 7 minutes followed by a Q&A session for 3 minutes.
+  7. Plagiarism is not allowed (above 40%). Original works only.
+  8. Abstract should not exceed more than 250 words.
+  9. Paper should have a minimum of 6 pages and should not exceed 15 pages.
+  10. Soft-copies of the submitted paper must be in standard document formats (docx, doc, pdf).
+  11. Paper must be preceded by a cover page specifying the title of the paper, names of authors and their college names as also their contact numbers and email ids
+  12. Persons from different institutions can be a part of the same team. However, one person may not be a part of multiple teams for the same event.
+  13. The paper is to be attached to the mail flairit@licet.ac.in with the subject as the title of the paper.
+  14. The mail must contain - name of authors, college names and departments, phone numbers, and email addresses. 
+    `,
+    date: "16th September 2023",
+    time: "10:00 am to 11:30 am",
+    location: "Case Tools Lab (H23) and CIS Lab (J14)",
+    organizers: "Ashik S and Rithika R (Contact No: 9445387601)",
+    registerationlink: "https://docs.google.com/forms/d/e/1FAIpQLSfrG7uSLaSLP3EHutd59-OCYY4SsMLoj0X-O1Eiwgp0ppo6Ew/viewform?usp=sf_link"
+  },
+  { 
+    id: 2,
+    title: "Arcade of Answers",
+    slug: "arcade-of-answers",
+    description: "Technical quiz challenging your knowledge across various domains.",
+    image: "/events/ray.png",
+    rules: `
+Rules:
+  1. Teams of 2-3 members
+  2. Multiple choice questions across various tech domains
+  3. No external resources allowed
+  4. Three rounds: Elimination, Rapid Fire, and Final Showdown
+  5. Decisions of quiz masters are final
+    `,
+    date: "16th September 2023",
+    time: "1:30 pm to 3:00 pm",
+    location: "RDBMS Laboratory (A21)",
+    organizers: "Regis R and Arul Danica (Contact: 9150206627)",
+    registerationlink: "https://docs.google.com/forms/d/e/1FAIpQLSd_DfIN1W9c-YCo04bByXb6rmDJahOAm4K1p7z15ypjFygAEg/viewform?usp=sf_link"
+  },
+  // Add other events with similar structure
+  {
+    id: 8,
+    title: "The Upside Down",
+    slug: "the-upside-down",
+    description: "Cyber ciphers challenge to solve encrypted puzzles.",
+    image: "/events/house.png",
+    rules: `
+Rules:
+  1. Individual participation
+  2. Three rounds of increasing difficulty
+  3. No internet access allowed
+  4. Time-bound challenges
+  5. Winners decided by fastest correct solutions
+    `,
+    date: "16th September 2023",
+    time: "1:30 pm to 3:00 pm",
+    location: "Classroom (I32)",
+    organizers: "Nivedita Ramatoti and Chrispin Sheena (Contact: 7418921212)",
+    registerationlink: "https://docs.google.com/forms/d/e/1FAIpQLSc0WFuedTBhq-WCORqNML5eraM5zMO662WWVirtcMnvh-Ttbg/viewform?usp=sf_link"
+  }
+];
+
 const Events = () => {
+  const navigate = useNavigate();
   const cardRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
   const [screenSize, setScreenSize] = useState('lg');
+
+  // Handle registration click
+  const handleRegisterClick = (eventSlug) => {
+    console.log('Register button clicked for event:', eventSlug);
+    navigate(`/events/${eventSlug}`);
+  };
 
   useEffect(() => {
     // Detect screen size with more granular breakpoints
@@ -90,119 +172,73 @@ const Events = () => {
     };
   }, [isMobile, screenSize]);
 
-  const events = [
-    {
-      id: 1,
-      title: "Upside Down",
-      description: "Explore parallel dimensions and supernatural phenomena in this mind-bending workshop.",
-      image: "/events/hole.png"
-    },
-    { 
-      id: 2,
-      title: "Mind Flayer",
-      description: "Dive into psychological horror and collective consciousness theories with experts.",
-      image: "/events/ray.png"
-    },
-    {
-      id: 3,
-      title: "Demogorgon Hunt",
-      description: "Learn survival strategies and monster tracking techniques in simulated environments.",
-      image: "/events/copter.png"
-    },
-    {
-      id: 4,
-      title: "Eleven Powers",
-      description: "Discover telekinetic abilities and psychic phenomena through scientific experiments.",
-      image: "/events/experiment.png"
-    },
-    {
-      id: 5,
-      title: "Hawkins Lab",
-      description: "Investigate government conspiracies and secret experiments in this immersive session.",
-      image: "/events/lab.png"
-    },
-    {
-      id: 6,
-      title: "Vecna Curse",
-      description: "Understand psychological trauma and supernatural curses through case studies.",
-      image: "/events/red%20house.png"
-    },
-    {
-      id: 7,
-      title: "Starcourt Mall",
-      description: "Experience 80s nostalgia and retro technology in this interactive exhibition.",
-      image: "/events/mall.png"
-    },
-    {
-      id: 8,
-      title: "Byers House",
-      description: "Explore haunted locations and supernatural investigations with paranormal experts.",
-      image: "/events/house.png"
-    }
-  ];
-
   // Get responsive classes based on screen size
   const getResponsiveClasses = () => {
     switch (screenSize) {
       case 'xs':
         return {
           container: 'px-2 sm:px-4',
-          cardWidth: 'w-11/12', // Reduced from w-full to w-11/12 (~91.7%)
+          cardWidth: 'w-11/12',
           spacing: 'space-y-4',
           padding: 'p-3 sm:p-4',
           headerText: 'text-3xl sm:text-4xl',
           subText: 'text-base sm:text-lg',
           cardHeight: 'h-56 sm:h-64',
           titleSize: 'text-lg sm:text-xl',
-          descSize: 'text-xs sm:text-sm'
+          descSize: 'text-xs sm:text-sm',
+          buttonSize: 'text-xs py-1 px-2'
         };
       case 'sm':
         return {
           container: 'px-3 sm:px-6',
-          cardWidth: 'w-5/6 sm:w-4/5', // Reduced from w-11/12 to w-5/6 (~83.3%) and w-4/5 (80%)
+          cardWidth: 'w-5/6 sm:w-4/5',
           spacing: 'space-y-6',
           padding: 'p-4 sm:p-6',
           headerText: 'text-4xl sm:text-5xl',
           subText: 'text-lg sm:text-xl',
           cardHeight: 'h-64 sm:h-72',
           titleSize: 'text-xl sm:text-2xl',
-          descSize: 'text-sm sm:text-base'
+          descSize: 'text-sm sm:text-base',
+          buttonSize: 'text-sm py-1.5 px-3'
         };
       case 'md':
         return {
           container: 'px-4 md:px-8',
-          cardWidth: 'w-5/6 md:w-4/5', // Reduced from w-11/12 to w-5/6 and w-4/5
+          cardWidth: 'w-5/6 md:w-4/5',
           spacing: 'space-y-8',
           padding: 'p-6 md:p-8',
           headerText: 'text-5xl md:text-6xl',
           subText: 'text-xl md:text-2xl',
           cardHeight: 'h-72 md:h-80',
           titleSize: 'text-2xl md:text-3xl',
-          descSize: 'text-base md:text-lg'
+          descSize: 'text-base md:text-lg',
+          buttonSize: 'text-base py-2 px-4'
         };
       case 'lg':
         return {
           container: 'px-6 lg:px-12',
-          cardWidth: 'w-5/6 lg:w-4/5', // Reduced from w-11/12 to w-5/6 and w-4/5
+          cardWidth: 'w-5/6 lg:w-4/5',
           spacing: 'space-y-10',
           padding: 'p-8 lg:p-10',
           headerText: 'text-6xl lg:text-7xl',
           subText: 'text-xl lg:text-2xl',
           cardHeight: 'h-80 lg:h-96',
           titleSize: 'text-3xl lg:text-4xl',
-          descSize: 'text-lg lg:text-xl'
+          descSize: 'text-lg lg:text-xl',
+          buttonSize: 'text-base py-2 px-4'
         };
       default: // xl and above
         return {
           container: 'px-8 xl:px-16',
-          cardWidth: 'w-5/6 xl:w-4/5', // Reduced from w-11/12 to w-5/6 and w-4/5
+          cardWidth: 'w-5/6 xl:w-4/5',
           spacing: 'space-y-12',
           padding: 'p-10 xl:p-12',
           headerText: 'text-7xl xl:text-8xl',
           subText: 'text-2xl xl:text-3xl',
           cardHeight: 'h-96 xl:h-[28rem]',
           titleSize: 'text-4xl xl:text-5xl',
-          descSize: 'text-xl xl:text-2xl'
+          descSize: 'text-xl xl:text-2xl',
+          buttonSize: 'text-lg py-2.5 px-5'
         };
     }
   };
@@ -249,13 +285,13 @@ const Events = () => {
               </span>
             </h1>
             <p className={`${responsiveClasses.subText} text-gray-300 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4`}>
-              Discover a world of supernatural mysteries and cutting-edge technology
+              Discover a world of technical challenges and innovative competitions
             </p>
           </div>
 
           {/* Events Grid */}
           <div className={responsiveClasses.spacing}>
-            {events.map((event, index) => {
+            {eventsData.map((event, index) => {
               const isEven = index % 2 === 0;
               return (
                 <div
@@ -265,10 +301,9 @@ const Events = () => {
                   className={`${responsiveClasses.cardWidth} mx-auto transform transition-all duration-[1800ms] ease-in-out events-card ${
                     isMobile 
                       ? 'translate-x-0 opacity-100'
-                      : 'opacity-0' // Start hidden, let intersection observer handle positioning
+                      : 'opacity-0'
                   }`}
                   style={{
-                    // Initial state - hidden for desktop, visible for mobile
                     transform: isMobile ? 'translateX(0)' : (isEven ? 'translateX(-30%)' : 'translateX(30%)'),
                     opacity: isMobile ? 1 : 0
                   }}
@@ -318,9 +353,17 @@ const Events = () => {
                           </h2>
                           
                           {/* Description */}
-                          <p className={`${responsiveClasses.descSize} text-gray-200 leading-relaxed group-hover:text-gray-100 transition-colors duration-600 ease-in-out`}>
+                          <p className={`${responsiveClasses.descSize} text-gray-200 leading-relaxed group-hover:text-gray-100 transition-colors duration-600 ease-in-out mb-4`}>
                             {event.description}
                           </p>
+                          
+                          {/* Register Button */}
+                          <button
+                            onClick={() => handleRegisterClick(event.slug)}
+                            className={`${responsiveClasses.buttonSize} bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium`}
+                          >
+                            Register Now
+                          </button>
                         </div>
                       </div>
                       
