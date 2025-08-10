@@ -1,5 +1,5 @@
 import React from 'react';
-import Snow from './Snow';
+import Snow from '../ui/Snow';
 
 const About = () => {
   const sponsorImages = [

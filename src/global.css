@@ -6,7 +6,7 @@ body {
     color: #ffffff; /* optional: makes text visible on dark background */
     margin: 0;
     padding: 0;
-    cursor: url("/public/assets/bat.png") 0 0, auto !important; 
+    cursor: url("/assets/bat.png") 0 0, auto !important; 
 }
 html, body {
     overscroll-behavior: none;

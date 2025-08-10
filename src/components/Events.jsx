@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Snow from './Snow';
+import Snow from '../ui/Snow';
 
 const Events = () => {
   const cardRefs = useRef([]);

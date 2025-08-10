@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '/assets/flair.webp';
 import graitLogo from '/assets/grait-logo.webp';
-import Snow from './Snow';
-import Card from './Card';
+import Snow from '../ui/Snow';
+import Card from '../ui/Card';
 
 const Contact = () => {
   return (

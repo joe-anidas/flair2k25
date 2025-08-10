@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import Home from "../pages/Home";
+import Home from "./Home";
 
 const IntroSequence = () => {
   const [currentStage, setCurrentStage] = useState("countdown"); // countdown, video, home
