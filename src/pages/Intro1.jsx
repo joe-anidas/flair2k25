@@ -4,7 +4,7 @@ import Home from "./Home";
 
 const IntroSequence = () => {
   const [currentStage, setCurrentStage] = useState("countdown"); // countdown, video, home
-  const [count, setCount] = useState(1); // Start from 1 instead of 0
+  const [count, setCount] = useState(0);
   const [videoPlayFailed, setVideoPlayFailed] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false);
   const [netflixAudioPlaying, setNetflixAudioPlaying] = useState(false);
@@ -189,24 +189,19 @@ const IntroSequence = () => {
   // Countdown stage
   if (currentStage === "countdown") {
     return (
-      <div className="h-screen flex justify-center items-center bg-black text-white relative">
-        {/* Simple loading text in center */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+      <div className="h-screen flex justify-center items-center bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
+        <motion.span
+          key={count}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="text-8xl font-bold text-white drop-shadow-2xl"
+          style={{
+            textShadow: '0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.4)'
+          }}
         >
-          <span 
-            className="text-2xl text-white/90 tracking-wider uppercase"
-            style={{
-              fontFamily: '"Courier New", "Monaco", "Menlo", monospace',
-              letterSpacing: '0.3em'
-            }}
-          >
-            Loading...
-          </span>
-        </motion.div>
+          {count}%
+        </motion.span>
       </div>
     );
   }

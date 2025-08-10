@@ -36,12 +36,7 @@ const IntroSequence = () => {
         setCount((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
-            // Skip video stage on mobile, go directly to home
-            if (isMobile) {
-              setCurrentStage("home");
-            } else {
-              setCurrentStage("video");
-            }
+            // Don't auto-advance stage here - let user click or wait for auto-play
             return 100;
           }
           return prev + 1;
@@ -51,6 +46,22 @@ const IntroSequence = () => {
       return () => clearInterval(interval);
     }
   }, [currentStage, isMobile]);
+
+  // Auto-play countdown effect after loading is complete
+  useEffect(() => {
+    if (count >= 100 && currentStage === "countdown") {
+      const autoPlayTimer = setTimeout(() => {
+        // Auto-play after 5 seconds
+        if (isMobile) {
+          setCurrentStage("home");
+        } else {
+          setCurrentStage("video");
+        }
+      }, 5000); // 5 seconds
+
+      return () => clearTimeout(autoPlayTimer);
+    }
+  }, [count, currentStage, isMobile]);
 
   // Video and Netflix audio autoplay effect (both simultaneously) - Desktop only
   useEffect(() => {
@@ -190,22 +201,47 @@ const IntroSequence = () => {
   if (currentStage === "countdown") {
     return (
       <div className="h-screen flex justify-center items-center bg-black text-white relative">
-        {/* Simple loading text in center */}
+        {/* Loading text with click instruction below */}
         <motion.div
-          className="text-center"
+          className="text-center cursor-pointer"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          onClick={() => {
+            if (count >= 100) {
+              // Skip video stage on mobile, go directly to home
+              if (isMobile) {
+                setCurrentStage("home");
+              } else {
+                setCurrentStage("video");
+              }
+            }
+          }}
         >
-          <span 
-            className="text-2xl text-white/90 tracking-wider uppercase"
-            style={{
-              fontFamily: '"Courier New", "Monaco", "Menlo", monospace',
-              letterSpacing: '0.3em'
-            }}
-          >
-            Loading...
-          </span>
+          <div className="space-y-4">
+            <span 
+              className="text-2xl text-white/90 tracking-wider uppercase"
+              style={{
+                fontFamily: '"Courier New", "Monaco", "Menlo", monospace',
+                letterSpacing: '0.3em'
+              }}
+            >
+              Loading...
+            </span>
+            
+            <motion.div
+              key="click-to-play"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-lg text-white/70 tracking-wide hover:text-white transition-colors duration-300"
+              style={{
+                fontFamily: '"Courier New", "Monaco", "Menlo", monospace'
+              }}
+            >
+              Click anywhere
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     );

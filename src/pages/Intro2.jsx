@@ -189,16 +189,144 @@ const IntroSequence = () => {
   // Countdown stage
   if (currentStage === "countdown") {
     return (
-      <div className="h-screen flex justify-center items-center bg-black text-white relative">
-        {/* Simple loading text in center */}
+      <div className="h-screen flex justify-center items-center bg-black text-white relative overflow-hidden">
+        {/* Stranger Things-style background elements */}
+        <div className="absolute inset-0 opacity-30">
+          {/* Enhanced grid pattern */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }} />
+          
+          {/* Enhanced eerie corner glows */}
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-red-600/30 via-red-800/20 to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-blue-600/30 via-blue-800/20 to-transparent rounded-full blur-3xl" />
+          
+          {/* Additional atmospheric glows */}
+          <div className="absolute top-1/2 left-0 w-64 h-64 bg-gradient-to-r from-purple-600/20 to-transparent rounded-full blur-2xl" />
+          <div className="absolute top-1/2 right-0 w-64 h-64 bg-gradient-to-l from-cyan-600/20 to-transparent rounded-full blur-2xl" />
+        </div>
+
+        {/* Main countdown number with enhanced Stranger Things styling */}
         <motion.div
-          className="text-center"
+          key={count}
+          initial={{ opacity: 0, scale: 0.3, y: 50, rotateX: -90 }}
+          animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+          transition={{ 
+            duration: 0.5,
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100
+          }}
+          className="relative z-10"
+        >
+          <motion.span
+            className="text-[12rem] font-black text-white tracking-[0.2em] leading-none"
+            style={{
+              textShadow: `
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(255, 255, 255, 0.6),
+                0 0 60px rgba(255, 255, 255, 0.4),
+                0 0 80px rgba(255, 255, 255, 0.2),
+                0 0 100px rgba(255, 255, 255, 0.1),
+                0 0 120px rgba(255, 255, 255, 0.05)
+              `,
+              fontFamily: '"Courier New", "Monaco", "Menlo", monospace',
+              WebkitTextStroke: '3px rgba(255, 255, 255, 0.2)',
+              filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.3))'
+            }}
+          >
+            {count}
+          </motion.span>
+          
+          {/* Enhanced percentage symbol */}
+          <motion.span
+            key={`percent-${count}`}
+            initial={{ opacity: 0, scale: 0.5, x: -20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            className="text-8xl font-bold text-white/90 ml-6 inline-block"
+            style={{
+              textShadow: `
+                0 0 20px rgba(255, 255, 255, 0.7),
+                0 0 40px rgba(255, 255, 255, 0.4),
+                0 0 60px rgba(255, 255, 255, 0.2)
+              `,
+              fontFamily: '"Courier New", "Monaco", "Menlo", monospace',
+              WebkitTextStroke: '2px rgba(255, 255, 255, 0.15)'
+            }}
+          >
+            %
+          </motion.span>
+        </motion.div>
+
+        {/* Enhanced floating particles for Stranger Things atmosphere */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(30)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                opacity: 0,
+                scale: 0
+              }}
+              animate={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                opacity: [0, 0.9, 0],
+                scale: [0, 1, 0]
+              }}
+              transition={{
+                duration: 10 + Math.random() * 6,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              style={{
+                width: `${1 + Math.random() * 3}px`,
+                height: `${1 + Math.random() * 3}px`,
+                backgroundColor: `rgba(255, 255, 255, ${0.4 + Math.random() * 0.4})`,
+                filter: 'blur(0.5px)',
+                boxShadow: `0 0 ${3 + Math.random() * 5}px rgba(255, 255, 255, 0.6)`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Enhanced progress bar with Stranger Things styling */}
+        <motion.div
+          className="absolute bottom-24 left-1/2 transform -translate-x-1/2 w-96 h-2 bg-white/10 rounded-full overflow-hidden border border-white/20"
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <motion.div
+            className="h-full bg-gradient-to-r from-white via-white/90 to-white/70 rounded-full"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: count / 100 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            style={{
+              boxShadow: `
+                0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 40px rgba(255, 255, 255, 0.3)
+              `
+            }}
+          />
+        </motion.div>
+
+        {/* Loading text with Stranger Things typography */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
           <span 
-            className="text-2xl text-white/90 tracking-wider uppercase"
+            className="text-lg text-white/70 tracking-wider uppercase"
             style={{
               fontFamily: '"Courier New", "Monaco", "Menlo", monospace',
               letterSpacing: '0.3em'
