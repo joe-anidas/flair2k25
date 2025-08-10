@@ -1,15 +1,15 @@
 import React from 'react';
 import logo from '/assets/flair.webp';
 import graitLogo from '/assets/grait-logo.webp';
-import Snow from '../ui/Snow';
+import Smoke from '../ui/Spores';
 import Card from '../ui/Card';
 
 const Contact = () => {
   return (
     <div id="contact" className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
-      {/* Snow Background */}
+      {/* Smoke Background */}
       <div className="absolute inset-0 z-0">
-        <Snow />
+        <Smoke />
       </div>
       
       {/* Funky Red Background Elements */}
@@ -119,7 +119,7 @@ const Contact = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="mt-8 pt-6 border-t border-red-500/20">
+          <div className="mt-8 pt-6">
             <div className="text-center">
               <Card className="max-w-md mx-auto" hoverEffect={false}>
                 <p className="text-base font-normal flex justify-center items-center gap-3">

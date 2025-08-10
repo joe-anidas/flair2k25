@@ -1,15 +1,19 @@
 import React from 'react';
 import Smoke from '../ui/Spores';
+import Card from '../ui/Card';
+import sp1 from '/sponsors/1.webp';
+import sp2 from '/sponsors/2.webp';
+import sp3 from '/sponsors/3.webp';
 
-const About = () => {
+const Sponsors = () => {
   const sponsorImages = [
-    "/sponsors/sponsor/1.webp",
-    "/sponsors/sponsor/2.webp",
-    "/sponsors/sponsor/3.webp"
+    sp1,
+    sp2,
+    sp3
   ];
 
   return (
-    <div id="about" className="min-h-[80vh] bg-gradient-to-tr from-black via-red-950 to-black relative overflow-hidden">
+    <div id="sponsors" className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
       {/* Smoke Background */}
       <div className="absolute inset-0 z-0">
         <Smoke />
@@ -23,30 +27,26 @@ const About = () => {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 pt-16 pb-8 px-4">
+      <div className="relative z-10 min-h-screen py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
-          <div className="text-center mb-10">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-300 to-red-200">
+          {/* Sponsors Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-400 to-red-300 to-red-200">
                 OUR SPONSORS
               </span>
-            </h1>
+            </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Proudly supported by leading institutions and organizations
             </p>
           </div>
 
-          {/* Single Sponsor Card with 3 Images */}
-          <div className="max-w-4xl mx-auto">
-            <div className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-red-500/20 hover:border-red-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/20 transform hover:scale-105">
-              {/* Images Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6">
-                {sponsorImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className="relative h-48 overflow-hidden rounded-xl group"
-                  >
+          {/* 3 Sponsor Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {sponsorImages.map((image, index) => (
+              <Card key={index} className="h-full">
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="relative h-48 w-full overflow-hidden rounded-xl group">
                     <img
                       src={image}
                       alt={`Sponsor ${index + 1}`}
@@ -55,12 +55,9 @@ const About = () => {
                     {/* Dark reddish overlay */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30 transition-all duration-500"></div>
                   </div>
-                ))}
-              </div>
-              
-              {/* Funky red glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
@@ -68,4 +65,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Sponsors;
