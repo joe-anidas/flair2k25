@@ -10,8 +10,10 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<IntroSequence />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/events/:eventSlug" element={<EventDetailPage />} />
       </Routes>
+
     </BrowserRouter>
   );
 };
