@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Smoke from "../ui/Smoke"; // Import your Smoke component
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar3";
 
 const FaqPage = () => {
   const [Val, setVal] = useState("start");

@@ -1,6 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import hero from '/videos/hero.mp4';
 import logo from '/assets/flair.png';
+import { motion } from "framer-motion";
+
+// Framer Motion variants adapted from 2K24 page.js
+const herotextAnimation = {
+  hidden: { opacity: 0, rotate: 0 },
+  visible: {
+    opacity: 1,
+    rotate: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      delay: 0.2,
+      duration: 1,
+    },
+  },
+};
 
 const Hero = () => {
   const [audioPlaying, setAudioPlaying] = useState(false);
@@ -8,6 +25,8 @@ const Hero = () => {
   const audioRef = useRef(null);
   const videoRef = useRef(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
+
+  const dateWords = "23rd August".split(" ");
 
   useEffect(() => {
     const playAudio = async () => {
@@ -152,9 +171,20 @@ const Hero = () => {
             <h2 className="text-xl font-bold text-white mb-2 leading-tight">
               Join us on
             </h2>
-            <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
-              23rd August
-            </span>
+            <motion.div initial="hidden" animate="visible" variants={herotextAnimation}>
+              {dateWords.map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.75, delay: i / 10 }}
+                  className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
+                >
+                  {word}
+                  {" "}
+                </motion.span>
+              ))}
+            </motion.div>
           </div>
         </div>
 
@@ -175,9 +205,25 @@ const Hero = () => {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                 Join us on
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
-                  23rd August
-                </span>
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={herotextAnimation}
+                  className="text-[3rem] sm:text-[3rem] mb-5 font-bold bottom-5 right-0 left-10 tracking-wide mix-blend-exclusion"
+                >
+                  {dateWords.map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.75, delay: i / 10 }}
+                      className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
+                    >
+                      {word}
+                      {" "}
+                    </motion.span>
+                  ))}
+                </motion.div>
               </h2>
             </div>
           </div>
