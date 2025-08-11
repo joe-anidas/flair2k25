@@ -2,69 +2,64 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NavButton = ({ children, onClick, className = "" }) => {
+  const label = typeof children === 'string' ? children : '';
   return (
-    <StyledWrapper>
-      <button onClick={onClick} className={className}>
-        <span>{children}</span>
+    <StyledWrapper className={className}>
+      <button className="button" data-text={label} onClick={onClick}>
+        <span className="actual-text">&nbsp;{children}&nbsp;</span>
+        <span aria-hidden="true" className="hover-text">&nbsp;{children}&nbsp;</span>
       </button>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
-  /* From uiverse.io by @Ali-Tahmazi99 */
-  button {
-   display: inline-block;
-   width: 120px;
-   height: 40px;
-   border-radius: 10px;
-   border: 1px solid #ff0000;
-   position: relative;
-   overflow: hidden;
-   transition: all 0.5s ease-in;
-   z-index: 1;
-   background: transparent;
+  /* === removing default button style ===*/
+  .button {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
   }
 
-  button::before,
-  button::after {
-   content: '';
-   position: absolute;
-   top: 0;
-   width: 0;
-   height: 100%;
-   transform: skew(15deg);
-   transition: all 0.5s;
-   overflow: hidden;
-   z-index: -1;
+  /* button styling */
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255, 0, 0, 0.7);
+    --animation-color: #ff0000;
+    --fs-size: 1rem;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: var(--animation-color);
+    -webkit-text-stroke: 0;
   }
 
-  button::before {
-   left: -10px;
-   background: #ff0000;
+  /* this is the text, when you hover on button */
+  .hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0%;
+    inset: 0;
+    border-right: 0;
+    overflow: hidden;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), -webkit-text-stroke 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: width, filter, text-shadow;
+    -webkit-text-stroke: 1px var(--animation-color);
   }
 
-  button::after {
-   right: -10px;
-   background: #cc0000;
-  }
-
-  button:hover::before,
-  button:hover::after {
-   width: 58%;
-  }
-
-  button:hover span {
-   color: #ffffff;
-   transition: 0.3s;
-  }
-
-  button span {
-   color: #ff0000;
-   font-size: 16px;
-   font-family: 'Benguiat', serif;
-   font-weight: bold;
-   transition: all 0.3s ease-in;
+  /* hover */
+  .button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 8px var(--animation-color));
+    text-shadow: 0 0 3px var(--animation-color), 0 0 6px var(--animation-color), 0 0 9px var(--animation-color);
   }
 `;
 
