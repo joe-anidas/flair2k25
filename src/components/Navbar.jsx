@@ -1,6 +1,7 @@
 import React from 'react';
 import licetLogo from '/assets/licet.png';
 import NavButton from '../ui/NavButton';
+import BlurText from '../ui/BlurText';
 
 export default function Navbar() {
   const scrollToSection = (sectionId) => {
@@ -28,16 +29,16 @@ export default function Navbar() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <NavButton onClick={() => scrollToSection('home')}>
-                Home
+                <BlurText text="Home" animateBy="letters" />
               </NavButton>
               <NavButton onClick={() => scrollToSection('events')}>
-                Events
+                <BlurText text="Events" animateBy="letters" />
               </NavButton>
               <NavButton onClick={() => scrollToSection('about')}>
-                About
+                <BlurText text="About" animateBy="letters" />
               </NavButton>
               <NavButton onClick={() => scrollToSection('contact')}>
-                Contact
+                <BlurText text="Contact" animateBy="letters" />
               </NavButton>
             </div>
           </div>
