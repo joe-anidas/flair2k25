@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Snow from '../ui/Snow';
 import eventsData from '../data/events';
+import ScrollStack, { ScrollStackItem } from '../ui/ScrollStack';
 
 const Events = () => {
   const navigate = useNavigate();
-  const cardRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
   const [screenSize, setScreenSize] = useState('lg');
 
@@ -30,55 +30,6 @@ const Events = () => {
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: screenSize === 'xs' ? 0.1 : screenSize === 'sm' ? 0.15 : 0.2,
-      rootMargin: screenSize === 'xs' ? '-10% 0px -10% 0px' : '-5% 0px -5% 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transform = 'translateX(0)';
-          entry.target.style.opacity = '1';
-          entry.target.classList.remove('translate-x-[-50%]', 'translate-x-[50%]', 'opacity-0');
-          entry.target.classList.add('translate-x-0', 'opacity-100');
-          entry.target.setAttribute('data-animated', 'true');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    cardRefs.current.forEach((ref, index) => {
-      if (ref && !isMobile && !ref.getAttribute('data-animated')) {
-        const isEven = index % 2 === 0;
-        const translateValue = isEven ? 'translateX(-30%)' : 'translateX(30%)';
-        ref.style.transform = translateValue;
-        ref.style.opacity = '0';
-        ref.classList.add(
-          isEven ? 'translate-x-[-50%]' : 'translate-x-[50%]', 
-          'opacity-0'
-        );
-        ref.classList.remove('translate-x-0', 'opacity-100');
-      } else if (ref && isMobile) {
-        ref.style.transform = 'translateX(0)';
-        ref.style.opacity = '1';
-        ref.classList.add('translate-x-0', 'opacity-100');
-        ref.classList.remove('translate-x-[-50%]', 'translate-x-[50%]', 'opacity-0');
-      }
-    });
-
-    if (!isMobile && window.IntersectionObserver) {
-      cardRefs.current.forEach((ref) => {
-        if (ref && !ref.getAttribute('data-animated')) {
-          observer.observe(ref);
-        }
-      });
-    }
-
-    return () => observer.disconnect();
-  }, [isMobile, screenSize]);
 
   const getResponsiveClasses = () => {
     switch (screenSize) {
@@ -117,26 +68,19 @@ const Events = () => {
             </p>
           </div>
 
-          <div className={responsiveClasses.spacing}>
+          <ScrollStack>
             {eventsData.map((event, index) => {
               const isEven = index % 2 === 0;
               return (
-                <div
+                <ScrollStackItem
                   key={event.id}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  data-event-id={event.id}
-                  className={`${responsiveClasses.cardWidth} mx-auto transform transition-all duration-[1800ms] ease-in-out events-card translate-x-0 opacity-100`}
-                  style={{
-                    transform: 'translateX(0)',
-                    opacity: 1
-                  }}
+                  itemClassName={`p-0 my-10 bg-transparent shadow-none rounded-none ${responsiveClasses.cardWidth} mx-auto`}
                 >
                   <div className={`relative group overflow-hidden ${screenSize === 'xs' ? 'rounded-lg' : 'rounded-xl sm:rounded-2xl'} bg-white/5 backdrop-blur-sm border border-red-500/20 hover:border-red-400/40 transition-all duration-800 ease-in-out hover:shadow-2xl hover:shadow-red-500/20`}>
                     <div 
                       className={`w-full ${responsiveClasses.cardHeight} bg-cover bg-center relative`}
                       style={{ backgroundImage: `url(${event.image})` }}
                     >
-                      {/* FIXED: Added pointer-events-none to overlays */}
                       <div className={`absolute inset-0 transition-all duration-900 ease-in-out ${isEven
                           ? 'bg-gradient-to-r from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30'
                           : 'bg-gradient-to-l from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30'} pointer-events-none`}></div>
@@ -156,7 +100,6 @@ const Events = () => {
                             {event.description}
                           </p>
                           
-                          {/* FIXED: Added relative z-10 to button */}
                           <button
                             onClick={() => handleRegisterClick(event.slug)}
                             className={`${responsiveClasses.buttonSize} bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium relative z-10`}
@@ -166,14 +109,13 @@ const Events = () => {
                         </div>
                       </div>
                       
-                      {/* FIXED: Added pointer-events-none to glow effect */}
                       <div className={`absolute inset-0 ${screenSize === 'xs' ? 'rounded-lg' : 'rounded-xl sm:rounded-2xl'} bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out pointer-events-none`}></div>
                     </div>
                   </div>
-                </div>
+                </ScrollStackItem>
               );
             })}
-          </div>
+          </ScrollStack>
         </div>
       </div>
     </div>
