@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/assets/flair.png';
+import logo from '/assets/flair2.png';
 import graitLogo from '/assets/grait-logo.webp';
 import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
@@ -39,7 +39,7 @@ const Contact = () => {
             {/* First Card - Logo and Description */}
             <Card className="h-full">
               <div className="flex flex-col items-center text-center gap-4">
-                <div className="relative">
+                <div className="relative flex flex-row">
                   <img 
                     alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
                     className="w-30 h-30 object-contain drop-shadow-lg" 

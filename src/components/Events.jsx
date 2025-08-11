@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Snow from '../ui/Smoke';
+import Snow from '../ui/Snow';
 import eventsData from '../data/events';
 import '../styles/Events.css'; // Import external CSS file
 

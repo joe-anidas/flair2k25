@@ -1,5 +1,5 @@
 import React from 'react';
-import Smoke from '../ui/Spores';
+import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
 import sp1 from '/sponsors/1.webp';
 import sp2 from '/sponsors/2.webp';

@@ -73,6 +73,12 @@ const Snow = () => {
 
     const update = () => {
       ctx.clearRect(0, 0, width, height);
+      // Fill the background with black
+      ctx.save();
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, width, height);
+      ctx.restore();
 
       for (let i = 0; i < snowflakes.length; i++) {
         const snowflake = snowflakes[i];
