@@ -1,18 +1,18 @@
 import React from 'react';
-import Snow from './Snow';
+import Smoke from '../ui/Spores';
 
 const About = () => {
   const sponsorImages = [
-    "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+    "/sponsors/sponsor/1.webp",
+    "/sponsors/sponsor/2.webp",
+    "/sponsors/sponsor/3.webp"
   ];
 
   return (
     <div id="about" className="min-h-[80vh] bg-gradient-to-tr from-black via-red-950 to-black relative overflow-hidden">
-      {/* Snow Background */}
+      {/* Smoke Background */}
       <div className="absolute inset-0 z-0">
-        <Snow />
+        <Smoke />
       </div>
       
       {/* Funky Red Background Elements */}

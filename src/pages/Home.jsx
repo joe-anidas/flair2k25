@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import Events from '../components/Events';
-import About from '../components/About';
+import Sponsors from '../components/Sponsors';
 import Contact from '../components/Contact';
 import Navbar from '../components/Navbar';
 
@@ -11,7 +11,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Events />
-      <About />
+      <Sponsors />
       <Contact />
     </div>
    );

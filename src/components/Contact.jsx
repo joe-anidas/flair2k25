@@ -1,15 +1,15 @@
 import React from 'react';
 import logo from '/assets/flair.webp';
 import graitLogo from '/assets/grait-logo.webp';
-import Snow from './Snow';
-import Card from './Card';
+import Smoke from '../ui/Spores';
+import Card from '../ui/Card';
 
 const Contact = () => {
   return (
     <div id="contact" className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
-      {/* Snow Background */}
+      {/* Smoke Background */}
       <div className="absolute inset-0 z-0">
-        <Snow />
+        <Smoke />
       </div>
       
       {/* Funky Red Background Elements */}
@@ -85,11 +85,11 @@ const Contact = () => {
                   <div className="space-y-2">
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>XXXX: +91 99999 99999</span>
+                      <span className='text-white'>GINOSINGH G S: +91 99999 99999</span>
                     </p>
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>XXXX: +91 99999 99999</span>
+                      <span className='text-white'>ARUL D'SOUZA: +91 99999 99999</span>
                     </p>
                   </div>
                 </div>
@@ -119,7 +119,7 @@ const Contact = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="mt-8 pt-6 border-t border-red-500/20">
+          <div className="mt-8 pt-6">
             <div className="text-center">
               <Card className="max-w-md mx-auto" hoverEffect={false}>
                 <p className="text-base font-normal flex justify-center items-center gap-3">
@@ -131,6 +131,17 @@ const Contact = () => {
                 </p>
               </Card>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-black/80 backdrop-blur-sm border-t border-gray-800">
+        <div className="max-w-7xl mx-auto py-6 px-4">
+          <div className="text-center">
+            <p className="text-gray-400 text-sm">
+              © 2025 LICET. All Rights Reserved.
+            </p>
           </div>
         </div>
       </div>
