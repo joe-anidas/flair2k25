@@ -1,19 +1,17 @@
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import IntroSequence from "./pages/Intro";
-import Events from "./components/Events";
+import Home from "./pages/Home";
 import EventDetailPage from "./pages/EventDetailPage";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<IntroSequence />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/events/:eventSlug" element={<EventDetailPage />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
-
     </BrowserRouter>
   );
 };
