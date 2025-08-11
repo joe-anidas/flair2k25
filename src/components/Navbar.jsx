@@ -1,23 +1,56 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import licetLogo from '/assets/licet.png';
 import NavButton from '../ui/NavButton';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // Check if we're on the home page
+    if (location.pathname === '/' || location.pathname === '/home') {
+      // If on home page, scroll directly to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If not on home page, navigate to home first
+      navigate('/home');
+      // Use setTimeout to ensure navigation completes before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
     setIsMenuOpen(false); // Close mobile menu after click
   };
 
+  const goToHome = () => {
+    if (location.pathname === '/' || location.pathname === '/home') {
+      // If already on home, scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      // Navigate to home
+      navigate('/home');
+    }
+    setIsMenuOpen(false);
+  };
+
   const goToFaq = () => {
-    navigate('/faq'); // Navigate to FAQ route
-    setIsMenuOpen(false); // Close mobile menu
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    navigate('/faq');
+    setIsMenuOpen(false);
   };
 
   return (
@@ -30,14 +63,14 @@ export default function Navbar() {
               src={licetLogo} 
               alt="LICET Logo" 
               className="h-10 w-auto hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-              onClick={() => scrollToSection('home')}
+              onClick={goToHome}
             />
           </div>
           
           {/* Desktop Navigation Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <NavButton onClick={() => scrollToSection('home')}>
+              <NavButton onClick={goToHome}>
                 Home
               </NavButton>
               <NavButton onClick={() => scrollToSection('events')}>
@@ -77,7 +110,7 @@ export default function Navbar() {
         <div className="md:hidden bg-black/80 backdrop-blur-lg border-t border-white/20">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <button
-              onClick={() => scrollToSection('home')}
+              onClick={goToHome}
               className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
             >
               Home

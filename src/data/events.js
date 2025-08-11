@@ -190,7 +190,7 @@ Guidelines:
     date: "16th September 2025",
     time: "11:30 am to 1:00 pm",
     location: "Drawing Room (G32)",
-    organizers: "Kaviena Sharon and Judith (Contact: 7871123619)",
+    organizers: "Gopika and  (Contact: 7871123619)",
     registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSczkvSwIE_21_FSsdxbe-19ajKIvb9GqaWuhTKwM8PUSyzy7g/viewform?usp=sf_link"
   },
 {

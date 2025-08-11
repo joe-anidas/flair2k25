@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Smoke from "../ui/Smoke"; // Import your Smoke component
+import Navbar from "../components/Navbar";
 
 const FaqPage = () => {
   const [Val, setVal] = useState("start");
@@ -9,6 +10,7 @@ const FaqPage = () => {
   
   // Redirect to /home on page refresh
   useEffect(() => {
+    window.scrollTo(0, 0);
     const handleBeforeUnload = () => {
       // This will trigger on page refresh/reload
       sessionStorage.setItem('shouldRedirectToHome', 'true');
@@ -44,13 +46,13 @@ const FaqPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
-      {/* Smoke Effect */}
+      <Navbar />
       <div className="fixed inset-0 z-0">
         <Smoke />
       </div>
       
-      {/* Back Button */}
-      <div className="relative z-10 pt-6 pl-6">
+      {/* Back Button - Updated positioning */}
+      <div className="relative z-10 pt-24 pl-6"> {/* Changed from pt-6 to pt-24 to account for navbar height */}
         <motion.button
           onClick={() => navigate(-1)}
           className="flex items-center bg-black/40 backdrop-blur-lg text-gray-300 hover:text-white 
@@ -78,7 +80,7 @@ const FaqPage = () => {
       </div>
 
       {/* FAQ Content */}
-      <div className="relative z-10 pt-10 pb-20">
+      <div className="relative z-10 pt-6 pb-20"> {/* Reduced from pt-10 to pt-6 since we added space above */}
         <div className="flex justify-center">
           <div className="w-full max-w-4xl px-4">
             <motion.div 
