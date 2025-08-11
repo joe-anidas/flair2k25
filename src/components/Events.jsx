@@ -41,29 +41,44 @@ const Events = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          // Use requestAnimationFrame for smoother animations
+          // Animate in
           requestAnimationFrame(() => {
             entry.target.style.transform = 'translateX(0)';
             entry.target.style.opacity = '1';
-            entry.target.setAttribute('data-animated', 'true');
           });
-          observer.unobserve(entry.target);
+        } else {
+          // Reset animation when out of view for re-animation
+          requestAnimationFrame(() => {
+            const cardIndex = cardRefs.current.indexOf(entry.target);
+            const isEven = cardIndex % 2 === 0;
+            
+            if (isMobile) {
+              entry.target.style.transform = 'translateY(50px)';
+            } else {
+              entry.target.style.transform = isEven ? 'translateX(-100px)' : 'translateX(100px)';
+            }
+            entry.target.style.opacity = '0';
+          });
         }
       });
     }, observerOptions);
 
     // Initialize cards with CSS transforms for all screen sizes
     cardRefs.current.forEach((ref, index) => {
-      if (ref && !ref.getAttribute('data-animated')) {
+      if (ref) {
         const isEven = index % 2 === 0;
         ref.classList.add('event-card-animate');
         
-        // For mobile, use simpler animations (fade in from bottom)
+        // Set initial state
         if (isMobile) {
+          ref.style.transform = 'translateY(50px)';
           ref.classList.add('slide-in-mobile');
         } else {
+          ref.style.transform = isEven ? 'translateX(-100px)' : 'translateX(100px)';
           ref.classList.add(isEven ? 'slide-in-left' : 'slide-in-right');
         }
+        ref.style.opacity = '0';
+        ref.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
         
         observer.observe(ref);
       }
