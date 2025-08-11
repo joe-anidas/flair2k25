@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import licetLogo from '/assets/licet.png';
+import NavButton from '../ui/NavButton';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,35 +36,19 @@ export default function Navbar() {
           
           {/* Desktop Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md relative group"
-              >
+            <div className="ml-10 flex items-baseline space-x-4">
+              <NavButton onClick={() => scrollToSection('home')}>
                 Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <button
-                onClick={() => scrollToSection('events')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md relative group"
-              >
+              </NavButton>
+              <NavButton onClick={() => scrollToSection('events')}>
                 Events
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md relative group"
-              >
+              </NavButton>
+              <NavButton onClick={() => scrollToSection('contact')}>
                 Contact
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <button
-                onClick={goToFaq}
-                className="text-white font-semibold text-lg tracking-wide hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md relative group"
-              >
+              </NavButton>
+              <NavButton onClick={goToFaq}>
                 FAQ
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
+              </NavButton>
             </div>
           </div>
           

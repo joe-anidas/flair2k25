@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/assets/flair.webp';
+import logo from '/assets/flair.png';
 import graitLogo from '/assets/grait-logo.webp';
 import Smoke from '../ui/Spores';
 import Card from '../ui/Card';
@@ -42,12 +42,12 @@ const Contact = () => {
                 <div className="relative">
                   <img 
                     alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
-                    className="w-20 h-20 object-contain drop-shadow-lg" 
+                    className="w-30 h-30 object-contain drop-shadow-lg" 
                     src={logo}
                   />
                   <img 
                     alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
-                    className="w-20 h-20 object-contain drop-shadow-lg" 
+                    className="w-30 h-30 object-contain drop-shadow-lg" 
                     src={graitLogo}
                   />
                   <div className="absolute inset-0 bg-red-400/20 rounded-full blur-xl"></div>
@@ -123,7 +123,7 @@ const Contact = () => {
             <div className="text-center">
               <Card className="max-w-md mx-auto" hoverEffect={false}>
                 <p className="text-base font-normal flex justify-center items-center gap-3">
-                  <span className='text-white'>See y'all on 23th August</span>
+                  <span className='text-white'>See y'all on 23rd August</span>
       
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
