@@ -85,32 +85,56 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
-      {/* Content */}
-<div className="relative z-10 h-screen flex flex-col">
-  {/* Top Left - FLAIR-IT */}
-    <div className="px-4 sm:px-6 md:px-8 lg:px-33 pt-8 sm:pt-12 md:pt-16" style={{ marginLeft: '-80px', marginTop: '-110px' }}>
-   <img 
-                     alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
-                     className="w-100 h-100 object-contain drop-shadow-lg" 
-                     src={logo}
-                   />
+      {/* Content - Mobile First Layout */}
+      <div className="relative z-10 h-screen flex flex-col">
+        
+        {/* Mobile Layout - Centered Content */}
+        <div className="flex-1 flex flex-col items-center justify-center px-4 sm:hidden">
+          {/* Logo - Centered and Bigger on Mobile */}
+          <div className="mb-8">
+            <img 
+              alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
+              className="w-80 h-80 object-contain drop-shadow-lg" 
+              src={logo}
+            />
+          </div>
 
-  </div>
+          {/* Join Us Text - Below Image and Smaller on Mobile */}
+          <div className="text-center">
+            <h2 className="text-xl font-bold text-white mb-2 leading-tight">
+              Join us on
+            </h2>
+            <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
+              23rd August
+            </span>
+          </div>
+        </div>
 
-  {/* Bottom Right - 2K25 */}
-  <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-4 sm:right-6 md:right-8 lg:right-34 z-20">
-  <div className="mt-4 sm:mt-6 md:mt-8">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-        Join us on
-        <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
-          23rd August
-        </span>
-      </h2>
-    </div>
-  </div>
-</div>
+        {/* Desktop/Tablet Layout - Original Design */}
+        <div className="hidden sm:block">
+          {/* Top Left - FLAIR-IT */}
+          <div className="px-4 sm:px-6 md:px-8 lg:px-33 pt-8 sm:pt-12 md:pt-16" style={{ marginLeft: '-80px', marginTop: '-110px' }}>
+            <img 
+              alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
+              className="w-100 h-100 object-contain drop-shadow-lg" 
+              src={logo}
+            />
+          </div>
 
+          {/* Bottom Right - 2K25 */}
+          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-4 sm:right-6 md:right-8 lg:right-34 z-20">
+            <div className="mt-4 sm:mt-6 md:mt-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                Join us on
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
+                  23rd August
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Animated background elements */}
       <div className="absolute inset-0 top-16 z-5 pointer-events-none">

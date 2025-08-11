@@ -1,47 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // Added for navigation
+import { useNavigate } from "react-router-dom";
+import Smoke from "../ui/Smoke"; // Import your Smoke component
 
-const FAQ = () => {
+const FaqPage = () => {
   const [Val, setVal] = useState("start");
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
   
+  // Redirect to /home on page refresh
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      // This will trigger on page refresh/reload
+      sessionStorage.setItem('shouldRedirectToHome', 'true');
+    };
+
+    // Check if we should redirect on component mount
+    if (sessionStorage.getItem('shouldRedirectToHome') === 'true') {
+      sessionStorage.removeItem('shouldRedirectToHome');
+      navigate('/home', { replace: true });
+      return;
+    }
+
+    // Add event listener for page refresh
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [navigate]);
+
   const values = {
     hidden: { opacity: 0 },
     start: {
       opacity: 1,
-      transition: { duration: 3, delay: 0.5 },
+      transition: { duration: 0.8, delay: 0.2 },
     },
     end: {
       opacity: 0,
-      transition: { duration: 3 },
+      transition: { duration: 0.8 },
     },
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      {/* Background Video */}
-      <div className="fixed top-0 left-0 w-full h-full z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          className="w-full h-full object-cover"
-        >
-          <source src="/space-theme.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
+    <div className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
+      {/* Smoke Effect */}
+      <div className="fixed inset-0 z-0">
+        <Smoke />
       </div>
-
+      
       {/* Back Button */}
-      <div className="relative z-10 pt-4 pl-4">
-        <button
-          onClick={() => navigate(-1)} // Go back in history
-          className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
+      <div className="relative z-10 pt-6 pl-6">
+        <motion.button
+          onClick={() => navigate(-1)}
+          className="flex items-center bg-black/40 backdrop-blur-lg text-gray-300 hover:text-white 
+          transition-all duration-300 px-6 py-3 rounded-xl border border-red-700/50 shadow-lg 
+          hover:shadow-red-800/40 hover:bg-red-900/20"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6 mr-1" 
+            className="h-6 w-6 mr-2" 
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor"
@@ -53,123 +73,85 @@ const FAQ = () => {
               d="M10 19l-7-7m0 0l7-7m-7 7h18" 
             />
           </svg>
-          Back
-        </button>
+          <span className="text-lg font-medium">Back</span>
+        </motion.button>
       </div>
 
       {/* FAQ Content */}
-      <div className="relative z-10 pt-10 pb-10">
+      <div className="relative z-10 pt-10 pb-20">
         <div className="flex justify-center">
           <div className="w-full max-w-4xl px-4">
-            <div className="glasscard p-4 md:p-6 rounded-xl backdrop-blur-xl bg-black/30 border border-white/20 shadow-xl">
-              <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 mt-4">
+            <motion.div 
+              className="p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-black/40 border border-red-800/30 shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 mt-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-500 to-red-300">
                 Frequently Asked Questions
               </h2>
               
               <div className="space-y-6">
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.99 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    Eligibility
-                  </summary>
-                  <motion.p
-                    variants={values}
-                    initial="hidden"
-                    animate={Val}
-                    onAnimationComplete={() => setVal("start")}
-                    className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300"
+                {[
+                  {
+                    question: "Eligibility",
+                    answer: "All Engineering College students of any Department are eligible to participate in Flair2k25."
+                  },
+                  {
+                    question: "Things to be brought",
+                    answer: "College ID card and Bonafide certificate are necessary to be brought on the day of the symposium to participate in Flair2k25."
+                  },
+                  {
+                    question: "Dress Code",
+                    answer: "Any decent attire, most preferrably formals, collared T-shirts for boys and Churidar for girls. No Jeans and Round neck shirts are allowed."
+                  },
+                  {
+                    question: "No Mobile Phones",
+                    answer: "Participants are not allowed to use their mobile phones inside the campus. The phone should be either silent or switched off."
+                  },
+                  {
+                    question: "Timing",
+                    answer: "Participants are expected to assemble 15 minutes prior to the event and being late is not entertained."
+                  },
+                  {
+                    question: "No Negotiations",
+                    answer: "Judges decision will be final and binding. No arguments regarding the results will be entertained."
+                  },
+                  {
+                    question: "Queries",
+                    answer: "Event specific queries can be reported to the event-incharge at the venue. Any grievances and other forms of misconduct must be reported to the President (Faize Fathima S) or Vice-President (Kevin Andrew A)."
+                  }
+                ].map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    className="w-full rounded-xl bg-gradient-to-r from-black/50 to-red-900/20 backdrop-blur-sm border border-red-800/30 overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    All Engineering College students of any Department are
-                    eligible to participate in Flair2k25.
-                  </motion.p>
-                </motion.details>
-
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    Things to be brought
-                  </summary>
-                  <p className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300">
-                    College ID card and Bonafide certificate are necessary
-                    to be brought on the day of the symposium to participate
-                    in Flair2k25.
-                  </p>
-                </motion.details>
-
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    Dress Code
-                  </summary>
-                  <p className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300">
-                    Any decent attire, most preferrably formals, collared
-                    T-shirts for boys and Churidar for girls. No Jeans and
-                    Round neck shirts are allowed.
-                  </p>
-                </motion.details>
-
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    No Mobile Phones
-                  </summary>
-                  <p className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300">
-                    Participants are not allowed to use their mobile phones
-                    inside the campus. The phone should be either silent or
-                    switched off.
-                  </p>
-                </motion.details>
-
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    Timing
-                  </summary>
-                  <p className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300">
-                    Participants are expected to assemble 15 minutes prior
-                    to the event and being late is not entertained.
-                  </p>
-                </motion.details>
-
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    No Negotiations
-                  </summary>
-                  <p className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300">
-                    Judges decision will be final and binding. No arguments
-                    regarding the results will be entertained.
-                  </p>
-                </motion.details>
-
-                <motion.details
-                  className="w-full rounded-lg bg-gray-900/80 backdrop-blur-sm border border-white/20"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <summary className="px-4 py-5 cursor-pointer text-lg font-medium">
-                    Queries
-                  </summary>
-                  <p className="px-4 py-3 pt-0 ml-4 -mt-2 text-gray-300">
-                    Event specific queries can be reported to the
-                    event-incharge at the venue. Any grievances and other
-                    forms of misconduct must be reported to the President
-                    (Kabilan) or Vice-President (Akash).
-                  </p>
-                </motion.details>
+                    <motion.details
+                      whileTap={{ scale: 0.99 }}
+                      className="w-full"
+                    >
+                      <summary className="px-5 py-6 cursor-pointer text-lg font-medium bg-gradient-to-r from-black/40 to-red-900/10 hover:from-black/50 hover:to-red-900/30 transition-all duration-300 group">
+                        <span className="group-hover:text-red-300 transition-colors duration-300">
+                          {faq.question}
+                        </span>
+                      </summary>
+                      <motion.div
+                        variants={values}
+                        initial="hidden"
+                        animate={Val}
+                        onAnimationComplete={() => setVal("start")}
+                        className="px-5 py-4 pt-2 ml-2 -mt-1 text-gray-300"
+                      >
+                        {faq.answer}
+                      </motion.div>
+                    </motion.details>
+                  </motion.div>
+                ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -177,4 +159,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FaqPage;
