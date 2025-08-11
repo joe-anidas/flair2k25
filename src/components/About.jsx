@@ -1,5 +1,5 @@
 import React from 'react';
-import Smoke from '../ui/Spores';
+import Smoke from '../ui/Snow';
 
 const About = () => {
   const sponsorImages = [

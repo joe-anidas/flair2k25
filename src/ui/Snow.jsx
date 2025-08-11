@@ -33,25 +33,39 @@ const Snow = () => {
     class Snowflake {
       constructor() {
         this.reset(true);
+        // Generate random shape points for irregular snowflake
+        this.points = [];
+        const numPoints = 5 + Math.floor(Math.random() * 3); // 5-7 points
+        for (let i = 0; i < numPoints; i++) {
+          const angle = (i / numPoints) * Math.PI * 2;
+          const radius = 0.5 + Math.random() * 0.8; // irregular radius
+          this.points.push({
+            x: Math.cos(angle) * radius,
+            y: Math.sin(angle) * radius
+          });
+        }
       }
 
       reset(isInitial = false) {
         this.x = Math.random() * width;
-        // If initial, spread vertically; otherwise respawn above the view
-        this.y = isInitial ? Math.random() * height : Math.random() * -height * 0.2;
-        this.vy = 0.6 + Math.random() * 1.6; // slightly slower for perf
-        this.vx = (Math.random() - 0.5) * 0.8; // gentle horizontal drift
+        this.y = Math.random() * height; // spawn anywhere in the viewport
+        this.vy = (Math.random() - 0.5) * 1.2; // random vertical movement (up or down)
+        this.vx = (Math.random() - 0.5) * 1.4; // random horizontal movement
         this.r = 0.8 + Math.random() * 1.8;
         this.o = 0.35 + Math.random() * 0.45;
+        // Add floating properties
+        this.baseVy = this.vy;
+        this.baseVx = this.vx;
+        this.time = Math.random() * Math.PI * 2; // for sine wave motion
       }
     }
 
     const generateSnowFlakes = () => {
       snowflakes = [];
-      // Density-based particle count; cap for performance
+      // Reduced density for less snow
       const area = Math.max(1, width * height);
-      const density = 0.00025; // tweakable
-      const particleMax = Math.min(400, Math.max(80, Math.floor(area * density)));
+      const density = 0.00015; // reduced from 0.00025
+      const particleMax = Math.min(250, Math.max(40, Math.floor(area * density))); // reduced max from 400 to 250
       for (let i = 0; i < particleMax; i++) {
         snowflakes.push(new Snowflake());
       }
@@ -62,22 +76,38 @@ const Snow = () => {
 
       for (let i = 0; i < snowflakes.length; i++) {
         const snowflake = snowflakes[i];
-        snowflake.y += snowflake.vy;
-        snowflake.x += snowflake.vx;
+        
+        // Add floating motion with sine waves
+        snowflake.time += 0.02;
+        snowflake.y += snowflake.baseVy + Math.sin(snowflake.time) * 0.3;
+        snowflake.x += snowflake.baseVx + Math.cos(snowflake.time * 0.8) * 0.2;
 
-        // wrap around horizontally a bit for continuity
+        // Wrap around all edges for continuous floating
         if (snowflake.x < -10) snowflake.x = width + 10;
         if (snowflake.x > width + 10) snowflake.x = -10;
+        if (snowflake.y < -10) snowflake.y = height + 10;
+        if (snowflake.y > height + 10) snowflake.y = -10;
 
         ctx.globalAlpha = snowflake.o;
         ctx.beginPath();
-        ctx.arc(snowflake.x, snowflake.y, snowflake.r, 0, Math.PI * 2, false);
+        
+        // Draw irregular snowflake shape
+        if (snowflake.points.length > 0) {
+          ctx.moveTo(
+            snowflake.x + snowflake.points[0].x * snowflake.r,
+            snowflake.y + snowflake.points[0].y * snowflake.r
+          );
+          
+          for (let j = 1; j < snowflake.points.length; j++) {
+            ctx.lineTo(
+              snowflake.x + snowflake.points[j].x * snowflake.r,
+              snowflake.y + snowflake.points[j].y * snowflake.r
+            );
+          }
+        }
+        
         ctx.closePath();
         ctx.fill();
-
-        if (snowflake.y > height + 10) {
-          snowflake.reset(false);
-        }
       }
 
       animationId = requestAnimationFrame(update);

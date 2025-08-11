@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '/assets/flair.png';
 import graitLogo from '/assets/grait-logo.webp';
-import Smoke from '../ui/Spores';
+import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
 
 const Contact = () => {

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import hero from '/videos/hero.mov';
+import hero from '/videos/hero.mp4';
 import logo from '/assets/flair.png';
 
 const Hero = () => {
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false);
   const audioRef = useRef(null);
+  const videoRef = useRef(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
     const playAudio = async () => {
@@ -49,6 +51,38 @@ const Hero = () => {
     };
   }, [userInteracted]);
 
+  // Play the hero video only after it's ready, show wallpaper until then
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    const handleCanPlayThrough = async () => {
+      setIsVideoReady(true);
+      try {
+        await videoElement.play();
+      } catch (_) {
+        // If autoplay is blocked, keep wallpaper until user interacts
+      }
+    };
+
+    const handleLoadedData = async () => {
+      if (!isVideoReady) {
+        setIsVideoReady(true);
+        try {
+          await videoElement.play();
+        } catch (_) {}
+      }
+    };
+
+    videoElement.addEventListener('canplaythrough', handleCanPlayThrough);
+    videoElement.addEventListener('loadeddata', handleLoadedData);
+
+    return () => {
+      videoElement.removeEventListener('canplaythrough', handleCanPlayThrough);
+      videoElement.removeEventListener('loadeddata', handleLoadedData);
+    };
+  }, [isVideoReady]);
+
   const scrollToEvents = () => {
     const eventsSection = document.getElementById('events');
     if (eventsSection) {
@@ -67,17 +101,31 @@ const Hero = () => {
         style={{ display: 'none' }}
       />
       
-      {/* Video Background */}
+      {/* Video Background with wallpaper fallback */}
       <div className="absolute inset-0 top-0 z-0 overflow-hidden">
+        {/* Wallpaper while video loads */}
+        <div
+          aria-hidden
+          className="w-full h-[calc(100%+60px)] -mt-[10px]"
+          style={{
+            backgroundImage: 'url(/assets/wall.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+
+        {/* Video fades in when ready */}
         <video
-          autoPlay
+          ref={videoRef}
           loop
           muted
           playsInline
-          className="w-full h-[calc(100%+60px)] object-cover -mt-[10px]"
+          preload="auto"
+          className="absolute inset-0 w-full h-[calc(100%+60px)] object-cover -mt-[10px] transition-opacity duration-500"
+          style={{ opacity: isVideoReady ? 1 : 0 }}
         >
           <source src={hero} type="video/mp4" />
-          <source src={hero} type="video/mov" />
           Your browser does not support the video tag.
         </video>
 
