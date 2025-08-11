@@ -33,21 +33,9 @@ const Events = () => {
   }, []);
 
   useEffect(() => {
-    // Disable animations on mobile for better performance
-    if (isMobile) {
-      cardRefs.current.forEach((ref) => {
-        if (ref) {
-          ref.style.transform = 'translateX(0)';
-          ref.style.opacity = '1';
-          ref.classList.add('animate-none');
-        }
-      });
-      return;
-    }
-
     const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '-10% 0px -10% 0px'
+      threshold: isMobile ? 0.1 : 0.15,
+      rootMargin: isMobile ? '-5% 0px -5% 0px' : '-10% 0px -10% 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -64,12 +52,19 @@ const Events = () => {
       });
     }, observerOptions);
 
-    // Initialize cards with CSS transforms instead of inline styles
+    // Initialize cards with CSS transforms for all screen sizes
     cardRefs.current.forEach((ref, index) => {
       if (ref && !ref.getAttribute('data-animated')) {
         const isEven = index % 2 === 0;
         ref.classList.add('event-card-animate');
-        ref.classList.add(isEven ? 'slide-in-left' : 'slide-in-right');
+        
+        // For mobile, use simpler animations (fade in from bottom)
+        if (isMobile) {
+          ref.classList.add('slide-in-mobile');
+        } else {
+          ref.classList.add(isEven ? 'slide-in-left' : 'slide-in-right');
+        }
+        
         observer.observe(ref);
       }
     });
@@ -98,18 +93,16 @@ const Events = () => {
 
   return (
     <div id="events" className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
-      {/* Simplified background effects for mobile */}
+      {/* Background effects for all screen sizes */}
       <div className="absolute inset-0 z-0">
         <Snow />
       </div>
       
-      {!isMobile && (
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-10 left-5 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-5 w-40 h-40 sm:w-56 sm:h-56 lg:w-80 lg:h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-rose-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-        </div>
-      )}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-10 left-5 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-5 w-28 h-28 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-80 lg:h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-72 lg:h-72 bg-rose-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
       
       <div className="relative z-10 min-h-screen py-12 sm:py-16 lg:py-20">
         <div className={`max-w-7xl mx-auto ${responsiveClasses.container}`}>
@@ -140,7 +133,7 @@ const Events = () => {
                       style={{ backgroundImage: `url(${event.image})` }}
                     >
                       <div className={`absolute inset-0 bg-animate ${
-                        isEven
+                        isEven || isMobile
                           ? 'bg-gradient-to-r from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30'
                           : 'bg-gradient-to-l from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30'
                       } pointer-events-none`}></div>
@@ -158,26 +151,26 @@ const Events = () => {
                             <div className="w-4 sm:w-6 lg:w-8 h-px bg-red-400/50"></div>
                           </div>
                           
-                          <h2 className={`font-mono ${responsiveClasses.titleSize} font-bold text-white mb-2 sm:mb-3 lg:mb-4 tracking-tight`}>
+                          <h2 className={`font-mono ${responsiveClasses.titleSize} font-bold text-white mb-2 sm:mb-3 lg:mb-4 tracking-tight transition-transform duration-300 ${
+                            !isMobile && isEven ? 'group-hover:translate-x-1' : !isMobile ? 'group-hover:-translate-x-1' : ''
+                          }`}>
                             {event.title}
                           </h2>
                           
-                          <p className={`${responsiveClasses.descSize} text-gray-200 leading-relaxed mb-4`}>
+                          <p className={`${responsiveClasses.descSize} text-gray-200 leading-relaxed mb-4 group-hover:text-gray-100 transition-colors duration-300`}>
                             {event.description}
                           </p>
                           
                           <button
                             onClick={() => handleRegisterClick(event.slug)}
-                            className={`${responsiveClasses.buttonSize} bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-colors duration-300 shadow-md hover:shadow-red-500/30 font-medium relative z-10 touch-manipulation`}
+                            className={`${responsiveClasses.buttonSize} bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium relative z-10 touch-manipulation hover:scale-105 active:scale-95`}
                           >
                             Register Now
                           </button>
                         </div>
                       </div>
                       
-                      {!isMobile && (
-                        <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                      )}
+                      <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                   </div>
                 </div>
