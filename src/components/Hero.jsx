@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import hero from '/videos/hero.mov';
+import NextButton from '../ui/NextButton';
 
 const Hero = () => {
   const [audioPlaying, setAudioPlaying] = useState(false);
@@ -86,33 +87,34 @@ const Hero = () => {
 
       {/* Content */}
 <div className="relative z-10 h-screen flex flex-col">
-  {/* Top Left - FLAIR-IT */}
-  <div className="px-4 sm:px-6 md:px-8 lg:px-33 pt-8 sm:pt-12 md:pt-16">
+  {/* Left-aligned Content */}
+  <div className="px-4 sm:px-6 md:px-8 lg:px-33 pt-16 sm:pt-20 md:pt-24 lg:pt-32">
     <div className="z-20">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-wider stranger-things-glow">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-wider stranger-things-glow text-left" style={{ fontFamily: 'Benguiat, serif' }}>
         FLAIR-IT
       </h1>
     </div>
 
     {/* Join Us directly below with reduced gap */}
     <div className="mt-4 sm:mt-6 md:mt-8">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight text-left" style={{ fontFamily: 'Benguiat, serif' }}>
         Join us on
         <br />
         <span className="stranger-things-glow">
           23th August
         </span>
       </h2>
-      <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 leading-relaxed">
+      <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 leading-relaxed text-left" style={{ fontFamily: 'Benguiat, serif' }}>
         Experience the future of technology 
         and innovation
       </p>
-      <button
-        onClick={scrollToEvents}
-        className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-red-400 hover:from-red-600 hover:to-red-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/25 text-sm sm:text-base"
-      >
-        Learn More
-      </button>
+      <NextButton 
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToEvents();
+        }}
+        text="Learn More"
+      />
     </div>
   </div>
 
