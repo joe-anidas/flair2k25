@@ -59,7 +59,7 @@ const StyledWrapper = styled.div`
   .button:hover .hover-text {
     width: 100%;
     filter: drop-shadow(0 0 8px var(--animation-color));
-    text-shadow: 0 0 3px var(--animation-color), 0 0 6px var(--animation-color), 0 0 9px var(--color-black-200);
+    text-shadow: 0 0 3px var(--animation-color), 0 0 6px var(--animation-color), 0 0 9px var(--animation-color);
   }
 `;
 
