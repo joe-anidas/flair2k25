@@ -124,7 +124,7 @@ const Contact = () => {
               <Card className="max-w-md mx-auto" hoverEffect={false}>
                 <p className="text-base font-normal flex justify-center items-center gap-3">
                   <span className='text-white'>See y'all on 23th August</span>
-                  <span className="text-2xl">🎉</span>
+      
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
                   Don't miss out on the most exciting tech event of the year!

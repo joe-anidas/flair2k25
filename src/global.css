@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Custom Fonts */
+@font-face {
+  font-family: 'Stranger Things Outlined';
+  src: url('/font/Stranger Things Outlined.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benguiat Bold';
+  src: url('/font/Benguiat Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
     --color-main: #121212; /* dark color stored in a CSS variable */
     background-color: var(--color-main);

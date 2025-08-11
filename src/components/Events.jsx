@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Snow from '../ui/Snow';
+import Snow from '../ui/Spores';
 import eventsData from '../data/events';
 
 const Events = () => {
