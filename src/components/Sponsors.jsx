@@ -13,7 +13,7 @@ const Sponsors = () => {
   ];
 
   return (
-    <div id="sponsors" className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
+    <div id="sponsors" className="bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
       {/* Smoke Background */}
       <div className="absolute inset-0 z-0">
         <Smoke />
@@ -27,7 +27,7 @@ const Sponsors = () => {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen py-20 px-4">
+      <div className="relative z-10 py-20 pb-10 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Sponsors Header */}
           <div className="text-center mb-16">
