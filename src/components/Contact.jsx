@@ -25,8 +25,8 @@ const Contact = () => {
           {/* Contact Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
-                CONTACT US
+            <span style={{ fontFamily: 'STOutlined, serif' }} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]">
+            CONTACT US
               </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">

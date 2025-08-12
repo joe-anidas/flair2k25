@@ -123,7 +123,7 @@ const Events = () => {
         <div className={`max-w-7xl mx-auto ${responsiveClasses.container}`}>
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h1 className={`${responsiveClasses.headerText} font-bold text-white mb-4 sm:mb-6 tracking-tight`}>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]">
+              <span style={{ fontFamily: 'STOutlined, serif' }} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]">
                 EVENTS
               </span>
             </h1>

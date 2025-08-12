@@ -179,6 +179,7 @@ const Hero = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.75, delay: i / 10 }}
                   className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
+                  style={{ fontFamily: 'GeistMono, monospace' }}
                 >
                   {word}
                   {" "}
@@ -217,7 +218,9 @@ const Hero = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.75, delay: i / 10 }}
-                      className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
+                      className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]"
+                     style={{ fontFamily: 'STOutlined, serif' }} 
+
                     >
                       {word}
                       {" "}

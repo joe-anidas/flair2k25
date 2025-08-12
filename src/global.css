@@ -2,7 +2,7 @@
 
 /* Custom Fonts */
 @font-face {
-  font-family: 'Stranger Things Outlined';
+  font-family: 'STOutlined';
   src: url('/font/Stranger Things Outlined.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -10,9 +10,17 @@
 }
 
 @font-face {
-  font-family: 'Benguiat Bold';
+  font-family: 'STBold';
   src: url('/font/Benguiat Bold.ttf') format('truetype');
   font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeistMono';
+  src: url('/font/GeistVF.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
