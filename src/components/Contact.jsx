@@ -79,17 +79,15 @@ const Contact = () => {
               </h3>
               <div className="space-y-4">
                 <div>
-                  <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
-                    Coordinators
-                  </p>
+                 
                   <div className="space-y-2">
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>GINOSINGH G S: +91 99999 99999</span>
+                      <span className='text-white'>GINOSINGH G S: <a href="tel:+919150943381" aria-label="Call Ginosingh G S">+91 9150943381</a></span>
                     </p>
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>ARUL D'SOUZA: +91 99999 99999</span>
+                      <span className='text-white'>ARUL D'SOUZA J: <a href="tel:+918667396005" aria-label="Call Arul D'souza J">+91 86673 96005</a></span>
                     </p>
                   </div>
                 </div>
@@ -111,7 +109,7 @@ const Contact = () => {
                   </p>
                   <p className="flex items-center gap-2 text-sm">
                     <i className="fas fa-map-marker-alt text-red-400 w-4"></i>
-                    <span className='text-white'>LICET Campus, Chennai</span>
+                    <span className='text-white'>LICET, Loyola Campus, Chennai</span>
                   </p>
                 </div>
               </div>
