@@ -4,7 +4,7 @@ const eventsData = [
     title: "Vecna’s Vision",
     slug: "vecnas-vision",
     description: "AI Prompting event",
-    image: "",
+    image: "/events/hole.png",
     rules: `
 Individual Participation:
   - Must carry college ID
@@ -45,7 +45,7 @@ Judging:
     title: "Mind Flayer Grid",
     slug: "mind-flayer-grid",
     description: "Technical Connections event",
-    image: "",
+    image: "/events/ray.png",
     rules: `
 Team Structure:
   - Max 3 members
@@ -86,10 +86,10 @@ Winning:
   },
   {
     id: 3,
-    title: "THE HELLFIRE HUNT",
+    title: "The Hellfire Hunt",
     slug: "the-hellfire-hunt",
     description: "Treasure Hunt event",
-    image: "",
+    image: "/events/copter.png",
     rules: `
 Team Composition:
   - Max 2 members
@@ -126,7 +126,7 @@ Winning:
     title: "Hawkin’s High Papers",
     slug: "hawkins-high-papers",
     description: "Paper Presentation event",
-    image: "",
+    image: "/events/experiment.png",
     rules: `
 Team:
   - Max 3 members
@@ -168,7 +168,7 @@ Winning:
     title: "Arcade of Answers",
     slug: "arcade-of-answers",
     description: "Technical Quiz event",
-    image: "",
+    image: "/events/lab.png",
     rules: `
 Team:
   - 2-3 members
@@ -207,7 +207,7 @@ Rules:
     title: "The Wall of Whispers",
     slug: "the-wall-of-whispers",
     description: "Tech Charades event",
-    image: "",
+    image: "/events/mall.png",
     rules: `
 Team:
   - Max 2 members
@@ -247,7 +247,7 @@ Rules:
     title: "Demogorgan Debug",
     slug: "demogorgan-debug",
     description: "Code Debugging event",
-    image: "",
+    image: "/events/red%20house.png",
     rules: `
 Team:
   - 2 members

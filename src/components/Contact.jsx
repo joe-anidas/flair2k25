@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/assets/flair.png';
+import logo from '/assets/flair2.png';
 import graitLogo from '/assets/grait-logo.webp';
 import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
@@ -25,7 +25,7 @@ const Contact = () => {
           {/* Contact Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
                 CONTACT US
               </span>
             </h2>
@@ -56,18 +56,13 @@ const Contact = () => {
                   Join us for a unique journey, where the future meets the present in extraordinary ways.
                 </p>
                 <div className="flex gap-4 text-white text-xl">
-                  <a href="#" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
+                  <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
                     <i className="fas fa-map-marker-alt"></i>
                   </a>
-                  <a href="#" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
+                  <a href="https://www.instagram.com/flairit_2k25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a href="#" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                  <a href="#" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
-                    <i className="fab fa-twitter"></i>
-                  </a>
+                  
                 </div>
               </div>
             </Card>
@@ -96,14 +91,16 @@ const Contact = () => {
                     Mail Us
                   </p>
                   <a 
-                    className="underline hover:text-red-300 transition-colors duration-300 flex items-center gap-2 text-sm" 
+                    className=" hover:text-red-300 transition-colors duration-300 flex items-center gap-2 text-sm" 
                     href="mailto:flairit@licet.ac.in"
                   >
                     <i className="fas fa-envelope text-red-400 w-4"></i>
-                    <span className='text-white'>flairit@licet.ac.in</span>
+                    <span className='underline text-white'>flairit@licet.ac.in</span>
                   </a>
                 </div>
                 <div>
+                <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
+                 
                   <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
                     Location
                   </p>
@@ -111,6 +108,7 @@ const Contact = () => {
                     <i className="fas fa-map-marker-alt text-red-400 w-4"></i>
                     <span className='text-white'>LICET, Loyola Campus, Chennai</span>
                   </p>
+                </a>
                 </div>
               </div>
             </Card>
