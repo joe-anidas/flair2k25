@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar3";
 import eventsData from "../data/events";
 
 const EventDetailPage = () => {

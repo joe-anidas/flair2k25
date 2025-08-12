@@ -51,7 +51,7 @@ const StyledWrapper = styled.div`
   .button:hover .content,
   .button:hover .blur-text span {
     filter: drop-shadow(0 0 8px var(--animation-color));
-    text-shadow: 0 0 3px var(to-black-400), 0 0 6px var(--animation-color), 0 0 9px var(--animation-color);
+    text-shadow: 0 0 3px var(--animation-color), 0 0 6px var(--animation-color), 0 0 9px var(--animation-color);
   }
 `;
 

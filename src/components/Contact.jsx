@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/assets/flair2.png';
+import logo from '/assets/flair.png';
 import graitLogo from '/assets/grait-logo.webp';
 import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
@@ -25,7 +25,7 @@ const Contact = () => {
           {/* Contact Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-400 to-red-300 to-red-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
                 CONTACT US
               </span>
             </h2>

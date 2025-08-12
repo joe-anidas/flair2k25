@@ -32,7 +32,7 @@ const Sponsors = () => {
           {/* Sponsors Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-400 to-red-300 to-red-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
                 OUR SPONSORS
               </span>
             </h2>
@@ -41,23 +41,25 @@ const Sponsors = () => {
             </p>
           </div>
 
-          {/* 3 Sponsor Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {sponsorImages.map((image, index) => (
-              <Card key={index} className="h-full">
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="relative h-48 w-full overflow-hidden rounded-xl group">
-                    <img
-                      src={image}
-                      alt={`Sponsor ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    {/* Dark reddish overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30 transition-all duration-500"></div>
+          {/* Single Sponsor Card with 3 Images */}
+          <div className="max-w-4xl mx-auto">
+            <Card className="h-full">
+              <div className="flex flex-row items-center justify-center gap-8">
+                {sponsorImages.map((image, index) => (
+                  <div key={index} className="flex flex-col items-center text-center">
+                    <div className="relative h-48 w-48 overflow-hidden rounded-xl group">
+                      <img
+                        src={image}
+                        alt={`Sponsor ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Dark reddish overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30 transition-all duration-500"></div>
+                    </div>
                   </div>
-                </div>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </Card>
           </div>
         </div>
       </div>

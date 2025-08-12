@@ -123,7 +123,7 @@ const Events = () => {
         <div className={`max-w-7xl mx-auto ${responsiveClasses.container}`}>
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h1 className={`${responsiveClasses.headerText} font-bold text-white mb-4 sm:mb-6 tracking-tight`}>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-400 to-red-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
                 EVENTS
               </span>
             </h1>
