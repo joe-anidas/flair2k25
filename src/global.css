@@ -23,32 +23,32 @@ body {
     color: #ffffff; /* optional: makes text visible on dark background */
     margin: 0;
     padding: 0;
-    cursor: url("/assets/cursor.png") -3 -3, auto !important; 
+    cursor: url("/assets/cursor1.png") -3 -3, auto !important; 
 }
 
 /* Custom cursor for all interactive elements */
 * {
-    cursor: url("/assets/cursor.png") -3 -3, auto !important;
+    cursor: url("/assets/cursor1.png") -3 -3, auto !important;
 }
 
 /* Ensure cursor changes on hover states */
 *:hover {
-    cursor: url("/assets/cursor.png") -3 -3, auto !important;
+    cursor: url("/assets/cursor1.png") -3 -3, auto !important;
 }
 
 /* Ensure cursor changes on active/click states */
 *:active {
-    cursor: url("/assets/cursor.png") -3 -3, auto !important;
+    cursor: url("/assets/cursor1.png") -3 -3, auto !important;
 }
 
 /* Ensure cursor changes on focus states */
 *:focus {
-    cursor: url("/assets/cursor.png") -3 -3, auto !important;
+    cursor: url("/assets/cursor1.png") -3 -3, auto !important;
 }
 
 /* Ensure cursor changes on visited states */
 *:visited {
-    cursor: url("/assets/cursor.png") -3 -3, auto !important;
+    cursor: url("/assets/cursor1.png") -3 -3, auto !important;
 }
 
 
