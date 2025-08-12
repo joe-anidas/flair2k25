@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import hero from '/videos/hero.mov';
 import NextButton from '../ui/NextButton';
+import FuzzyText from '../ui/FuzzyText';
 
 const Hero = () => {
   const [audioPlaying, setAudioPlaying] = useState(false);
@@ -119,11 +120,23 @@ const Hero = () => {
   </div>
 
   {/* Bottom Right - 2K25 */}
-  <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-4 sm:right-6 md:right-8 lg:right-34 z-20">
-    <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white">
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200">
+  <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-2 sm:right-4 md:right-6 lg:right-8 z-20">
+    <div className="font-bold text-white">
+      <FuzzyText
+        fontSize="clamp(2rem, 8vw, 8rem)"
+        fontWeight={900}
+        fontFamily="Benguiat, serif"
+        gradientStops={[
+          { offset: 0, color: '#991b1b' },   // red-800
+          { offset: 0.5, color: '#f87171' }, // red-400
+          { offset: 0.75, color: '#fca5a5' },// red-300
+          { offset: 1, color: '#fecaca' },   // red-200
+        ]}
+        baseIntensity={0.18}
+        hoverIntensity={0.5}
+      >
         2K25
-      </span>
+      </FuzzyText>
     </div>
   </div>
 </div>
