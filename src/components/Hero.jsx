@@ -168,7 +168,10 @@ const Hero = () => {
 
           {/* Join Us Text - Below Image and Smaller on Mobile */}
           <div className="text-center">
-            <h2 className="text-xl font-bold text-white mb-2 leading-tight">
+            <h2 
+              className="text-lg font-bold text-white mb-2 leading-tight"
+              style={{ fontFamily: 'STBold, sans-serif' }}
+            >
               Join us on
             </h2>
             <motion.div initial="hidden" animate="visible" variants={herotextAnimation}>
@@ -179,7 +182,7 @@ const Hero = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.75, delay: i / 10 }}
                   className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
-                  style={{ fontFamily: 'GeistMono, monospace' }}
+                  style={{ fontFamily: 'STOutlined, serif' }}
                 >
                   {word}
                   {" "}
@@ -203,8 +206,10 @@ const Hero = () => {
           {/* Bottom Right - 2K25 */}
           <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-4 sm:right-6 md:right-8 lg:right-34 z-20">
             <div className="mt-4 sm:mt-6 md:mt-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                Join us on
+              <h2
+                style={{ fontFamily: 'STBold, sans-serif' }} 
+                className="text-1xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+              >Join us on
                 <br />
                 <motion.div
                   initial="hidden"
@@ -219,8 +224,7 @@ const Hero = () => {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.75, delay: i / 10 }}
                       className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]"
-                     style={{ fontFamily: 'STOutlined, serif' }} 
-
+                      style={{ fontFamily: 'STOutlined, serif' }}
                     >
                       {word}
                       {" "}
