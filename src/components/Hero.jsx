@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import hero from '/videos/hero.mp4';
+import hero from '/videos/hero1.webm';
 import logo from '/assets/flair.png';
 import { motion } from "framer-motion";
 
@@ -144,7 +144,7 @@ const Hero = () => {
           className="absolute inset-0 w-full h-[calc(100%+60px)] object-cover -mt-[10px] transition-opacity duration-500"
           style={{ opacity: isVideoReady ? 1 : 0 }}
         >
-          <source src={hero} type="video/mp4" />
+          <source src={hero} type="video/webm" />
           Your browser does not support the video tag.
         </video>
 
