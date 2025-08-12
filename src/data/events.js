@@ -1,50 +1,128 @@
 const eventsData = [
+  // 10:15 AM Events
   {
-    id: 1,
-    title: "Vecna’s Vision",
-    slug: "vecnas-vision",
-    description: "AI Prompting event",
-    image: "/events/hole.png",
+    id: 7,
+    title: "Demogorgon's Debug",
+    slug: "demogorgons-debug",
+    description: "Code debugging competition with multiple intense rounds",
+    image: "/events/red%20house.png",
     rules: `
-Individual Participation:
-  - Must carry college ID
-  - Inform organizers in advance about AI tools
-  - Strictly no prompt generator tools
-  - Unethical behavior leads to disqualification
+Team:
+  - 2 members
 
-Event Flow:
-  - 2 rounds with short break
+Rounds:
+  Round 1 (45min):
+    - 30 debugging questions
+    - First correct answer scores
+    - Top 50% advance
+    - Tie-breaker: Technical quiz (10 Q)
 
-Round 1: Image Generation (Medium)
-  - Duration: 20 minutes
-  - 2 questions (10 marks each)
-  - Max 3 prompts per question
-  - Generate images based on provided image
-  - Submit images + prompt screenshots
+  Round 2 (15min):
+    - Rearrange/execute jumbled code
+    - Top 5 teams advance
+    - Tie-breaker: Logic quiz (10 Q)
 
-Round 2: Video Generation (Difficult)
-  - Duration: 20 minutes
-  - 1 question (30 marks)
-  - Max 5 prompts
-  - Create video (max 3 minutes)
-  - Submit through provided form
+  Round 3 (45min):
+    - Fix errors + missing code
+    - Extra points for execution
+    - Judged on completion/runs
 
-Judging:
-  - Based on output accuracy
-  - Tie-breaker: Fewer prompts + faster submission
-  - Judges' decisions are final
+Rules:
+  - 10min break between rounds
+  - Unfair practices = disqualification
 `,
-    date: "",
-    time: "",
-    location: "",
-    organizers: "Lochana P – 9342074152, Maga devi - 8608309503",
+    date: "16th September 2025",
+    time: "10:15 - 12:30 PM",
+    location: "A22",
+    organizers: "Betina, Samuvel Johnson",
     registrationLink: ""
   },
   {
+    id: 4,
+    title: "Hawkin's High Paper",
+    slug: "hawkins-high-paper",
+    description: "Paper presentation event showcasing innovative research and academic writing skills",
+    image: "/events/experiment.png",
+    rules: `
+Team:
+  - Max 3 members
+  - Cross-institution teams allowed
+
+Abstract & Paper:
+  - Abstract ≤ 250 words
+  - IEEE format required
+  - 6 page limit (.pdf/.docx/.doc)
+  - Unpublished work only
+  - No duplicate submissions
+
+Presentation:
+  - 7 min presentation + 3 min Q&A
+  - English only
+  - No plagiarism
+  - No foul language
+
+Submission:
+  - Email abstract to flairit@licet.ac.in 
+    (Subject: "Abstract - TITLE")
+  - Shortlisted teams submit PPT + Paper
+  - Include: 
+      Authors' names, colleges, departments, 
+      phone numbers, emails
+  - Bring hard copies
+
+Winning:
+  - Top 3 papers selected
+`,
+    date: "16th September 2025",
+    time: "10:15 - 11:30 AM",
+    location: "H23 & J14",
+    organizers: "Pauline Samyuktha, Gavrila",
+    registrationLink: ""
+  },
+  {
+    id: 3,
+    title: "The Helifire Hunt",
+    slug: "the-helifire-hunt",
+    description: "Treasure hunt with technical puzzles and real-world challenges",
+    image: "/events/copter.png",
+    rules: `
+Team Composition:
+  - Max 2 members
+
+Rounds:
+  Round 1: 
+    - Solve 4 clue cards
+    - Unlock system password
+
+  Round 2:
+    - Log into system
+    - Solve technical riddles for blueprint
+
+  Round 3:
+    - Search allocated venue
+    - Solve final puzzle
+
+Rules:
+  - No gadgets
+  - Record and report clues
+  - Misconduct = disqualification
+
+Winning:
+  - Top 3 fastest teams
+`,
+    date: "16th September 2025",
+    time: "10:15 - 12:15 PM",
+    location: "A21",
+    organizers: "Vasanth, Kavitha Sri",
+    registrationLink: ""
+  },
+
+  // 10:45 AM Event
+  {
     id: 2,
-    title: "Mind Flayer Grid",
-    slug: "mind-flayer-grid",
-    description: "Technical Connections event",
+    title: "MindFlayer Grid",
+    slug: "mindflayer-grid",
+    description: "Technical connection game matching clues with images in timed rounds",
     image: "/events/ray.png",
     rules: `
 Team Structure:
@@ -78,96 +156,77 @@ Rules:
 Winning:
   - Top 3 teams by combined points
 `,
-    date: "",
-    time: "",
-    location: "",
-    organizers: "Akshayaa G – 4th Year",
+    date: "16th September 2025",
+    time: "10:45 - 12:30 PM",
+    location: "I33",
+    organizers: "Akshayaa, Priyanka",
     registrationLink: ""
   },
+
+  // 11:30 AM Event
   {
-    id: 3,
-    title: "The Hellfire Hunt",
-    slug: "the-hellfire-hunt",
-    description: "Treasure Hunt event",
-    image: "/events/copter.png",
+    id: 8,
+    title: "The Upside Down",
+    slug: "the-upside-down",
+    description: "Cyber ciphers event testing cryptography and decoding skills",
+    image: "",
     rules: `
-Team Composition:
-  - Max 2 members
-
-Rounds:
-  Round 1: 
-    - Solve 4 clue cards
-    - Unlock system password
-
-  Round 2:
-    - Log into system
-    - Solve technical riddles for blueprint
-
-  Round 3:
-    - Search allocated venue
-    - Solve final puzzle
-
-Rules:
-  - No gadgets
-  - Record and report clues
-  - Misconduct = disqualification
-
-Winning:
-  - Top 3 fastest teams
+(Details to be announced)
 `,
-    date: "",
-    time: "",
+    date: "16th September 2025",
+    time: "11:30 - 12:30 PM",
+    location: "I32",
+    organizers: "Lithika",
+    registrationLink: ""
+  },
+
+  // 1:30 PM Events
+  {
+    id: 1,
+    title: "Vecna's Vision",
+    slug: "vecnas-vision",
+    description: "AI prompting challenge focusing on image and video generation tasks under strict guidelines",
+    image: "/events/hole.png",
+    rules: `
+Individual Participation:
+  - Must carry college ID
+  - Inform organizers in advance about AI tools
+  - Strictly no prompt generator tools
+  - Unethical behavior leads to disqualification
+
+Event Flow:
+  - 2 rounds with short break
+
+Round 1: Image Generation (Medium)
+  - Duration: 20 minutes
+  - 2 questions (10 marks each)
+  - Max 3 prompts per question
+  - Generate images based on provided image
+  - Submit images + prompt screenshots
+
+Round 2: Video Generation (Difficult)
+  - Duration: 20 minutes
+  - 1 question (30 marks)
+  - Max 5 prompts
+  - Create video (max 3 minutes)
+  - Submit through provided form
+
+Judging:
+  - Based on output accuracy
+  - Tie-breaker: Fewer prompts + faster submission
+  - Judges' decisions are final
+`,
+    date: "16th September 2025",
+    time: "1:30 - 3:00 PM",
     location: "A21",
-    organizers: "",
-    registrationLink: ""
-  },
-  {
-    id: 4,
-    title: "Hawkin’s High Papers",
-    slug: "hawkins-high-papers",
-    description: "Paper Presentation event",
-    image: "/events/experiment.png",
-    rules: `
-Team:
-  - Max 3 members
-  - Cross-institution teams allowed
-
-Abstract & Paper:
-  - Abstract ≤ 250 words
-  - IEEE format required
-  - 6 page limit (.pdf/.docx/.doc)
-  - Unpublished work only
-  - No duplicate submissions
-
-Presentation:
-  - 7 min presentation + 3 min Q&A
-  - English only
-  - No plagiarism
-  - No foul language
-
-Submission:
-  - Email abstract to flairit@licet.ac.in 
-    (Subject: "Abstract - TITLE")
-  - Shortlisted teams submit PPT + Paper
-  - Include: 
-      Authors' names, colleges, departments, 
-      phone numbers, emails
-  - Bring hard copies
-
-Winning:
-  - Top 3 papers selected
-`,
-    date: "",
-    time: "",
-    location: "",
-    organizers: "",
+    organizers: "Lochana, Maga Devi",
     registrationLink: ""
   },
   {
     id: 5,
-    title: "Arcade of Answers",
+    title: "Arcade of answers",
     slug: "arcade-of-answers",
-    description: "Technical Quiz event",
+    description: "Technical quiz competition testing knowledge, speed, and strategy across multiple domains",
     image: "/events/lab.png",
     rules: `
 Team:
@@ -196,17 +255,17 @@ Rules:
   - Tie-breaker: Rapid-fire round
   - Judges' decisions final
 `,
-    date: "",
-    time: "",
-    location: "",
-    organizers: "",
+    date: "16th September 2025",
+    time: "1:30 - 3:00 PM",
+    location: "A22",
+    organizers: "Kavinsha, Fathima Teresa",
     registrationLink: ""
   },
   {
     id: 6,
     title: "The Wall of Whispers",
     slug: "the-wall-of-whispers",
-    description: "Tech Charades event",
+    description: "Tech charades with acting, drawing, and emoji challenges",
     image: "/events/mall.png",
     rules: `
 Team:
@@ -236,47 +295,10 @@ Rules:
   - Rule violations = point deduction
   - Judges' decisions final
 `,
-    date: "",
-    time: "",
-    location: "",
-    organizers: "",
-    registrationLink: ""
-  },
-  {
-    id: 7,
-    title: "Demogorgan Debug",
-    slug: "demogorgan-debug",
-    description: "Code Debugging event",
-    image: "/events/red%20house.png",
-    rules: `
-Team:
-  - 2 members
-
-Rounds:
-  Round 1 (45min):
-    - 30 debugging questions
-    - First correct answer scores
-    - Top 50% advance
-    - Tie-breaker: Technical quiz (10 Q)
-
-  Round 2 (15min):
-    - Rearrange/execute jumbled code
-    - Top 5 teams advance
-    - Tie-breaker: Logic quiz (10 Q)
-
-  Round 3 (45min):
-    - Fix errors + missing code
-    - Extra points for execution
-    - Judged on completion/runs
-
-Rules:
-  - 10min break between rounds
-  - Unfair practices = disqualification
-`,
-    date: "",
-    time: "",
-    location: "",
-    organizers: "Betina Selvis B, Samuel Johnson",
+    date: "16th September 2025",
+    time: "1:30 - 3:00 PM",
+    location: "I33",
+    organizers: "Gopika, Mythreyi",
     registrationLink: ""
   }
 ];
