@@ -84,7 +84,18 @@ const EventDetailPage = () => {
           </button>
         </div>
 
-        <div className="backdrop-blur-md bg-black/30 border border-red-500/30 rounded-xl p-6 mb-8 shadow-xl shadow-red-900/20">
+        <div className="relative overflow-hidden backdrop-blur-md bg-black/30 border border-red-500/30 rounded-xl p-6 mb-8 shadow-xl shadow-red-900/20">
+          {/* Background image with low opacity inside the card */}
+          <div
+            className="absolute inset-0 z-0 opacity-30"
+            style={{
+              backgroundImage: "url('/assets/EventBackground.jpg')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+          <div className="relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
@@ -103,6 +114,7 @@ const EventDetailPage = () => {
               <GlitchRegisterButton label="Register" onClick={() => setShowForm(true)} />
             )}
           </div>
+          
           
           <div className="prose prose-invert max-w-none">
             <div className="bg-black/20 p-4 rounded-lg mb-6">
@@ -127,7 +139,7 @@ const EventDetailPage = () => {
               <div className="bg-black/20 p-4 rounded-lg md:col-span-2">
                 <h3 className="text-red-400 font-bold mb-2">Organizers</h3>
                 <p className="text-white">{eventDeets.organizers}</p>
-              </div>
+          </div>
             </div>
           </div>
           
@@ -150,6 +162,7 @@ const EventDetailPage = () => {
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>
