@@ -74,15 +74,14 @@ const Contact = () => {
               </h3>
               <div className="space-y-4">
                 <div>
-                 
                   <div className="space-y-2">
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>GINOSINGH G S: <a href="tel:+919150943381" aria-label="Call Ginosingh G S">+91 9150943381</a></span>
+                      <span className='text-white'>FAIZA FATHIMA: <a href="tel:+918637458726" aria-label="Call Tatwin">+91 8637458726</a></span>
                     </p>
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>ARUL D'SOUZA J: <a href="tel:+918667396005" aria-label="Call Arul D'souza J">+91 86673 96005</a></span>
+                      <span className='text-white'>KEVIN ANDREW: <a href="tel:+919043076197" aria-label="Call Kevin">+91 9043076197</a></span>
                     </p>
                   </div>
                 </div>
