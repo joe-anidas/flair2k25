@@ -157,6 +157,15 @@ const FaqPage = () => {
           </div>
         </div>
       </div>
+      <div className="bg-black/80 backdrop-blur-sm border-t border-gray-800">
+        <div className="max-w-7xl mx-auto py-6 px-4">
+          <div className="text-center">
+            <p className="text-gray-400 text-sm">
+              © 2025 LICET. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

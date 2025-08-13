@@ -1,7 +1,7 @@
 const eventsData = [
   // 10:15 AM Events
   {
-    id: 7,
+    id: 1,
     title: "Demogorgon's Debug",
     slug: "demogorgons-debug",
     description: "Code debugging competition with multiple intense rounds",
@@ -35,10 +35,11 @@ Rules:
     time: "10:15 - 12:30 PM",
     location: "A22",
     organizers: "Betina, Samuvel Johnson",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "https://example.com/brochures/demogorgons-debug.pdf"
   },
   {
-    id: 4,
+    id: 2,
     title: "Hawkin's High Paper",
     slug: "hawkins-high-paper",
     description: "Paper presentation event showcasing innovative research and academic writing skills",
@@ -119,7 +120,7 @@ Winning:
 
   // 10:45 AM Event
   {
-    id: 2,
+    id: 4,
     title: "MindFlayer Grid",
     slug: "mindflayer-grid",
     description: "Technical connection game matching clues with images in timed rounds",
@@ -165,7 +166,7 @@ Winning:
 
   // 11:30 AM Event
   {
-    id: 8,
+    id: 5,
     title: "The Upside Down",
     slug: "the-upside-down",
     description: "Cyber ciphers event testing cryptography and decoding skills",
@@ -182,7 +183,7 @@ Winning:
 
   // 1:30 PM Events
   {
-    id: 1,
+    id: 6,
     title: "Vecna's Vision",
     slug: "vecnas-vision",
     description: "AI prompting challenge focusing on image and video generation tasks under strict guidelines",
@@ -223,7 +224,7 @@ Judging:
     registrationLink: ""
   },
   {
-    id: 5,
+    id: 7,
     title: "Arcade of answers",
     slug: "arcade-of-answers",
     description: "Technical quiz competition testing knowledge, speed, and strategy across multiple domains",
@@ -262,7 +263,7 @@ Rules:
     registrationLink: ""
   },
   {
-    id: 6,
+    id: 8,
     title: "The Wall of Whispers",
     slug: "the-wall-of-whispers",
     description: "Tech charades with acting, drawing, and emoji challenges",
