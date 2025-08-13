@@ -5,6 +5,7 @@ const eventsData = [
     slug: "hawkins-high-papers",
     description: "Paper Presentation event focusing on academic writing and research works.",
     image: "/events/hole.png",
+    pdfUrl: "/pdfs/sample.pdf",
     rules: `
 Rules:
   1. Maximum number of participants in a team is 3.

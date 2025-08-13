@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Snow from "../ui/Snow";
 import GlitchRegisterButton from "../ui/GlitchRegisterButton";
+import PdfPreviewer from "../ui/PdfPreviewer";
 import eventsData from '../data/events';
 
 const EventDetailPage = () => {
@@ -116,12 +117,19 @@ const EventDetailPage = () => {
           </div>
           
           
-          <div className="prose prose-invert max-w-none">
+           <div className="prose prose-invert max-w-none">
             <div className="bg-black/20 p-4 rounded-lg mb-6">
               <pre className="whitespace-pre-wrap text-sm md:text-base overflow-x-auto">
                 {eventDeets.rules}
               </pre>
             </div>
+             {/* Optional PDF preview if available on event data */}
+             {eventDeets.pdfUrl && (
+               <div className="bg-black/20 p-4 rounded-lg mb-6">
+                 <h3 className="text-red-400 font-bold mb-3">Event Brochure</h3>
+                 <PdfPreviewer pdfUrl={eventDeets.pdfUrl} height="70vh" />
+               </div>
+             )}
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="bg-black/20 p-4 rounded-lg">
