@@ -211,12 +211,12 @@ const Hero = () => {
                 style={{ fontFamily: 'STBold, sans-serif' }} 
                 className="text-1xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight flex flex-col items-center text-center"
               >
-                <span>Join us on</span>
+                <span className="mb-1">Join us on</span>
                 <motion.div
                   initial="hidden"
                   animate="visible"
                   variants={herotextAnimation}
-                  className="text-[3rem] sm:text-[3rem] mb-5 font-bold tracking-wide mix-blend-exclusion w-full text-center"
+                  className="text-[3rem] sm:text-[3rem] mb-5 font-bold tracking-wide mix-blend-exclusion w-full text-center mt-4"
                 >
                   <FuzzyText
                     fontSize="3rem"
