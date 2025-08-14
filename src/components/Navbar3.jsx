@@ -69,9 +69,9 @@ export default function Navbar() {
               <NavButton onClick={() => scrollToSection('contact')}>
                 <BlurText text="Contact" animateBy="letters" />
               </NavButton>
-              <NavButton onClick={goToFaq}>
+              {/* <NavButton onClick={goToFaq}>
                 <BlurText text="FAQ" animateBy="letters" />
-              </NavButton>
+              </NavButton> */}
             </div>
           </div>
           

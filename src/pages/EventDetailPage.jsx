@@ -9,6 +9,7 @@ const EventDetailPage = () => {
   const { eventSlug } = useParams();
   const [eventDeets, setEventDeets] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showGuidelines, setShowGuidelines] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -95,7 +96,7 @@ const EventDetailPage = () => {
               />
             </svg>
             <span className="hidden xs:inline sm:inline">Back to All Events</span>
-            <span className="xs:hidden">Back</span>
+
           </button>
           
           {/* Register Button */}
@@ -110,18 +111,7 @@ const EventDetailPage = () => {
             } text-xs sm:text-sm md:text-base`}
             onClick={!eventDeets.registrationLink ? (e) => e.preventDefault() : undefined}
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-4 w-4 md:h-5 md:w-5 mr-1 sm:mr-2" 
-              viewBox="0 0 20 20" 
-              fill="currentColor"
-            >
-              <path 
-                fillRule="evenodd" 
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" 
-                clipRule="evenodd" 
-              />
-            </svg>
+      
             <span>Register Now</span>
           </a>
         </div>
@@ -138,25 +128,35 @@ const EventDetailPage = () => {
                 </h1>
                 <p className="text-red-300 font-medium text-sm md:text-base">{eventDeets.description}</p>
               </div>
+              {eventDeets.brochureLink && (
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setShowGuidelines(true)}
+                    className="py-2 px-3 md:px-5 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium border border-red-600/30 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"
+                  >
+                    Guidelines
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="prose prose-invert max-w-none">
               <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 md:mb-6 border border-gray-700/50">
-                <pre className="whitespace-pre-wrap text-xs md:text-sm lg:text-base overflow-x-auto">
+                <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
                   {eventDeets.rules}
                 </pre>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                 <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">When</h3>
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Time</h3>
                   <p className="text-white text-xs md:text-sm lg:text-base">
-                    {eventDeets.time} {eventDeets.date}
+                    {eventDeets.time}  [ {eventDeets.date} ]
                   </p>
                 </div>
 
                 <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Where</h3>
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Venue</h3>
                   <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.location}</p>
                 </div>
 
@@ -172,9 +172,19 @@ const EventDetailPage = () => {
               </div>
               
               {/* Event Brochure Section */}
-              {eventDeets.brochureLink && (
+              {/* {eventDeets.brochureLink && (
                 <div className="mt-6">
-                  <h3 className="text-xl font-bold text-red-400 mb-4">Event Brochure</h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-red-400">Event Brochure</h3>
+                    <a
+                      href={eventDeets.brochureLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block py-2 px-4 md:px-6 bg-gradient-to-r from-red-800 to-red-950 text-red-200 rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md font-medium border border-red-600/30 hover:shadow-red-500/40 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"
+                    >
+                      Open Brochure in New Tab
+                    </a>
+                  </div>
                   <div className="w-full border border-red-500/30 rounded-lg overflow-hidden">
                     <iframe
                       src={eventDeets.brochureLink}
@@ -182,22 +192,38 @@ const EventDetailPage = () => {
                       title={`Brochure for ${eventDeets.title}`}
                     />
                   </div>
-                  <div className="mt-4 text-center">
-                    <a
-                      href={eventDeets.brochureLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block py-2 px-4 md:px-6 bg-gradient-to-r from-red-800 to-red-950 text-red-200 rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md font-medium border border-red-600/30 hover:shadow-red-500/40 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-sm md:text-base"
-                    >
-                      Open Brochure in New Tab
-                    </a>
-                  </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
       </div>
+      {showGuidelines && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 md:p-6">
+          <div className="relative w-full max-w-5xl h-[80vh] backdrop-blur-md bg-black/30 rounded-xl p-3 md:p-5 shadow-xl shadow-red-900/20 overflow-hidden">
+            <div className="absolute inset-0 rounded-xl border border-red-500/30 animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.7)]"></div>
+            <div className="absolute inset-0 rounded-xl border border-red-500/20 shadow-[0_0_25px_rgba(220,38,38,0.9)] animate-ping opacity-20" style={{ animationDuration: "3s" }}></div>
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center justify-between mb-3 md:mb-4">
+                <h3 className="text-white font-bold text-base md:text-xl">Guidelines</h3>
+                <button
+                  onClick={() => setShowGuidelines(false)}
+                  className="py-1.5 px-3 md:px-4 bg-gradient-to-r from-red-800 to-red-950 text-red-200 rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md font-medium border border-red-600/30 hover:shadow-red-500/40 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs md:text-sm"
+                >
+                  Close
+                </button>
+              </div>
+              <div className="flex-1 border border-red-500/30 rounded-lg overflow-hidden bg-black/20">
+                <iframe
+                  src={eventDeets.brochureLink}
+                  className="w-full h-full"
+                  title={`Guidelines for ${eventDeets.title}`}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       
       <div className="bg-black/80 backdrop-blur-sm border-t border-gray-800">
         <div className="max-w-7xl mx-auto py-6 px-4">

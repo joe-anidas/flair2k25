@@ -6,8 +6,7 @@ const eventsData = [
     slug: "demogorgons-debug",
     description: "Code debugging competition with multiple intense rounds",
     image: "/events/red%20house.png",
-    rules: `
-Team:
+    rules: `Team:
   - 2 members
 
 Rounds:
@@ -31,7 +30,7 @@ Rules:
   - 10min break between rounds
   - Unfair practices = disqualification
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "10:15 - 12:30 PM",
     location: "A22",
     organizers: "Betina, Samuvel Johnson",
@@ -74,7 +73,7 @@ Submission:
 Winning:
   - Top 3 papers selected
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "10:15 - 11:30 AM",
     location: "H23 & J14",
     organizers: "Pauline Samyuktha, Gavrila",
@@ -112,7 +111,7 @@ Rules:
 Winning:
   - Top 3 fastest teams
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "10:15 - 12:15 PM",
     location: "A21",
     organizers: "Vasanth, Kavitha Sri",
@@ -159,7 +158,7 @@ Rules:
 Winning:
   - Top 3 teams by combined points
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "10:45 - 12:30 PM",
     location: "I33",
     organizers: "Akshayaa, Priyanka",
@@ -177,7 +176,7 @@ Winning:
     rules: `
 (Details to be announced)
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "11:30 - 12:30 PM",
     location: "I32",
     organizers: "Lithika",
@@ -221,7 +220,7 @@ Judging:
   - Tie-breaker: Fewer prompts + faster submission
   - Judges' decisions are final
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "1:30 - 3:00 PM",
     location: "A21",
     organizers: "Lochana, Maga Devi",
@@ -261,7 +260,7 @@ Rules:
   - Tie-breaker: Rapid-fire round
   - Judges' decisions final
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "1:30 - 3:00 PM",
     location: "A22",
     organizers: "Kavinsha, Fathima Teresa",
@@ -302,7 +301,7 @@ Rules:
   - Rule violations = point deduction
   - Judges' decisions final
 `,
-    date: "16th September 2025",
+    date: "23rd August 2025",
     time: "1:30 - 3:00 PM",
     location: "I33",
     organizers: "Gopika, Mythreyi",
