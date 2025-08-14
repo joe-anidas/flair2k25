@@ -58,7 +58,7 @@ export default function Navbar() {
           
           {/* Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-6">
               <NavButton onClick={goToHome}>
                 <BlurText text="Home" animateBy="letters" />
               </NavButton>

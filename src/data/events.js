@@ -173,7 +173,7 @@ Winning:
     title: "The Upside Down",
     slug: "the-upside-down",
     description: "Cyber ciphers event testing cryptography and decoding skills",
-    image: "",
+    image: "/events/house.png",
     rules: `
 (Details to be announced)
 `,
