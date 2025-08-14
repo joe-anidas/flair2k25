@@ -129,6 +129,18 @@ const EventDetailPage = () => {
         <div className="relative backdrop-blur-md bg-black/30 rounded-xl p-4 md:p-6 mb-6 md:mb-8 shadow-xl shadow-red-900/20 overflow-hidden">
           <div className="absolute inset-0 rounded-xl border border-red-500/30 animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.7)]"></div>
           <div className="absolute inset-0 rounded-xl border border-red-500/20 shadow-[0_0_25px_rgba(220,38,38,0.9)] animate-ping opacity-20" style={{ animationDuration: "3s" }}></div>
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 w-full h-full z-0"
+            style={{
+              backgroundImage: `url('/assets/EventBackground (1).jpg')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.4,
+              filter: 'brightness(1.3)',
+              mixBlendMode: 'overlay'
+            }}
+          ></div>
           
           <div className="relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
