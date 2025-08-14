@@ -56,28 +56,56 @@ const Contact = () => {
                   Join us for a unique journey, where the future meets the present in extraordinary ways.
                 </p>
                 <div className="flex gap-4 text-white text-xl">
-                  <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
+                  {/* <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
                     <i className="fas fa-map-marker-alt"></i>
-                  </a>
+                  </a> */}
                   <a href="https://www.instagram.com/flairit_2k25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
                     <i className="fab fa-instagram"></i>
                   </a>
                   
                 </div>
+                <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
+                 
+                  <p className="flex items-center gap-2 text-sm">
+                    <i className="fas fa-map-marker-alt text-red-400 w-4"></i>
+                    <span className='text-white'>LICET, Loyola Campus, Chennai</span>
+                  </p>
+                </a>
               </div>
             </Card>
 
             {/* Second Card - Contact Information */}
             <Card className="h-full">
+            
               <h3 className="font-bold text-lg mb-4 text-red-400">
-                Contact Information
+                CONTACT INFORMATION
               </h3>
+            
+              
+              
               <div className="space-y-4">
                 <div>
-                  <div className="space-y-2">
+                <div className="space-y-2">
+                <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
+                COORDINATORS
+              </p>
+              
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
-                      <span className='text-white'>FAIZA FATHIMA: <a href="tel:+918637458726" aria-label="Call Tatwin">+91 8637458726</a></span>
+                      <span className='text-white'>FAIZA FATHIMA</span>
+                    </p>
+                    <p className="flex items-center gap-2 text-sm">
+                      <i className="fas fa-user text-red-400 w-4"></i>
+                      <span className='text-white'>MIRACLIN JOVITTA</span>
+                    </p>
+                  </div>
+                
+                  <div className="space-y-2">
+                  <p className="uppercase tracking-widest mb-2 text-red-300 text-xs mt-4">
+                  For Queries Contact</p>
+                    <p className="flex items-center gap-2 text-sm">
+                      <i className="fas fa-user text-red-400 w-4"></i>
+                      <span className='text-white'>TATWIN SHELIAN: <a href="tel:+918637458726" aria-label="Call Tatwin">+91 8637458726</a></span>
                     </p>
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
@@ -98,16 +126,7 @@ const Contact = () => {
                   </a>
                 </div>
                 <div>
-                <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
-                 
-                  <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
-                    Location
-                  </p>
-                  <p className="flex items-center gap-2 text-sm">
-                    <i className="fas fa-map-marker-alt text-red-400 w-4"></i>
-                    <span className='text-white'>LICET, Loyola Campus, Chennai</span>
-                  </p>
-                </a>
+                
                 </div>
               </div>
             </Card>

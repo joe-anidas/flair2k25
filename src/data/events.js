@@ -36,7 +36,7 @@ Rules:
     location: "A22",
     organizers: "Betina, Samuvel Johnson",
     registrationLink: "",
-    brochureLink: "https://example.com/brochures/demogorgons-debug.pdf"
+    brochureLink: "/pdf/Untitled.pdf"
   },
   {
     id: 2,
@@ -82,8 +82,8 @@ Winning:
   },
   {
     id: 3,
-    title: "The Helifire Hunt",
-    slug: "the-helifire-hunt",
+    title: "The Hellfire Hunt",
+    slug: "the-helfire-hunt",
     description: "Treasure hunt with technical puzzles and real-world challenges",
     image: "/events/copter.png",
     rules: `
