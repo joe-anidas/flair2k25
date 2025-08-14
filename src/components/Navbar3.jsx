@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -58,16 +58,16 @@ export default function Navbar() {
           
           {/* Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+            <div className="ml-10 flex items-baseline space-x-6" >
               <NavButton onClick={goToHome}>
-                <BlurText text="Home" animateBy="letters" />
+                <BlurText text="Home" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
               <NavButton onClick={() => scrollToSection('events')}>
-                <BlurText text="Events" animateBy="letters" />
+                <BlurText text="Events" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
              
               <NavButton onClick={() => scrollToSection('contact')}>
-                <BlurText text="Contact" animateBy="letters" />
+                <BlurText text="Contact" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
               {/* <NavButton onClick={goToFaq}>
                 <BlurText text="FAQ" animateBy="letters" />

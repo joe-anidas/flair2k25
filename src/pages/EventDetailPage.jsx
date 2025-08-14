@@ -50,7 +50,7 @@ const EventDetailPage = () => {
             onClick={() => navigate("/home")}
             className="py-2 px-4 md:px-6 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-sm md:text-base"
           >
-            Back to Events
+            Back
           </button>
         </div>
       </div>
@@ -80,8 +80,17 @@ const EventDetailPage = () => {
       <div className="relative z-30 pt-28 sm:pt-24 md:pt-24 pb-8 md:pb-12 px-3 md:px-4 max-w-6xl mx-auto">
         <div className="mb-6 md:mb-6 flex flex-row sm:flex-row justify-between items-center gap-2 md:gap-4">
           <button
-            onClick={() => navigate("/home")}
-            className="flex-1 sm:flex-initial py-2 px-3 md:px-6 bg-gradient-to-r from-red-800 to-red-950 text-white rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium flex items-center justify-center border border-red-600/30 hover:border-red-500/50 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"
+            onClick={() => {
+              navigate("/home");
+              // Scroll to events section after navigation
+              setTimeout(() => {
+                const eventsSection = document.getElementById('events');
+                if (eventsSection) {
+                  eventsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+            }}
+            className="w-1/8 sm:flex-initial py-2 px-3 md:px-6 bg-gradient-to-r from-red-800 to-red-950 text-white rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium flex items-center justify-center border border-red-600/30 hover:border-red-500/50 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -95,25 +104,9 @@ const EventDetailPage = () => {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="hidden xs:inline sm:inline">Back to All Events</span>
+            <span className="hidden xs:inline sm:inline">Back</span>
 
           </button>
-          
-          {/* Register Button */}
-          <a
-            href={eventDeets.registrationLink || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex-1 sm:flex-initial py-2 px-3 md:px-6 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-md transition-all duration-300 shadow-md font-medium flex items-center justify-center border border-red-500/40 ${
-              !eventDeets.registrationLink 
-                ? "opacity-50 cursor-not-allowed" 
-                : "hover:from-red-500 hover:to-red-700 hover:shadow-red-500/50 hover:border-red-400/60 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95"
-            } text-xs sm:text-sm md:text-base`}
-            onClick={!eventDeets.registrationLink ? (e) => e.preventDefault() : undefined}
-          >
-      
-            <span>Register Now</span>
-          </a>
         </div>
 
         <div className="relative backdrop-blur-md bg-black/30 rounded-xl p-4 md:p-6 mb-6 md:mb-8 shadow-xl shadow-red-900/20 overflow-hidden">
@@ -142,6 +135,20 @@ const EventDetailPage = () => {
               </div>
               {eventDeets.brochureLink && (
                 <div className="flex items-center gap-3">
+                  {/* Register Button */}
+                  <a
+                    href={eventDeets.registrationLink || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`py-2 px-3 md:px-5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-md transition-all duration-300 shadow-md font-medium flex items-center justify-center border border-red-500/40 ${
+                      !eventDeets.registrationLink 
+                        ? "opacity-50 cursor-not-allowed" 
+                        : "hover:from-red-500 hover:to-red-700 hover:shadow-red-500/50 hover:border-red-400/60 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95"
+                    } text-xs sm:text-sm md:text-base`}
+                    onClick={!eventDeets.registrationLink ? (e) => e.preventDefault() : undefined}
+                  >
+                    <span>Register Now</span>
+                  </a>
                   <button
                     onClick={() => setShowGuidelines(true)}
                     className="py-2 px-3 md:px-5 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium border border-red-600/30 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"

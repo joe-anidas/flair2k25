@@ -18,6 +18,7 @@ const BlurText = ({
   text = '',
   delay = 200,
   className = '',
+  style = {},
   animateBy = 'words',
   direction = 'top',
   threshold = 0.1,
@@ -80,6 +81,7 @@ const BlurText = ({
     <p
       ref={ref}
       className={`blur-text ${className} flex flex-wrap`}
+      style={style}
     >
       {elements.map((segment, index) => {
         const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);

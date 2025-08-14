@@ -50,8 +50,8 @@ const StyledWrapper = styled.div`
   /* hover glow applied to content (and BlurText letters) */
   .button:hover .content,
   .button:hover .blur-text span {
-    filter: drop-shadow(0 0 8px var(--animation-color));
-    text-shadow: 0 0 3px var(--animation-color), 0 0 6px var(--animation-color), 0 0 9px var(--animation-color);
+    filter: drop-shadow(0 0 4px var(--animation-color));
+    text-shadow: 0 0 2px var(--animation-color), 0 0 3px var(--animation-color);
   }
 `;
 
