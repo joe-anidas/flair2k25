@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import hero from '/videos/hero1.webm';
 import logo from '/assets/flair.png';
 import { motion } from "framer-motion";
+import FuzzyText from '../ui/FuzzyText';
 
 // Framer Motion variants adapted from 2K24 page.js
 const herotextAnimation = {
@@ -204,32 +205,29 @@ const Hero = () => {
           </div>
 
           {/* Bottom Right - 2K25 */}
-          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-4 sm:right-6 md:right-8 lg:right-34 z-20">
+          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-8 sm:right-12 md:right-16 lg:right-20 z-20">
             <div className="mt-4 sm:mt-6 md:mt-8">
               <h2
                 style={{ fontFamily: 'STBold, sans-serif' }} 
-                className="text-1xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight"
-              >Join us on
-                <br />
+                className="text-1xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight flex flex-col items-center text-center"
+              >
+                <span className="mb-1">Join us on</span>
                 <motion.div
                   initial="hidden"
                   animate="visible"
                   variants={herotextAnimation}
-                  className="text-[3rem] sm:text-[3rem] mb-5 font-bold bottom-5 right-0 left-10 tracking-wide mix-blend-exclusion"
+                  className="text-[3rem] sm:text-[3rem] mb-5 font-bold tracking-wide mix-blend-exclusion w-full text-center mt-4"
                 >
-                  {dateWords.map((word, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.75, delay: i / 10 }}
-                      className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]"
-                      style={{ fontFamily: 'STOutlined, serif' }}
-                    >
-                      {word}
-                      {" "}
-                    </motion.span>
-                  ))}
+                  <FuzzyText
+                    fontSize="3rem"
+                    fontWeight={900}
+                    fontFamily="STOutlined, serif"
+                    color="#d50b0c"
+                    baseIntensity={0.08}
+                    hoverIntensity={0.3}
+                  >
+                    23rd August
+                  </FuzzyText>
                 </motion.div>
               </h2>
             </div>
