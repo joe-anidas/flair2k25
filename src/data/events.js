@@ -36,7 +36,7 @@ Rules:
     location: "A22",
     organizers: "Betina, Samuvel Johnson",
     registrationLink: "",
-    brochureLink: "/pdf/Untitled.pdf"
+    brochureLink: "/pdf/1.pdf"
   },
   {
     id: 2,
@@ -78,7 +78,8 @@ Winning:
     time: "10:15 - 11:30 AM",
     location: "H23 & J14",
     organizers: "Pauline Samyuktha, Gavrila",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/2.pdf"
   },
   {
     id: 3,
@@ -115,7 +116,8 @@ Winning:
     time: "10:15 - 12:15 PM",
     location: "A21",
     organizers: "Vasanth, Kavitha Sri",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/3.pdf"
   },
 
   // 10:45 AM Event
@@ -161,7 +163,8 @@ Winning:
     time: "10:45 - 12:30 PM",
     location: "I33",
     organizers: "Akshayaa, Priyanka",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/4.pdf"
   },
 
   // 11:30 AM Event
@@ -178,7 +181,8 @@ Winning:
     time: "11:30 - 12:30 PM",
     location: "I32",
     organizers: "Lithika",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/5.pdf"
   },
 
   // 1:30 PM Events
@@ -221,7 +225,8 @@ Judging:
     time: "1:30 - 3:00 PM",
     location: "A21",
     organizers: "Lochana, Maga Devi",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/6.pdf"
   },
   {
     id: 7,
@@ -260,7 +265,8 @@ Rules:
     time: "1:30 - 3:00 PM",
     location: "A22",
     organizers: "Kavinsha, Fathima Teresa",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/7.pdf"
   },
   {
     id: 8,
@@ -300,7 +306,8 @@ Rules:
     time: "1:30 - 3:00 PM",
     location: "I33",
     organizers: "Gopika, Mythreyi",
-    registrationLink: ""
+    registrationLink: "",
+    brochureLink: "/pdf/8.pdf"
   }
 ];
 
