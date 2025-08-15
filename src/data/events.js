@@ -34,8 +34,8 @@ Rules:
     time: "10:15 - 12:30 PM",
     location: "A22",
     organizers: "Betina, Samuvel Johnson",
-    registrationLink: "",
-    brochureLink: "/pdf/1.pdf"
+    registrationLink: "https://forms.gle/n3hD5rXhZtGaGihPA",
+    brochureLink: "/pdf/demogorgons-debug.pdf"
   },
   {
     id: 2,
@@ -77,8 +77,8 @@ Winning:
     time: "10:15 - 11:30 AM",
     location: "H23 & J14",
     organizers: "Pauline Samyuktha, Gavrila",
-    registrationLink: "",
-    brochureLink: "/pdf/2.pdf"
+    registrationLink: "https://forms.gle/rNCTt3pBvZSnbtB88",
+    brochureLink: "/pdf/hawkins-high-paper.pdf"
   },
   {
     id: 3,
@@ -115,8 +115,8 @@ Winning:
     time: "10:15 - 12:15 PM",
     location: "A21",
     organizers: "Vasanth, Kavitha Sri",
-    registrationLink: "",
-    brochureLink: "/pdf/3.pdf"
+    registrationLink: "https://forms.gle/VLsP2fixsdWNeQQ78",
+    brochureLink: "/pdf/the-helfire-hunt.pdf"
   },
 
   // 10:45 AM Event
@@ -162,8 +162,8 @@ Winning:
     time: "10:45 - 12:30 PM",
     location: "I33",
     organizers: "Akshayaa, Priyanka",
-    registrationLink: "",
-    brochureLink: "/pdf/4.pdf"
+    registrationLink: "https://forms.gle/BC8sjs57rcV3XxPd7",
+    brochureLink: "/pdf/mindflayer-grid.pdf"
   },
 
   // 11:30 AM Event
@@ -181,7 +181,7 @@ Winning:
     location: "I32",
     organizers: "Lithika",
     registrationLink: "",
-    brochureLink: "/pdf/5.pdf"
+    brochureLink: "/pdf/the-upside-down.pdf"
   },
 
   // 1:30 PM Events
@@ -224,8 +224,8 @@ Judging:
     time: "1:30 - 3:00 PM",
     location: "A21",
     organizers: "Lochana, Maga Devi",
-    registrationLink: "",
-    brochureLink: "/pdf/6.pdf"
+    registrationLink: "https://forms.gle/qrFgHTDNUbcdTMgs7",
+    brochureLink: "/pdf/vecnas-vision.pdf"
   },
   {
     id: 7,
@@ -264,8 +264,8 @@ Rules:
     time: "1:30 - 3:00 PM",
     location: "A22",
     organizers: "Kavinsha, Fathima Teresa",
-    registrationLink: "",
-    brochureLink: "/pdf/7.pdf"
+    registrationLink: "https://forms.gle/8VHm3m6bxfcvUjEd9",
+    brochureLink: "/pdf/arcade-of-answers.pdf"
   },
   {
     id: 8,
@@ -305,8 +305,8 @@ Rules:
     time: "1:30 - 3:00 PM",
     location: "I33",
     organizers: "Gopika, Mythreyi",
-    registrationLink: "",
-    brochureLink: "/pdf/8.pdf"
+    registrationLink: "https://forms.gle/uonztDCdAQQxfPhN7",
+    brochureLink: "/pdf/the-wall-of-whispers.pdf"
   }
 ];
 
