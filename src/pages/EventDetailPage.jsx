@@ -11,6 +11,20 @@ const EventDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showGuidelines, setShowGuidelines] = useState(false);
 
+  // Common guidelines data
+  const commonGuidelines = `
+GENERAL GUIDELINES:
+- Only students from engineering colleges are allowed to participate.
+- All participants must carry and present a valid college ID card.
+- Participants should be dressed properly.
+- Boys can wear formal or casual attire but T-shirts must have a collared neck.
+- Girls are requested not to wear crop top.
+- Mobile phones and any other electronic gadgets are strictly not allowed during the event.
+- All participants must report to the venue at least 15 minutes before the scheduled time.
+- Any form of malpractice or unfair behavior will lead to immediate disqualification.
+- The judges' decision will be final and binding. No further discussions or disputes will be entertained.
+`;
+
   useEffect(() => {
     const timer = setTimeout(() => {
       const event = eventsData.find((e) => e.slug === eventSlug);
@@ -105,7 +119,6 @@ const EventDetailPage = () => {
               />
             </svg>
             <span className="hidden xs:inline sm:inline">Back</span>
-
           </button>
         </div>
 
@@ -160,59 +173,44 @@ const EventDetailPage = () => {
             </div>
 
             <div className="prose prose-invert max-w-none">
-              <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 md:mb-6 border border-gray-700/50">
-                <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
-                  {eventDeets.rules}
-                </pre>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Time</h3>
-                  <p className="text-white text-xs md:text-sm lg:text-base">
-                    {eventDeets.time}  [ {eventDeets.date} ]
-                  </p>
+                {/* Common Guidelines Section */}
+                <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 md:mb-6 border border-gray-700/50">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Common Guidelines</h3>
+                  <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
+                    {commonGuidelines}
+                  </pre>
                 </div>
 
-                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Venue</h3>
-                  <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.location}</p>
-                </div>
+                <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 md:mb-6 border border-gray-700/50">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Event Description</h3>
+                  <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
+                    {eventDeets.descriptionDetail}
+                  </pre>
+                </div> 
 
-                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Organizers</h3>
-                  <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.organizers}</p>
-                </div>
-
-                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">For Queries</h3>
-                  <p className="text-white text-xs md:text-sm lg:text-base">Contact Alan Merwin: 7904264568</p>
-                </div>
-              </div>
-              
-              {/* Event Brochure Section */}
-              {/* {eventDeets.brochureLink && (
-                <div className="mt-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-red-400">Event Brochure</h3>
-                    <a
-                      href={eventDeets.brochureLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block py-2 px-4 md:px-6 bg-gradient-to-r from-red-800 to-red-950 text-red-200 rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md font-medium border border-red-600/30 hover:shadow-red-500/40 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"
-                    >
-                      Open Brochure in New Tab
-                    </a>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Time</h3>
+                    <p className="text-white text-xs md:text-sm lg:text-base">
+                      {eventDeets.time}  [ {eventDeets.date} ]
+                    </p>
                   </div>
-                  <div className="w-full border border-red-500/30 rounded-lg overflow-hidden">
-                    <iframe
-                      src={eventDeets.brochureLink}
-                      className="w-full h-[60vh]"
-                      title={`Brochure for ${eventDeets.title}`}
-                    />
+
+                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Venue</h3>
+                    <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.location}</p>
+                  </div>
+
+                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Organizers</h3>
+                    <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.organizers}</p>
+                  </div>
+
+                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">For Queries</h3>
+                    <p className="text-white text-xs md:text-sm lg:text-base">Contact Alan Merwin: 7904264568</p>
                   </div>
                 </div>
-              )} */}
             </div>
           </div>
         </div>
