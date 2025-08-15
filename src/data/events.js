@@ -68,8 +68,8 @@ const eventsData = [
     descriptionDetail: "This is a team-based encryption and decryption challenge that tests problem-solving and logical thinking. Participants work in pairs to decode various types of encoded content, ranging from ciphers and scrambled sentences to audio-based clues. Accuracy and speed are critical in determining the winners. No gadgets or AI tools are allowed, and any misconduct leads to immediate disqualification.",
     image: "/events/house.png",
     date: "23rd August 2025",
-    time: "11:30 - 12:30 PM",
-    location: "I32",
+    time: "1:30 - 3:00 PM",
+    location: "H23",
     organizers: "Lithika",
     registrationLink: "https://forms.gle/BwiPGVefBeiBzaFN8",
     brochureLink: "/pdf/the-upside-down.pdf"
@@ -99,7 +99,7 @@ const eventsData = [
     image: "/events/lab.png",
     date: "23rd August 2025",
     time: "1:30 - 3:00 PM",
-    location: "A22",
+    location: "I32",
     organizers: "Kavinsha, Fathima Teresa",
     registrationLink: "https://forms.gle/8VHm3m6bxfcvUjEd9",
     brochureLink: "/pdf/arcade-of-answers.pdf"

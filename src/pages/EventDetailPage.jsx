@@ -208,7 +208,8 @@ GENERAL GUIDELINES:
 
                   <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
                     <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">For Queries</h3>
-                    <p className="text-white text-xs md:text-sm lg:text-base">Contact Alan Merwin: 7904264568</p>
+                    <p className="text-white text-xs md:text-sm lg:text-base"><a href="tel:+918637458726" aria-label="Call Tatwin">Tatwin Shelian: +91 8637458726</a></p>
+                    
                   </div>
                 </div>
             </div>
