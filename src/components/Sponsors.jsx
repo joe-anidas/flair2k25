@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
-import sp1 from '/sponsors/sp_1.png'; // add more images later here
+import sp1 from '/sponsors/blushlogo.jpg';
+import spb1 from '/sponsors/blush.png';
+
 
 const Sponsors = () => {
-  const sponsorImages = [sp1]; // array for future images
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBanner, setSelectedBanner] = useState(null);
+
+  const sponsorImages = [sp1];
+  const sponsorBanners = [spb1];
+
+  const handleOpenBanner = (index) => {
+    setSelectedBanner(sponsorBanners[index] || null);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseBanner = () => {
+    setIsModalOpen(false);
+    setSelectedBanner(null);
+  };
 
   return (
     <div id="sponsors" className="bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
@@ -39,27 +55,48 @@ const Sponsors = () => {
           </div>
 
           {/* Sponsor Cards */}
-          <div className="max-w-4xl mx-auto">
-            <Card className="h-full">
-              <div className="flex flex-row items-center justify-center gap-8 flex-wrap">
-                {sponsorImages.map((image, index) => (
-                  <div key={index} className="flex flex-col items-center text-center">
-                    <div className="relative h-48 w-48 overflow-hidden rounded-xl group flex items-center justify-center bg-black">
-                      <img
-                        src={image}
-                        alt={`Sponsor ${index + 1}`}
-                        className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                      />
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-500 rounded-xl"></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
+          <div className="flex flex-row items-center justify-center gap-8 flex-wrap">
+            {sponsorImages.map((image, index) => (
+              <Card key={index} className="h-full p-4 bg-black/50 rounded-xl">
+                <div
+                  className="relative h-48 w-48 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
+                  onClick={() => handleOpenBanner(index)}
+                >
+                  <img
+                    src={image}
+                    alt={`Sponsor ${index + 1}`}
+                    className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-500 rounded-xl"></div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedBanner && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={handleCloseBanner}
+        >
+          <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedBanner} alt="Sponsor banner" className="w-full h-auto rounded-lg shadow-2xl" />
+            <button
+              type="button"
+              aria-label="Close"
+              onClick={handleCloseBanner}
+              className="absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center shadow-lg hover:bg-gray-200"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

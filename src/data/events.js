@@ -69,8 +69,8 @@ const eventsData = [
     image: "/events/house.png",
     date: "23rd August 2025",
     time: "1:30 - 3:00 PM",
-    location: "H23",
-    organizers: "Lithika",
+    location: "A22",
+    organizers: "Lithika, Laxmi",
     registrationLink: "https://forms.gle/BwiPGVefBeiBzaFN8",
     brochureLink: "/pdf/the-upside-down.pdf"
   },
