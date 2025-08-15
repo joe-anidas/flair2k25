@@ -31,7 +31,6 @@ GENERAL GUIDELINES:
       setEventDeets(event || null);
       setIsLoading(false);
     }, 500);
-
     return () => clearTimeout(timer);
   }, [eventSlug]);
 
@@ -56,13 +55,15 @@ GENERAL GUIDELINES:
           <Snow />
         </div>
         <div className="text-center max-w-md mx-auto relative z-10">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4">Event Not Found</h2>
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4">
+            Event Not Found
+          </h2>
           <p className="mb-6 text-gray-300 text-sm md:text-base">
             The event you're looking for doesn't exist or has been removed.
           </p>
           <button
             onClick={() => navigate("/home")}
-            className="py-2 px-4 md:px-6 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-sm md:text-base"
+            className="py-2 px-6 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-sm md:text-base"
           >
             Back
           </button>
@@ -80,7 +81,12 @@ GENERAL GUIDELINES:
       </div>
 
       <div className="fixed top-0 left-0 w-full h-full z-10">
-        <video autoPlay loop muted className="w-full h-full object-cover opacity-80">
+        <video
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover opacity-80"
+        >
           <source src="/space-theme.webm" type="video/webm" />
         </video>
       </div>
@@ -92,23 +98,22 @@ GENERAL GUIDELINES:
       </div>
 
       <div className="relative z-30 pt-28 sm:pt-24 md:pt-24 pb-8 md:pb-12 px-3 md:px-4 max-w-6xl mx-auto">
-        <div className="mb-6 md:mb-6 flex flex-row sm:flex-row justify-between items-center gap-2 md:gap-4">
+        <div className="mb-6 flex justify-center sm:justify-start items-center">
           <button
             onClick={() => {
               navigate("/home");
-              // Scroll to events section after navigation
               setTimeout(() => {
-                const eventsSection = document.getElementById('events');
+                const eventsSection = document.getElementById("events");
                 if (eventsSection) {
-                  eventsSection.scrollIntoView({ behavior: 'smooth' });
+                  eventsSection.scrollIntoView({ behavior: "smooth" });
                 }
               }, 100);
             }}
-            className="w-1/8 sm:flex-initial py-2 px-3 md:px-6 bg-gradient-to-r from-red-800 to-red-950 text-white rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium flex items-center justify-center border border-red-600/30 hover:border-red-500/50 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs sm:text-sm md:text-base"
+            className="py-2 px-4 sm:py-3 sm:px-5 bg-gradient-to-r from-red-800 to-red-950 text-white rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium flex items-center justify-center border border-red-600/30 hover:border-red-500/50 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-sm sm:text-base"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 md:h-5 md:w-5 mr-1 sm:mr-2"
+              className="h-5 w-5 sm:h-6 sm:w-6 mr-2"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -118,49 +123,52 @@ GENERAL GUIDELINES:
                 clipRule="evenodd"
               />
             </svg>
-            <span className="hidden xs:inline sm:inline">Back</span>
+            Back
           </button>
         </div>
 
-        <div className="relative backdrop-blur-md bg-black/30 rounded-xl p-4 md:p-6 mb-6 md:mb-8 shadow-xl shadow-red-900/20 overflow-hidden">
+        <div className="relative backdrop-blur-md bg-black/30 rounded-xl p-4 md:p-6 mb-8 shadow-xl shadow-red-900/20 overflow-hidden">
           <div className="absolute inset-0 rounded-xl border border-red-500/30 animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.7)]"></div>
-          <div className="absolute inset-0 rounded-xl border border-red-500/20 shadow-[0_0_25px_rgba(220,38,38,0.9)] animate-ping opacity-20" style={{ animationDuration: "3s" }}></div>
-          {/* Background Image */}
-          <div 
+          <div
             className="absolute inset-0 w-full h-full z-0"
             style={{
               backgroundImage: `url('/assets/EventBackground (1).jpg')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               opacity: 0.4,
-              filter: 'brightness(1.3)',
-              mixBlendMode: 'overlay'
+              filter: "brightness(1.3)",
+              mixBlendMode: "overlay",
             }}
           ></div>
-          
+
           <div className="relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
               <div className="flex-1">
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">
                   {eventDeets.title}
                 </h1>
-                <p className="text-red-300 font-medium text-sm md:text-base">{eventDeets.description}</p>
+                <p className="text-red-300 font-medium text-sm md:text-base">
+                  {eventDeets.description}
+                </p>
               </div>
               {eventDeets.brochureLink && (
-                <div className="flex items-center gap-3">
-                  {/* Register Button */}
+                <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                   <a
                     href={eventDeets.registrationLink || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`py-2 px-3 md:px-5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-md transition-all duration-300 shadow-md font-medium flex items-center justify-center border border-red-500/40 ${
-                      !eventDeets.registrationLink 
-                        ? "opacity-50 cursor-not-allowed" 
+                    className={`py-2 px-4 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-md transition-all duration-300 shadow-md font-medium border border-red-500/40 ${
+                      !eventDeets.registrationLink
+                        ? "opacity-50 cursor-not-allowed"
                         : "hover:from-red-500 hover:to-red-700 hover:shadow-red-500/50 hover:border-red-400/60 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95"
                     } text-xs sm:text-sm md:text-base`}
-                    onClick={!eventDeets.registrationLink ? (e) => e.preventDefault() : undefined}
+                    onClick={
+                      !eventDeets.registrationLink
+                        ? (e) => e.preventDefault()
+                        : undefined
+                    }
                   >
-                    <span>Register Now</span>
+                    Register Now
                   </a>
                   <button
                     onClick={() => setShowGuidelines(true)}
@@ -173,60 +181,102 @@ GENERAL GUIDELINES:
             </div>
 
             <div className="prose prose-invert max-w-none">
-                {/* Common Guidelines Section */}
-                <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 md:mb-6 border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Common Guidelines</h3>
-                  <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
+              {/* Guidelines and Poster: poster above guidelines in mobile, side-by-side on desktop */}
+              <div className="flex flex-col-reverse md:flex-row gap-4 mb-4">
+                {/* Common Guidelines */}
+                <div className="flex-1 bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50 flex flex-col justify-between">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
+                    Common Guidelines
+                  </h3>
+                  <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto flex-1">
                     {commonGuidelines}
                   </pre>
                 </div>
-
-                <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 md:mb-6 border border-gray-700/50">
-                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Event Description</h3>
-                  <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
-                    {eventDeets.descriptionDetail}
-                  </pre>
-                </div> 
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Time</h3>
-                    <p className="text-white text-xs md:text-sm lg:text-base">
-                      {eventDeets.time}  [ {eventDeets.date} ]
-                    </p>
-                  </div>
-
-                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Venue</h3>
-                    <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.location}</p>
-                  </div>
-
-                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">Organizers</h3>
-                    <p className="text-white text-xs md:text-sm lg:text-base">{eventDeets.organizers}</p>
-                  </div>
-
-                  <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
-                    <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">For Queries</h3>
-                    <p className="text-white text-xs md:text-sm lg:text-base"><a href="tel:+918637458726" aria-label="Call Tatwin">Tatwin Shelian: +91 8637458726</a></p>
-                    
-                  </div>
+                {/* Event Poster */}
+                <div className="flex-1 flex items-center justify-center bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                  <img
+                    src={`/posters/${eventDeets.slug}.jpg`}
+                    alt={`${eventDeets.title} Poster`}
+                    className="object-contain bg-black w-full aspect-square max-h-64 md:max-h-80 rounded-md shadow-md"
+                    onError={(e) => {
+                      e.target.style.display = "none";
+                    }}
+                  />
                 </div>
+              </div>
+
+              {/* Event Description */}
+              <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 border border-gray-700/50">
+                <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
+                  Event Description
+                </h3>
+                <pre className="whitespace-pre-wrap text-xs md:text-sm overflow-x-auto">
+                  {eventDeets.descriptionDetail}
+                </pre>
+              </div>
+
+              {/* Event Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
+                    Time
+                  </h3>
+                  <p className="text-white text-xs md:text-sm lg:text-base">
+                    {eventDeets.time} [ {eventDeets.date} ]
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
+                    Venue
+                  </h3>
+                  <p className="text-white text-xs md:text-sm lg:text-base">
+                    {eventDeets.location}
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
+                    Organizers
+                  </h3>
+                  <p className="text-white text-xs md:text-sm lg:text-base">
+                    {eventDeets.organizers}
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
+                  <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
+                    For Queries
+                  </h3>
+                  <p className="text-white text-xs md:text-sm lg:text-base">
+                    Tatwin Shelian: <a href="tel:8637458726">+91 8637458726</a>
+                    <br />
+                    Kevin Andrew: <a href="tel:9043076197">+91 9043076197</a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Guidelines Modal */}
       {showGuidelines && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 md:p-6">
-          <div className="relative w-full max-w-5xl h-[80vh] backdrop-blur-md bg-black/30 rounded-xl p-3 md:p-5 shadow-xl shadow-red-900/20 overflow-hidden">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 md:p-6 h-screen">
+          <div className="relative w-full max-w-5xl h-[90vh] sm:h-[80vh] backdrop-blur-md bg-black/30 rounded-xl p-3 md:p-5 shadow-xl shadow-red-900/20">
             <div className="absolute inset-0 rounded-xl border border-red-500/30 animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.7)]"></div>
-            <div className="absolute inset-0 rounded-xl border border-red-500/20 shadow-[0_0_25px_rgba(220,38,38,0.9)] animate-ping opacity-20" style={{ animationDuration: "3s" }}></div>
+            <div
+              className="absolute inset-0 rounded-xl border border-red-500/20 shadow-[0_0_25px_rgba(220,38,38,0.9)] animate-ping opacity-20"
+              style={{ animationDuration: "3s" }}
+            ></div>
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-center justify-between mb-3 md:mb-4">
-                <h3 className="text-white font-bold text-base md:text-xl">Guidelines</h3>
+                <h3 className="text-white font-bold text-base md:text-xl">
+                  Guidelines
+                </h3>
                 <button
                   onClick={() => setShowGuidelines(false)}
-                  className="py-1.5 px-3 md:px-4 bg-gradient-to-r from-red-800 to-red-950 text-red-200 rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md font-medium border border-red-600/30 hover:shadow-red-500/40 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-xs md:text-sm"
+                  className="py-2 px-4 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md font-medium text-xs md:text-sm"
                 >
                   Close
                 </button>
@@ -242,13 +292,11 @@ GENERAL GUIDELINES:
           </div>
         </div>
       )}
-      
+
       <div className="bg-black/80 backdrop-blur-sm border-t border-gray-800">
         <div className="max-w-7xl mx-auto py-6 px-4">
           <div className="text-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 LICET. All Rights Reserved.
-            </p>
+            <p className="text-gray-400 text-sm">© 2025 LICET. All Rights Reserved.</p>
           </div>
         </div>
       </div>
