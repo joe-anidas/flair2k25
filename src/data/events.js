@@ -38,7 +38,7 @@ const eventsData = [
     date: "23rd August 2025",
     time: "10:15 - 12:15 PM",
     location: "A21",
-    organizers: "Vasanth, Kavitha Sri",
+    organizers: "Vasanth, Kavita Sri",
     registrationLink: "https://forms.gle/VLsP2fixsdWNeQQ78",
     brochureLink: "/pdf/the-helfire-hunt.pdf"
   },
