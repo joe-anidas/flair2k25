@@ -98,7 +98,8 @@ GENERAL GUIDELINES:
       </div>
 
       <div className="relative z-30 pt-28 sm:pt-24 md:pt-24 pb-8 md:pb-12 px-3 md:px-4 max-w-6xl mx-auto">
-        <div className="mb-6 flex justify-center sm:justify-start items-center">
+        {/* FIX: back button aligned left on mobile */}
+        <div className="mb-6 flex justify-start items-center">
           <button
             onClick={() => {
               navigate("/home");
@@ -181,9 +182,7 @@ GENERAL GUIDELINES:
             </div>
 
             <div className="prose prose-invert max-w-none">
-              {/* Guidelines and Poster: poster above guidelines in mobile, side-by-side on desktop */}
               <div className="flex flex-col-reverse md:flex-row gap-4 mb-4">
-                {/* Common Guidelines */}
                 <div className="flex-1 bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50 flex flex-col justify-between">
                   <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
                     Common Guidelines
@@ -192,7 +191,6 @@ GENERAL GUIDELINES:
                     {commonGuidelines}
                   </pre>
                 </div>
-                {/* Event Poster */}
                 <div className="flex-1 flex items-center justify-center bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
                   <img
                     src={`/posters/${eventDeets.slug}.jpg`}
@@ -205,7 +203,6 @@ GENERAL GUIDELINES:
                 </div>
               </div>
 
-              {/* Event Description */}
               <div className="bg-black/20 p-3 md:p-4 rounded-lg mb-4 border border-gray-700/50">
                 <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
                   Event Description
@@ -215,7 +212,6 @@ GENERAL GUIDELINES:
                 </pre>
               </div>
 
-              {/* Event Details */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50">
                   <h3 className="text-red-400 font-bold mb-2 text-sm md:text-base">
@@ -260,7 +256,6 @@ GENERAL GUIDELINES:
         </div>
       </div>
 
-      {/* Guidelines Modal */}
       {showGuidelines && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 md:p-6 h-screen">
           <div className="relative w-full max-w-5xl h-[90vh] sm:h-[80vh] backdrop-blur-md bg-black/30 rounded-xl p-3 md:p-5 shadow-xl shadow-red-900/20">
@@ -296,7 +291,9 @@ GENERAL GUIDELINES:
       <div className="bg-black/80 backdrop-blur-sm border-t border-gray-800">
         <div className="max-w-7xl mx-auto py-6 px-4">
           <div className="text-center">
-            <p className="text-gray-400 text-sm">© 2025 LICET. All Rights Reserved.</p>
+            <p className="text-gray-400 text-sm">
+              © 2025 LICET. All Rights Reserved.
+            </p>
           </div>
         </div>
       </div>
