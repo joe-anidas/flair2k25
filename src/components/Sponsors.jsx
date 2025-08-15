@@ -49,9 +49,6 @@ const Sponsors = () => {
                 OUR SPONSORS
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Proudly supported by leading institutions and organizations
-            </p>
           </div>
 
           {/* Sponsor Cards */}
