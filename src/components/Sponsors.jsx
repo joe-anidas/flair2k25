@@ -59,7 +59,7 @@ const Sponsors = () => {
 
           {/* Title Sponsors */}
           <div className="mb-12">
-            <h3 className="text-3xl font-bold text-center text-white mb-8">Title Sponsors</h3>
+            <h3 className="text-3xl font-bold text-center text-white mb-8">Title Sponsor</h3>
             <div className="flex justify-center gap-8 flex-wrap">
               {titleSponsors.map((image, index) => (
                 <Card key={index} className="p-6 bg-black/50 rounded-xl">
@@ -85,9 +85,10 @@ const Sponsors = () => {
               {otherSponsors.map((image, index) => (
                 <Card key={index} className="h-full p-4 bg-black/50 rounded-xl">
                   <div
-                    className="relative h-40 w-40 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
-                    onClick={() => handleOpenBanner(index, false)}
-                  >
+                      className="relative h-48 w-48 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
+                      onClick={() => handleOpenBanner(index, false)}
+                    >
+
                     <img
                       src={image}
                       alt={`Sponsor ${index + 1}`}
