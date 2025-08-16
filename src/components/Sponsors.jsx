@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import Smoke from '../ui/Snow';
 import Card from '../ui/Card';
-import sp1 from '/sponsors/blushlogo.jpg';
-import spb1 from '/sponsors/blush.png';
-
+import sp1 from '/sponsors/blushlogo.jpg';       // Title sponsor logo
+import spb1 from '/sponsors/blush.png';          // Title sponsor banner
+import sp2 from '/sponsors/grad-square.jpg';     // Other sponsor logo
+import spb2 from '/sponsors/grad-square.png';    // Other sponsor banner
 
 const Sponsors = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBanner, setSelectedBanner] = useState(null);
 
-  const sponsorImages = [sp1];
-  const sponsorBanners = [spb1];
+  // Title Sponsors
+  const titleSponsors = [sp1];
+  const titleSponsorBanners = [spb1];
 
-  const handleOpenBanner = (index) => {
-    setSelectedBanner(sponsorBanners[index] || null);
+  // Other Sponsors
+  const otherSponsors = [sp2];
+  const otherSponsorBanners = [spb2];
+
+  const handleOpenBanner = (index, isTitle = false) => {
+    setSelectedBanner(isTitle ? titleSponsorBanners[index] : otherSponsorBanners[index]);
     setIsModalOpen(true);
   };
 
@@ -29,17 +35,17 @@ const Sponsors = () => {
         <Smoke />
       </div>
 
-      {/* Funky Red Background Elements */}
+      {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      {/* Main Content */}
+      {/* Content */}
       <div className="relative z-10 py-20 pb-10 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Sponsors Header */}
+          {/* Section Title */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
               <span
@@ -51,29 +57,51 @@ const Sponsors = () => {
             </h2>
           </div>
 
-          {/* Sponsor Cards */}
-          <div className="flex flex-row items-center justify-center gap-8 flex-wrap">
-            {sponsorImages.map((image, index) => (
-              <Card key={index} className="h-full p-4 bg-black/50 rounded-xl">
-                <div
-                  className="relative h-48 w-48 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
-                  onClick={() => handleOpenBanner(index)}
-                >
-                  <img
-                    src={image}
-                    alt={`Sponsor ${index + 1}`}
-                    className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-500 rounded-xl"></div>
-                </div>
-              </Card>
-            ))}
+          {/* Title Sponsors */}
+          <div className="mb-12">
+            <h3 className="text-3xl font-bold text-center text-white mb-8">Title Sponsors</h3>
+            <div className="flex justify-center gap-8 flex-wrap">
+              {titleSponsors.map((image, index) => (
+                <Card key={index} className="p-6 bg-black/50 rounded-xl">
+                  <div
+                    className="relative h-56 w-56 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
+                    onClick={() => handleOpenBanner(index, true)}
+                  >
+                    <img
+                      src={image}
+                      alt={`Title Sponsor ${index + 1}`}
+                      className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
+                    />
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Other Sponsors */}
+          <div>
+            <h3 className="text-3xl font-bold text-center text-white mb-8">Sponsors</h3>
+            <div className="flex flex-row items-center justify-center gap-8 flex-wrap">
+              {otherSponsors.map((image, index) => (
+                <Card key={index} className="h-full p-4 bg-black/50 rounded-xl">
+                  <div
+                    className="relative h-40 w-40 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
+                    onClick={() => handleOpenBanner(index, false)}
+                  >
+                    <img
+                      src={image}
+                      alt={`Sponsor ${index + 1}`}
+                      className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
+                    />
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modal for Banners */}
       {isModalOpen && selectedBanner && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
