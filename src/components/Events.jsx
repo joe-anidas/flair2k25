@@ -2,195 +2,139 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Snow from '../ui/Snow';
 import eventsData from '../data/events';
-import '../styles/Events.css'; // Import external CSS file
 
 const Events = () => {
   const navigate = useNavigate();
   const cardRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [screenSize, setScreenSize] = useState('lg');
 
   const handleRegisterClick = (eventSlug) => {
-    console.log(eventSlug);
     navigate(`/events/${eventSlug}`);
   };
 
   useEffect(() => {
     const checkScreenSize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 768);
-      
-      if (width <= 480) setScreenSize('xs');
-      else if (width <= 768) setScreenSize('sm');
-      else if (width <= 1024) setScreenSize('md');
-      else if (width <= 1280) setScreenSize('lg');
-      else setScreenSize('xl');
+      setIsMobile(window.innerWidth <= 768);
     };
     
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
+    const resizeHandler = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', resizeHandler);
+    return () => window.removeEventListener('resize', resizeHandler);
   }, []);
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: isMobile ? 0.1 : 0.15,
-      rootMargin: isMobile ? '-5% 0px -5% 0px' : '-10% 0px -10% 0px'
-    };
-
+    // Clean up previous observer
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Animate in
-          requestAnimationFrame(() => {
-            entry.target.style.transform = 'translateX(0)';
-            entry.target.style.opacity = '1';
-          });
-        } else {
-          // Reset animation when out of view for re-animation
-          requestAnimationFrame(() => {
-            const cardIndex = cardRefs.current.indexOf(entry.target);
-            const isEven = cardIndex % 2 === 0;
-            
-            if (isMobile) {
-              entry.target.style.transform = 'translateY(50px)';
-            } else {
-              entry.target.style.transform = isEven ? 'translateX(-100px)' : 'translateX(100px)';
-            }
-            entry.target.style.opacity = '0';
-          });
+          entry.target.classList.remove('opacity-0');
+          entry.target.classList.remove('-translate-y-8', 'translate-y-8', '-translate-x-20', 'translate-x-20');
+          entry.target.classList.add('opacity-100');
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    // Initialize cards with CSS transforms for all screen sizes
-    cardRefs.current.forEach((ref, index) => {
-      if (ref) {
-        const isEven = index % 2 === 0;
-        ref.classList.add('event-card-animate');
-        
-        // Set initial state
-        if (isMobile) {
-          ref.style.transform = 'translateY(50px)';
-          ref.classList.add('slide-in-mobile');
-        } else {
-          ref.style.transform = isEven ? 'translateX(-100px)' : 'translateX(100px)';
-          ref.classList.add(isEven ? 'slide-in-left' : 'slide-in-right');
-        }
-        ref.style.opacity = '0';
-        ref.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
-        
-        observer.observe(ref);
-      }
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
     });
 
     return () => observer.disconnect();
-  }, [isMobile, screenSize]);
-
-  const getResponsiveClasses = () => {
-    const baseClasses = {
-      container: 'px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16',
-      cardWidth: 'w-full max-w-5xl',
-      spacing: 'space-y-6 sm:space-y-8 lg:space-y-12',
-      padding: 'p-4 sm:p-6 lg:p-8',
-      headerText: 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl',
-      subText: 'text-lg sm:text-xl lg:text-2xl',
-      cardHeight: 'h-64 sm:h-80 lg:h-96',
-      titleSize: 'text-xl sm:text-2xl md:text-3xl lg:text-4xl',
-      descSize: 'text-sm sm:text-base lg:text-lg',
-      buttonSize: 'text-sm sm:text-base py-2 px-4'
-    };
-
-    return baseClasses;
-  };
-
-  const responsiveClasses = getResponsiveClasses();
+  }, [isMobile]);
 
   return (
     <div id="events" className="min-h-screen bg-gradient-to-br from-black via-red-950 to-black relative overflow-hidden">
-      {/* Background effects for all screen sizes */}
+      {/* Optimized background effects */}
       <div className="absolute inset-0 z-0">
-        <Snow />
+        <Snow particleCount={isMobile ? 50 : 100} />
       </div>
       
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-10 left-5 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-5 w-28 h-28 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-80 lg:h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-72 lg:h-72 bg-rose-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
+      {/* Reduced background elements for mobile */}
+      {!isMobile && (
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-10 left-5 w-32 h-32 sm:w-48 sm:h-48 bg-red-500/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 right-5 w-28 h-28 sm:w-40 sm:h-40 bg-pink-500/10 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 bg-rose-500/10 rounded-full blur-xl"></div>
+        </div>
+      )}
       
-      <div className="relative z-10 min-h-screen py-12 sm:py-16 lg:py-20">
-        <div className={`max-w-7xl mx-auto ${responsiveClasses.container}`}>
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <h1 className={`${responsiveClasses.headerText} font-bold text-white mb-4 sm:mb-6 tracking-tight`}>
-              <span style={{ fontFamily: 'STOutlined, serif' }} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]">
+      <div className="relative z-10 min-h-screen py-8 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="text-center mb-8 sm:mb-16">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] to-[#8f0505]">
                 EVENTS
               </span>
             </h1>
-            <p className={`${responsiveClasses.subText} text-gray-300 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4`}>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Discover a world of technical challenges and innovative competitions
             </p>
           </div>
 
-          <div className={responsiveClasses.spacing}>
-            {eventsData.map((event, index) => {
-              const isEven = index % 2 === 0;
-              return (
-                <div
-                  key={event.id}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  data-event-id={event.id}
-                  className={`${responsiveClasses.cardWidth} mx-auto`}
-                >
-                  <div className={`relative group overflow-hidden rounded-xl lg:rounded-2xl bg-white/5 backdrop-blur-sm border border-red-500/20 hover:border-red-400/40 event-card-hover hover:shadow-2xl hover:shadow-red-500/20`}>
-                    <div 
-                      className={`w-full ${responsiveClasses.cardHeight} bg-cover bg-center relative`}
-                      style={{ backgroundImage: `url(${event.image})` }}
-                    >
-                      <div className={`absolute inset-0 bg-animate ${
-                        isEven || isMobile
-                          ? 'bg-gradient-to-r from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30'
-                          : 'bg-gradient-to-l from-black/80 via-red-950/60 to-black/40 group-hover:from-black/70 group-hover:via-red-900/50 group-hover:to-black/30'
-                      } pointer-events-none`}></div>
-                      
-                      <div className={`absolute inset-0 flex flex-col justify-center ${responsiveClasses.padding} ${
-                        isMobile ? 'items-start text-left' : isEven ? 'items-start text-left' : 'items-end text-right'
-                      }`}>
-                        <div className={`max-w-3xl ${!isMobile && !isEven ? 'lg:pl-8' : !isMobile ? 'lg:pr-8' : ''}`}>
-                          <div className={`flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 lg:mb-4 ${
-                            !isMobile && !isEven ? 'flex-row-reverse' : ''
-                          }`}>
-                            <span className="text-red-400 font-bold text-xs sm:text-sm tracking-wider uppercase">
-                              Event {String(event.id).padStart(2, '0')}
-                            </span>
-                            <div className="w-4 sm:w-6 lg:w-8 h-px bg-red-400/50"></div>
-                          </div>
-                          
-                          <h2 className={`font-mono ${responsiveClasses.titleSize} font-bold text-white mb-2 sm:mb-3 lg:mb-4 tracking-tight transition-transform duration-300 ${
-                            !isMobile && isEven ? 'group-hover:translate-x-1' : !isMobile ? 'group-hover:-translate-x-1' : ''
-                          }`}>
-                            {event.title}
-                          </h2>
-                          
-                          <p className={`${responsiveClasses.descSize} text-gray-200 leading-relaxed mb-4 group-hover:text-gray-100 transition-colors duration-300`}>
-                            {event.description}
-                          </p>
-                          
-                          <button
-                            onClick={() => handleRegisterClick(event.slug)}
-                            className={`${responsiveClasses.buttonSize} bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-500/30 font-medium relative z-10 touch-manipulation hover:scale-105 active:scale-95`}
-                          >
-                            Register Now
-                          </button>
+          <div className="space-y-6 sm:space-y-8">
+            {eventsData.map((event, index) => (
+              <div
+                key={event.id}
+                ref={el => cardRefs.current[index] = el}
+                className={`
+                  w-full max-w-5xl mx-auto transition-all duration-500 ease-out
+                  ${isMobile 
+                    ? 'opacity-0 translate-y-8' 
+                    : index % 2 === 0 
+                      ? 'opacity-0 -translate-x-20' 
+                      : 'opacity-0 translate-x-20'
+                  }
+                `}
+              >
+                <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-red-500/20 hover:border-red-400/40 transition-all duration-300">
+                  <div 
+                    className="w-full h-64 sm:h-80 lg:h-96 bg-cover bg-center relative"
+                    style={{ backgroundImage: `url(${event.image})` }}
+                  >
+                    <div className={`absolute inset-0 pointer-events-none ${
+                      isMobile 
+                        ? 'bg-gradient-to-b from-black/80 to-black/40' 
+                        : index % 2 === 0 
+                          ? 'bg-gradient-to-r from-black/80 via-red-950/60 to-black/40' 
+                          : 'bg-gradient-to-l from-black/80 via-red-950/60 to-black/40'
+                    }`}></div>
+                    
+                    <div className={`absolute inset-0 flex flex-col justify-center p-4 sm:p-6 lg:p-8 ${
+                      isMobile ? 'items-start' : index % 2 === 0 ? 'items-start' : 'items-end'
+                    }`}>
+                      <div className={`max-w-3xl ${!isMobile && index % 2 !== 0 ? 'lg:pl-8' : ''}`}>
+                        <div className={`flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 ${
+                          !isMobile && index % 2 !== 0 ? 'flex-row-reverse' : ''
+                        }`}>
+                          <span className="text-red-400 font-bold text-xs sm:text-sm tracking-wider uppercase">
+                            Event {String(event.id).padStart(2, '0')}
+                          </span>
+                          <div className="w-4 sm:w-6 lg:w-8 h-px bg-red-400/50"></div>
                         </div>
+                        
+                        <h2 className="font-mono text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 tracking-tight">
+                          {event.title}
+                        </h2>
+                        
+                        <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mb-4 group-hover:text-gray-100 transition-colors duration-300">
+                          {event.description}
+                        </p>
+                        
+                        <button
+                          onClick={() => handleRegisterClick(event.slug)}
+                          className="text-sm sm:text-base py-2 px-4 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 font-medium"
+                        >
+                          Register Now
+                        </button>
                       </div>
-                      
-                      <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
