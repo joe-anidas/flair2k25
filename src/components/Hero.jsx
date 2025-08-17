@@ -159,18 +159,18 @@ const Hero = () => {
         {/* Mobile Layout - Centered Content */}
         <div className="flex-1 flex flex-col items-center justify-center px-4 sm:hidden">
           {/* Logo - Centered and Bigger on Mobile */}
-          <div className="mb-8">
+          <div className="mb-8 w-full flex justify-center">
             <img 
               alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
-              className="w-80 h-80 object-contain drop-shadow-lg" 
+              className="w-64 h-64 md:w-80 md:h-80 object-contain drop-shadow-lg" 
               src={logo}
             />
           </div>
 
-          {/* Join Us Text - Below Image and Smaller on Mobile */}
-          <div className="text-center">
+          {/* Join Us Text - Below Image and Larger on Mobile */}
+          <div className="text-center w-full">
             <h2 
-              className="text-lg font-bold text-white mb-2 leading-tight"
+              className="text-2xl font-bold text-white mb-4 leading-tight"
               style={{ fontFamily: 'STBold, sans-serif' }}
             >
               Join us on
@@ -182,7 +182,7 @@ const Hero = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.75, delay: i / 10 }}
-                  className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
+                  className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-400 to-red-300 to-red-200"
                   style={{ fontFamily: 'STOutlined, serif' }}
                 >
                   {word}
