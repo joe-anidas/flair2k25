@@ -78,66 +78,71 @@ const Events = () => {
           </div>
 
           <div className="space-y-6 sm:space-y-8">
-            {eventsData.map((event, index) => (
-              <div
-                key={event.id}
-                ref={el => cardRefs.current[index] = el}
-                className={`
-                  w-full max-w-5xl mx-auto transition-all duration-500 ease-out
-                  ${isMobile 
-                    ? 'opacity-0 translate-y-8' 
-                    : index % 2 === 0 
-                      ? 'opacity-0 -translate-x-20' 
-                      : 'opacity-0 translate-x-20'
-                  }
-                `}
-              >
-                <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-red-500/20 hover:border-red-400/40 transition-all duration-300">
-                  <div 
-                    className="w-full h-64 sm:h-80 lg:h-96 bg-cover bg-center relative"
-                    style={{ backgroundImage: `url(${event.image})` }}
-                  >
-                    <div className={`absolute inset-0 pointer-events-none ${
-                      isMobile 
-                        ? 'bg-gradient-to-b from-black/80 to-black/40' 
-                        : index % 2 === 0 
-                          ? 'bg-gradient-to-r from-black/80 via-red-950/60 to-black/40' 
-                          : 'bg-gradient-to-l from-black/80 via-red-950/60 to-black/40'
-                    }`}></div>
-                    
-                    <div className={`absolute inset-0 flex flex-col justify-center p-4 sm:p-6 lg:p-8 ${
-                      isMobile ? 'items-start' : index % 2 === 0 ? 'items-start' : 'items-end'
-                    }`}>
-                      <div className={`max-w-3xl ${!isMobile && index % 2 !== 0 ? 'lg:pl-8' : ''}`}>
-                        <div className={`flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 ${
-                          !isMobile && index % 2 !== 0 ? 'flex-row-reverse' : ''
-                        }`}>
-                          <span className="text-red-400 font-bold text-xs sm:text-sm tracking-wider uppercase">
-                            Event {String(event.id).padStart(2, '0')}
-                          </span>
-                          <div className="w-4 sm:w-6 lg:w-8 h-px bg-red-400/50"></div>
+            {eventsData.map((event, index) => {
+              const isEven = index % 2 !== 0; // 2,4,6... (right aligned)
+              return (
+                <div
+                  key={event.id}
+                  ref={el => cardRefs.current[index] = el}
+                  className={`
+                    w-full max-w-5xl mx-auto transition-all duration-500 ease-out
+                    ${isMobile 
+                      ? 'opacity-0 translate-y-8' 
+                      : isEven 
+                        ? 'opacity-0 translate-x-20' 
+                        : 'opacity-0 -translate-x-20'
+                    }
+                  `}
+                >
+                  <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-red-500/20 hover:border-red-400/40 transition-all duration-300">
+                    <div 
+                      className="w-full h-64 sm:h-80 lg:h-96 bg-cover bg-center relative"
+                      style={{ backgroundImage: `url(${event.image})` }}
+                    >
+                      <div className={`absolute inset-0 pointer-events-none ${
+                        isMobile 
+                          ? 'bg-gradient-to-b from-black/80 to-black/40' 
+                          : isEven
+                            ? 'bg-gradient-to-l from-black/80 via-red-950/60 to-black/40'
+                            : 'bg-gradient-to-r from-black/80 via-red-950/60 to-black/40'
+                      }`}></div>
+                      
+                      <div className={`absolute inset-0 flex flex-col justify-center p-4 sm:p-6 lg:p-8 ${
+                        isMobile ? 'items-start' : isEven ? 'items-end' : 'items-start'
+                      }`}>
+                        <div className={`max-w-3xl ${!isMobile && isEven ? 'lg:pl-8 text-right' : ''}`}>
+                          <div className={`flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 ${
+                            !isMobile && isEven ? 'flex-row-reverse' : ''
+                          }`}>
+                            <span className="text-red-400 font-bold text-xs sm:text-sm tracking-wider uppercase">
+                              Event {String(event.id).padStart(2, '0')}
+                            </span>
+                            <div className="w-4 sm:w-6 lg:w-8 h-px bg-red-400/50"></div>
+                          </div>
+                          
+                          <h2 className="font-mono text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 tracking-tight">
+                            {event.title}
+                          </h2>
+                          
+                          <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mb-4 group-hover:text-gray-100 transition-colors duration-300">
+                            {event.description}
+                          </p>
+                          
+                          <button
+                            onClick={() => handleRegisterClick(event.slug)}
+                            className={`text-sm sm:text-base py-2 px-4 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 font-medium ${
+                              isEven ? 'self-end' : ''
+                            }`}
+                          >
+                            Register Now
+                          </button>
                         </div>
-                        
-                        <h2 className="font-mono text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 tracking-tight">
-                          {event.title}
-                        </h2>
-                        
-                        <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mb-4 group-hover:text-gray-100 transition-colors duration-300">
-                          {event.description}
-                        </p>
-                        
-                        <button
-                          onClick={() => handleRegisterClick(event.slug)}
-                          className="text-sm sm:text-base py-2 px-4 bg-gradient-to-r from-red-700 to-red-900 text-white rounded-md hover:from-red-600 hover:to-red-800 transition-all duration-300 font-medium"
-                        >
-                          Register Now
-                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
