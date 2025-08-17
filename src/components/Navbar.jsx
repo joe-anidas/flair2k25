@@ -36,11 +36,6 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
-  const goToFaq = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate('/faq');
-    setIsMenuOpen(false);
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
@@ -69,9 +64,7 @@ export default function Navbar() {
               <NavButton onClick={() => scrollToSection('contact')}>
                 <BlurText text="Contact" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
-              {/* <NavButton onClick={goToFaq}>
-                <BlurText text="FAQ" animateBy="letters" />
-              </NavButton> */}
+      
             </div>
           </div>
           
@@ -111,24 +104,14 @@ export default function Navbar() {
             >
               Events
             </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
-            >
-              About
-            </button>
+         
             <button
               onClick={() => scrollToSection('contact')}
               className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
             >
               Contact
             </button>
-            <button
-              onClick={goToFaq}
-              className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
-            >
-              FAQ
-            </button>
+          
           </div>
         </div>
       )}

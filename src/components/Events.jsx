@@ -65,7 +65,10 @@ const Events = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="text-center mb-8 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] to-[#8f0505]">
+            <span
+                style={{ fontFamily: 'STOutlined, serif' }}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]"
+              >
                 EVENTS
               </span>
             </h1>
