@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import licetLogo from '/assets/licet.png';
 import NavButton from '../ui/NavButton';
+import BlurText from '../ui/BlurText';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,17 +10,13 @@ export default function Navbar() {
   const location = useLocation();
 
   const scrollToSection = (sectionId) => {
-    // Check if we're on the home page
     if (location.pathname === '/' || location.pathname === '/home') {
-      // If on home page, scroll directly to section
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // If not on home page, navigate to home first
       navigate('/home');
-      // Use setTimeout to ensure navigation completes before scrolling
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -27,35 +24,27 @@ export default function Navbar() {
         }
       }, 100);
     }
-    setIsMenuOpen(false); // Close mobile menu after click
+    setIsMenuOpen(false);
   };
 
   const goToHome = () => {
     if (location.pathname === '/' || location.pathname === '/home') {
-      // If already on home, scroll to top
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Navigate to home
       navigate('/home');
     }
     setIsMenuOpen(false);
   };
 
   const goToFaq = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate('/faq');
     setIsMenuOpen(false);
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -67,21 +56,22 @@ export default function Navbar() {
             />
           </div>
           
-          {/* Desktop Navigation Links */}
+          {/* Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-6" >
               <NavButton onClick={goToHome}>
-                Home
+                <BlurText text="Home" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
               <NavButton onClick={() => scrollToSection('events')}>
-                Events
+                <BlurText text="Events" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
+             
               <NavButton onClick={() => scrollToSection('contact')}>
-                Contact
+                <BlurText text="Contact" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
-              <NavButton onClick={goToFaq}>
-                FAQ
-              </NavButton>
+              {/* <NavButton onClick={goToFaq}>
+                <BlurText text="FAQ" animateBy="letters" />
+              </NavButton> */}
             </div>
           </div>
           
@@ -120,6 +110,12 @@ export default function Navbar() {
               className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
             >
               Events
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
+            >
+              About
             </button>
             <button
               onClick={() => scrollToSection('contact')}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar3";
+import Navbar from "../components/Navbar";
 import Snow from "../ui/Snow";
 import eventsData from "../data/events";
 

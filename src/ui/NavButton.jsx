@@ -2,12 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NavButton = ({ children, onClick, className = "" }) => {
-  const label = typeof children === 'string' ? children : '';
   return (
     <StyledWrapper className={className}>
-      <button className="button" data-text={label} onClick={onClick}>
-        <span className="actual-text">&nbsp;{children}&nbsp;</span>
-        <span aria-hidden="true" className="hover-text">&nbsp;{children}&nbsp;</span>
+      <button className="button" onClick={onClick}>
+        <span className="content">{children}</span>
       </button>
     </StyledWrapper>
   );
@@ -22,6 +20,9 @@ const StyledWrapper = styled.div`
     padding: 0;
     border: none;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
   }
 
   /* button styling */
@@ -40,26 +41,17 @@ const StyledWrapper = styled.div`
     -webkit-text-stroke: 0;
   }
 
-  /* this is the text, when you hover on button */
-  .hover-text {
-    position: absolute;
-    box-sizing: border-box;
-    content: attr(data-text);
-    color: var(--animation-color);
-    width: 0%;
-    inset: 0;
-    border-right: 0;
-    overflow: hidden;
-    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), -webkit-text-stroke 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: width, filter, text-shadow;
-    -webkit-text-stroke: 1px var(--animation-color);
+  .content,
+  .blur-text span {
+    transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                text-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* hover */
-  .button:hover .hover-text {
-    width: 100%;
-    filter: drop-shadow(0 0 8px var(--animation-color));
-    text-shadow: 0 0 3px var(--animation-color), 0 0 6px var(--animation-color), 0 0 9px var(--color-black-200);
+  /* hover glow applied to content (and BlurText letters) */
+  .button:hover .content,
+  .button:hover .blur-text span {
+    filter: drop-shadow(0 0 4px var(--animation-color));
+    text-shadow: 0 0 2px var(--animation-color), 0 0 3px var(--animation-color);
   }
 `;
 

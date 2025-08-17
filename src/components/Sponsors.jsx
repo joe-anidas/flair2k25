@@ -57,46 +57,48 @@ const Sponsors = () => {
             </h2>
           </div>
 
-          {/* Title Sponsors */}
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold text-center text-white mb-8">Title Sponsor</h3>
-            <div className="flex justify-center gap-8 flex-wrap">
-              {titleSponsors.map((image, index) => (
-                <Card key={index} className="p-6 bg-black/50 rounded-xl">
-                  <div
-                    className="relative h-56 w-56 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
-                    onClick={() => handleOpenBanner(index, true)}
-                  >
-                    <img
-                      src={image}
-                      alt={`Title Sponsor ${index + 1}`}
-                      className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
-                    />
-                  </div>
-                </Card>
-              ))}
+          {/* Sponsors Grid */}
+          <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start justify-center">
+            {/* Title Sponsors */}
+            <div className="w-full lg:w-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-6 md:mb-8">Title Sponsor</h3>
+              <div className="flex justify-center gap-4 md:gap-8 flex-wrap">
+                {titleSponsors.map((image, index) => (
+                  <Card key={index} className="p-2 md:p-4 bg-black/50 rounded-xl">
+                    <div
+                      className="relative h-40 w-40 md:h-48 md:w-48 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
+                      onClick={() => handleOpenBanner(index, true)}
+                    >
+                      <img
+                        src={image}
+                        alt={`Title Sponsor ${index + 1}`}
+                        className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
+                      />
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Other Sponsors */}
-          <div>
-            <h3 className="text-3xl font-bold text-center text-white mb-8">Sponsors</h3>
-            <div className="flex flex-row items-center justify-center gap-8 flex-wrap">
-              {otherSponsors.map((image, index) => (
-                <Card key={index} className="h-full p-4 bg-black/50 rounded-xl">
-                  <div
-                      className="relative h-48 w-48 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
+            {/* Other Sponsors */}
+            <div className="w-full lg:w-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-6 md:mb-8">Sponsors</h3>
+              <div className="flex justify-center gap-4 md:gap-8 flex-wrap">
+                {otherSponsors.map((image, index) => (
+                  <Card key={index} className="p-2 md:p-4 bg-black/50 rounded-xl">
+                    <div
+                      className="relative h-40 w-40 md:h-48 md:w-48 overflow-hidden rounded-xl group flex items-center justify-center cursor-pointer"
                       onClick={() => handleOpenBanner(index, false)}
                     >
-
-                    <img
-                      src={image}
-                      alt={`Sponsor ${index + 1}`}
-                      className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
-                    />
-                  </div>
-                </Card>
-              ))}
+                      <img
+                        src={image}
+                        alt={`Sponsor ${index + 1}`}
+                        className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 brightness-110"
+                      />
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
