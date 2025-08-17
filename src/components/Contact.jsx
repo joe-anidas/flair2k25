@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/assets/flair2.png';
+import logo from '/assets/flair3.png';
 import graitLogo from '/assets/grait-logo.webp';
 import Smoke from '../ui/Snow';
 import Card from '../ui/Card';

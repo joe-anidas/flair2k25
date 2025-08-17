@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import hero from '/videos/hero.webm';
-import logo from '/assets/flair.png';
+import logo from '/assets/flair1.png';
 import { motion } from "framer-motion";
 import FuzzyText from '../ui/FuzzyText';
 
