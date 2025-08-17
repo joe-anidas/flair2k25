@@ -4,7 +4,8 @@ import Card from '../ui/Card';
 import sp1 from '/sponsors/blushlogo.jpg';       // Title sponsor logo
 import spb1 from '/sponsors/blush.png';          // Title sponsor banner
 import sp2 from '/sponsors/grad-square.jpg';     // Other sponsor logo
-import spb2 from '/sponsors/grad-square.png';    // Other sponsor banner
+import spb2 from '/sponsors/grad-square.png';  
+import sp3 from '/sponsors/teena.jpeg'  // Other sponsor banner
 
 const Sponsors = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +16,7 @@ const Sponsors = () => {
   const titleSponsorBanners = [spb1];
 
   // Other Sponsors
-  const otherSponsors = [sp2];
+  const otherSponsors = [sp2,sp3];
   const otherSponsorBanners = [spb2];
 
   const handleOpenBanner = (index, isTitle = false) => {
