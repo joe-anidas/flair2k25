@@ -11,7 +11,6 @@ const EventDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showGuidelines, setShowGuidelines] = useState(false);
 
-  // Common guidelines data
   const commonGuidelines = `
 GENERAL GUIDELINES:
 - Only students from engineering colleges are allowed to participate.
@@ -81,12 +80,7 @@ GENERAL GUIDELINES:
       </div>
 
       <div className="fixed top-0 left-0 w-full h-full z-10">
-        <video
-          autoPlay
-          loop
-          muted
-          className="w-full h-full object-cover opacity-80"
-        >
+        <video autoPlay loop muted className="w-full h-full object-cover opacity-80">
           <source src="/space-theme.webm" type="video/webm" />
         </video>
       </div>
@@ -98,7 +92,7 @@ GENERAL GUIDELINES:
       </div>
 
       <div className="relative z-30 pt-28 sm:pt-24 md:pt-24 pb-8 md:pb-12 px-3 md:px-4 max-w-6xl mx-auto">
-        {/* FIX: back button aligned left on mobile */}
+        {/* Back button */}
         <div className="mb-6 flex justify-start items-center">
           <button
             onClick={() => {
@@ -112,12 +106,7 @@ GENERAL GUIDELINES:
             }}
             className="py-2 px-4 sm:py-3 sm:px-5 bg-gradient-to-r from-red-800 to-red-950 text-white rounded-md hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-md hover:shadow-red-500/40 font-medium flex items-center justify-center border border-red-600/30 hover:border-red-500/50 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95 text-sm sm:text-base"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 sm:h-6 sm:w-6 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
                 d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
@@ -128,6 +117,7 @@ GENERAL GUIDELINES:
           </button>
         </div>
 
+        {/* Event Card */}
         <div className="relative backdrop-blur-md bg-black/30 rounded-xl p-4 md:p-6 mb-8 shadow-xl shadow-red-900/20 overflow-hidden">
           <div className="absolute inset-0 rounded-xl border border-red-500/30 animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.7)]"></div>
           <div
@@ -148,10 +138,19 @@ GENERAL GUIDELINES:
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">
                   {eventDeets.title}
                 </h1>
+
+                {/* Team Size Badge */}
+                {eventDeets.teamSize && (
+                  <span className="inline-block bg-red-700 text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-md shadow-md mb-2">
+                    Team Size: {eventDeets.teamSize}
+                  </span>
+                )}
+
                 <p className="text-red-300 font-medium text-sm md:text-base">
                   {eventDeets.description}
                 </p>
               </div>
+
               {eventDeets.brochureLink && (
                 <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                   <a
@@ -164,9 +163,7 @@ GENERAL GUIDELINES:
                         : "hover:from-red-500 hover:to-red-700 hover:shadow-red-500/50 hover:border-red-400/60 active:shadow-[0_0_20px_rgba(220,38,38,0.8)] active:scale-95"
                     } text-xs sm:text-sm md:text-base`}
                     onClick={
-                      !eventDeets.registrationLink
-                        ? (e) => e.preventDefault()
-                        : undefined
+                      !eventDeets.registrationLink ? (e) => e.preventDefault() : undefined
                     }
                   >
                     Register Now
@@ -181,6 +178,7 @@ GENERAL GUIDELINES:
               )}
             </div>
 
+            {/* Event Details Content */}
             <div className="prose prose-invert max-w-none">
               <div className="flex flex-col-reverse md:flex-row gap-4 mb-4">
                 <div className="flex-1 bg-black/20 p-3 md:p-4 rounded-lg border border-gray-700/50 flex flex-col justify-between">

@@ -12,7 +12,7 @@ const eventsData = [
     location: "A22",
     organizers: "Betina, Samuvel Johnson",
     registrationLink: "https://forms.gle/n3hD5rXhZtGaGihPA",
-    brochureLink: "/pdf/demogorgons-debug.pdf"
+    brochureLink: "/pdf/demogorgons-debug.pdf",teamSize: "2",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const eventsData = [
     location: "H23 & J14",
     organizers: "Pauline Samyuktha, Gavrila",
     registrationLink: "https://forms.gle/rNCTt3pBvZSnbtB88",
-    brochureLink: "/pdf/hawkins-high-paper.pdf"
+    brochureLink: "/pdf/hawkins-high-paper.pdf",teamSize: "1-3",
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const eventsData = [
     location: "A21",
     organizers: "Vasanth, Kavita Sri",
     registrationLink: "https://forms.gle/VLsP2fixsdWNeQQ78",
-    brochureLink: "/pdf/the-helfire-hunt.pdf"
+    brochureLink: "/pdf/the-helfire-hunt.pdf",teamSize: "1-2",
   },
 
   // 10:45 AM Event
@@ -56,7 +56,7 @@ const eventsData = [
     location: "I33",
     organizers: "Akshayaa, Priyanka",
     registrationLink: "https://forms.gle/BC8sjs57rcV3XxPd7",
-    brochureLink: "/pdf/mindflayer-grid.pdf"
+    brochureLink: "/pdf/mindflayer-grid.pdf",teamSize: "1-3",
   },
 
   // 11:30 AM Event
@@ -72,7 +72,7 @@ const eventsData = [
     location: "H23",
     organizers: "Lithika, Laxmi",
     registrationLink: "https://forms.gle/BwiPGVefBeiBzaFN8",
-    brochureLink: "/pdf/the-upside-down.pdf"
+    brochureLink: "/pdf/the-upside-down.pdf",teamSize: "2",
   },
   
   // 1:30 PM Events
@@ -88,7 +88,7 @@ const eventsData = [
     location: "A21",
     organizers: "Lochana, Maga Devi",
     registrationLink: "https://forms.gle/qrFgHTDNUbcdTMgs7",
-    brochureLink: "/pdf/vecnas-vision.pdf"
+    brochureLink: "/pdf/vecnas-vision.pdf",teamSize: "1",
   },
   {
     id: 7,
@@ -102,7 +102,7 @@ const eventsData = [
     location: "A22",
     organizers: "Kavinsha, Fathima Teresa",
     registrationLink: "https://forms.gle/8VHm3m6bxfcvUjEd9",
-    brochureLink: "/pdf/arcade-of-answers.pdf"
+    brochureLink: "/pdf/arcade-of-answers.pdf",teamSize: "2-3",
   },
   {
     id: 8,
@@ -116,7 +116,7 @@ const eventsData = [
     location: "I32",
     organizers: "Gopika, Mythreyi",
     registrationLink: "https://forms.gle/uonztDCdAQQxfPhN7",
-    brochureLink: "/pdf/the-wall-of-whispers.pdf"
+    brochureLink: "/pdf/the-wall-of-whispers.pdf",teamSize: "1-2",
   }
 ];
 
