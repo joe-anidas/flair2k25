@@ -11,22 +11,22 @@ const Contact = () => {
       <div className="absolute inset-0 z-0">
         <Smoke />
       </div>
-      
+
       {/* Funky Red Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
-      
+
       {/* Main Content */}
       <div className="relative z-10 min-h-screen py-20 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Contact Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-            <span style={{ fontFamily: 'STOutlined, serif' }} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]">
-            CONTACT US
+              <span style={{ fontFamily: 'STOutlined, serif' }} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d50b0c] via-[#dc2a2c] via-[#ab0606] to-[#8f0505] [background-position:45%]">
+                CONTACT US
               </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -40,14 +40,14 @@ const Contact = () => {
             <Card className="h-full">
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="relative flex flex-row">
-                  <img 
-                    alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
-                    className="w-30 h-30 object-contain drop-shadow-lg" 
+                  <img
+                    alt="Flair 2K25 logo with hexagonal shape and orange glowing effect"
+                    className="w-30 h-30 object-contain drop-shadow-lg"
                     src={logo}
                   />
-                  <img 
-                    alt="Flair 2K25 logo with hexagonal shape and orange glowing effect" 
-                    className="w-30 h-30 object-contain drop-shadow-lg" 
+                  <img
+                    alt="Flair 2K25 logo with hexagonal shape and orange glowing effect"
+                    className="w-30 h-30 object-contain drop-shadow-lg"
                     src={graitLogo}
                   />
                   <div className="absolute inset-0 bg-red-400/20 rounded-full blur-xl"></div>
@@ -62,10 +62,10 @@ const Contact = () => {
                   <a href="https://www.instagram.com/flairit_2k25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  
+
                 </div>
                 <a href="https://maps.app.goo.gl/8xibRnhvK7wmN9uf8" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-all duration-300 transform hover:scale-110">
-                 
+
                   <p className="flex items-center gap-2 text-sm">
                     <i className="fas fa-map-marker-alt text-red-400 w-4"></i>
                     <span className='text-white'>LICET, Loyola Campus, Chennai</span>
@@ -76,20 +76,20 @@ const Contact = () => {
 
             {/* Second Card - Contact Information */}
             <Card className="h-full">
-            
+
               <h3 className="font-bold text-lg mb-4 text-red-400">
                 CONTACT INFORMATION
               </h3>
-            
-              
-              
+
+
+
               <div className="space-y-4">
                 <div>
-                <div className="space-y-2">
-                <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
-                COORDINATORS
-              </p>
-              
+                  <div className="space-y-2">
+                    <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
+                      COORDINATORS
+                    </p>
+
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
                       <span className='text-white'>FAIZA FATHIMA</span>
@@ -99,10 +99,10 @@ const Contact = () => {
                       <span className='text-white'>MIRACLIN JOVITTA</span>
                     </p>
                   </div>
-                
+
                   <div className="space-y-2">
-                  <p className="uppercase tracking-widest mb-2 text-red-300 text-xs mt-4">
-                  For Queries Contact</p>
+                    <p className="uppercase tracking-widest mb-2 text-red-300 text-xs mt-4">
+                      For Queries Contact</p>
                     <p className="flex items-center gap-2 text-sm">
                       <i className="fas fa-user text-red-400 w-4"></i>
                       <span className='text-white'>TATWIN SHELIAN: <a href="tel:+918637458726" aria-label="Call Tatwin">+91 8637458726</a></span>
@@ -117,8 +117,8 @@ const Contact = () => {
                   <p className="uppercase tracking-widest mb-2 text-red-300 text-xs">
                     Mail Us
                   </p>
-                  <a 
-                    className=" hover:text-red-300 transition-colors duration-300 flex items-center gap-2 text-sm" 
+                  <a
+                    className=" hover:text-red-300 transition-colors duration-300 flex items-center gap-2 text-sm"
                     href="mailto:flairit@licet.ac.in"
                   >
                     <i className="fas fa-envelope text-red-400 w-4"></i>
@@ -126,7 +126,7 @@ const Contact = () => {
                   </a>
                 </div>
                 <div>
-                
+
                 </div>
               </div>
             </Card>
@@ -138,7 +138,7 @@ const Contact = () => {
               <Card className="max-w-md mx-auto" hoverEffect={false}>
                 <p className="text-base font-normal flex justify-center items-center gap-3">
                   <span className='text-white'>See y'all on 23rd August</span>
-      
+
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
                   Don't miss out on the most exciting tech event of the year!
@@ -155,6 +155,14 @@ const Contact = () => {
           <div className="text-center">
             <p className="text-gray-400 text-sm">
               © 2025 LICET. All Rights Reserved.
+            </p>
+            <p class="text-sm text-gray-400">
+              Made with 💙 by&nbsp;
+              <a href="https://github.com/joe-anidas" target="_blank" class="hover:underline">Joe</a>,&nbsp;
+              <a href="https://github.com/jayasurya0007" target="_blank" class="hover:underline">Jayasurya</a>,&nbsp;
+              <a href="https://github.com/FlemingJohn" target="_blank" class="hover:underline">Fleming</a>,&nbsp;
+              <a href="https://github.com/sylesh7" target="_blank" class="hover:underline">Sylesh</a>,&nbsp;
+              <a href="https://github.com/Suganthan96" target="_blank" class="hover:underline">Suganthan</a>
             </p>
           </div>
         </div>
