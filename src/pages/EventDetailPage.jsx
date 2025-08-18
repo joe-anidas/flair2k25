@@ -139,16 +139,15 @@ GENERAL GUIDELINES:
                   {eventDeets.title}
                 </h1>
 
-                {/* Team Size Badge */}
-                {eventDeets.teamSize && (
-                  <span className="inline-block bg-red-700 text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-md shadow-md mb-2">
-                    Team Size: {eventDeets.teamSize}
-                  </span>
-                )}
-
                 <p className="text-red-300 font-medium text-sm md:text-base">
                   {eventDeets.description}
                 </p>
+                 {/* Team Size Badge */}
+                 {eventDeets.teamSize && (
+                  <span className="mt-2 inline-block bg-red-700 text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-md shadow-md mb-2">
+                    Team Size: {eventDeets.teamSize}
+                  </span>
+                )}
               </div>
 
               {eventDeets.brochureLink && (
