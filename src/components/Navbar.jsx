@@ -36,43 +36,41 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <img 
-              src={licetLogo} 
-              alt="LICET Logo" 
+          {/* Logo with responsive margin */}
+          <div className="flex-shrink-0 ml-0 md:-ml-22">
+            <img
+              src={licetLogo}
+              alt="LICET Logo"
               className="h-10 w-auto hover:opacity-80 transition-opacity duration-200 cursor-pointer"
               onClick={goToHome}
             />
           </div>
-          
-          {/* Navigation Links */}
+
+          {/* Navigation Links (Desktop Only) */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6" >
+            <div className="ml-0 flex items-baseline space-x-12">
               <NavButton onClick={goToHome}>
                 <BlurText text="Home" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
               <NavButton onClick={() => scrollToSection('events')}>
                 <BlurText text="Events" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
-             
               <NavButton onClick={() => scrollToSection('contact')}>
                 <BlurText text="Contact" animateBy="letters" style={{ fontFamily: 'STBold, serif' }} />
               </NavButton>
-      
             </div>
           </div>
-          
-          {/* Mobile menu button */}
+
+          {/* Mobile Menu Button (Mobile Only) */}
           <div className="md:hidden">
-            <button 
+            <button
               className="text-white hover:text-red-400 transition-colors duration-200 p-2 rounded-md hover:bg-white/10"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,28 +88,38 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/80 backdrop-blur-lg border-t border-white/20">
+        <div className="md:hidden bg-black/30 backdrop-blur-lg border-t border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <button
               onClick={goToHome}
-              className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-STBold hover:bg-white/10 transition-colors"
             >
-              Home
+              <BlurText
+                text="Home"
+                animateBy="letters"
+                style={{ fontFamily: 'STBold, serif', color: '#FF0000' }}  // Red color
+              />
             </button>
             <button
               onClick={() => scrollToSection('events')}
-              className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-STBold hover:bg-white/10 transition-colors"
             >
-              Events
+              <BlurText
+                text="Events"
+                animateBy="letters"
+                style={{ fontFamily: 'STBold, serif', color: '#FF0000' }}
+              />
             </button>
-         
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors"
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-STBold hover:bg-white/10 transition-colors"
             >
-              Contact
+              <BlurText
+                text="Contact"
+                animateBy="letters"
+                style={{ fontFamily: 'STBold, serif', color: '#FF0000' }}
+              />
             </button>
-          
           </div>
         </div>
       )}
