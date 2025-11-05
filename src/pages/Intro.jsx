@@ -6,39 +6,16 @@ const IntroSequence = () => {
   const navigate = useNavigate();
   const [currentStage, setCurrentStage] = useState("countdown");
   const [count, setCount] = useState(1);
-  const [videoPlayFailed, setVideoPlayFailed] = useState(false);
-  const [userInteracted, setUserInteracted] = useState(false);
-  const [netflixAudioPlaying, setNetflixAudioPlaying] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const videoRef = useRef(null);
-  const netflixAudioRef = useRef(null);
   const bgAudioRef = useRef(null);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
-      const isMobileDevice = mobileRegex.test(userAgent) || window.innerWidth <= 768;
-      setIsMobile(isMobileDevice);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
+  // simple loading countdown — when complete, go to home
   useEffect(() => {
     if (currentStage === "countdown") {
       const interval = setInterval(() => {
         setCount((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
-            if (isMobile) {
-              setCurrentStage("home");
-            } else {
-              setCurrentStage("video");
-            }
+            setCurrentStage("home");
             return 100;
           }
           return prev + 1;
@@ -47,73 +24,9 @@ const IntroSequence = () => {
 
       return () => clearInterval(interval);
     }
-  }, [currentStage, isMobile]);
+  }, [currentStage]);
 
-  useEffect(() => {
-    if (currentStage === "video" && !isMobile && videoRef.current && netflixAudioRef.current) {
-      const playVideoAndAudio = async () => {
-        try {
-          netflixAudioRef.current.volume = 0.5;
-          if (videoRef.current) {
-            videoRef.current.muted = true;
-            videoRef.current.playsInline = true;
-            videoRef.current.setAttribute('playsinline', 'true');
-          }
-          
-          await Promise.all([
-            videoRef.current.play(),
-            netflixAudioRef.current.play()
-          ]);
-          
-          setNetflixAudioPlaying(true);
-        } catch (error) {
-          const handleUserInteraction = async () => {
-            try {
-              if (!userInteracted) {
-                setUserInteracted(true);
-                netflixAudioRef.current.volume = 0.5;
-                if (videoRef.current) {
-                  videoRef.current.muted = true;
-                  videoRef.current.playsInline = true;
-                }
-                
-                await Promise.all([
-                  videoRef.current.play(),
-                  netflixAudioRef.current.play()
-                ]);
-                setNetflixAudioPlaying(true);
-              }
-            } catch (err) {
-              setVideoPlayFailed(true);
-            }
-            document.removeEventListener('click', handleUserInteraction);
-            document.removeEventListener('keydown', handleUserInteraction);
-            document.removeEventListener('touchstart', handleUserInteraction);
-          };
-          
-          document.addEventListener('click', handleUserInteraction);
-          document.addEventListener('keydown', handleUserInteraction);
-          document.addEventListener('touchstart', handleUserInteraction);
-        }
-      };
-      
-      playVideoAndAudio();
-    }
-  }, [currentStage, userInteracted, isMobile]);
-
-  const handleVideoEnd = () => {
-    if (netflixAudioRef.current && netflixAudioPlaying) {
-      netflixAudioRef.current.pause();
-      netflixAudioRef.current.currentTime = 0;
-      setNetflixAudioPlaying(false);
-    }
-    setCurrentStage("home");
-  };
-
-  const handleVideoError = () => {
-    setCurrentStage("home");
-  };
-
+  // when loading done, navigate to home and attempt to play bg audio (if used elsewhere)
   useEffect(() => {
     const playBgAudio = async () => {
       try {
@@ -164,32 +77,6 @@ const IntroSequence = () => {
             Loading...
           </span>
         </motion.div>
-      </div>
-    );
-  }
-
-  if (currentStage === "video" && !isMobile) {
-    return (
-      <div className="fixed inset-0 z-50 bg-black">
-        <video
-          ref={videoRef}
-          onEnded={handleVideoEnd}
-          onError={handleVideoError}
-          autoPlay
-          playsInline
-          muted={true}
-          className="w-full h-full object-cover"
-        >
-          <source src="/videos/netflix.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-        
-        <audio
-          ref={netflixAudioRef}
-          src="/audios/netflix.mpeg"
-          preload="auto"
-          style={{ display: 'none' }}
-        />
       </div>
     );
   }
